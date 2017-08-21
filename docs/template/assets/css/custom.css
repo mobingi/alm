@@ -53,3 +53,7 @@ body {
 code {
     color: #cb2431;
 }
+pre .language-name {
+    float:right;
+    position:inherit;
+}

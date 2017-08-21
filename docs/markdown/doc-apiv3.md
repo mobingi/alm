@@ -36,7 +36,7 @@ curl -X POST https://api.mobingi.com/v3/access_token \
 
 Response Body:
 
-```bash
+```json
 {
   "token_type": "Bearer",
   "expires_in": 43200,
@@ -47,4 +47,27 @@ You can then start making API requests by passing the `access_token` value to th
 
 ```
 Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
+```
+
+
+## ALM Templates {#alm-templates}
+
+
+### Verify Template {#templates-verify}
+
+<div class="callout callout-info">
+POST <code>/v3/alm/template/verify</code>
+</div>
+
+Request Header
+```
+Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+```json
+{
+    "..":".."
+}
 ```
