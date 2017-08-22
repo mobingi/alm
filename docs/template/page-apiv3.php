@@ -28,12 +28,8 @@ $content = file_get_contents(realpath(__DIR__ . '/..').'/markdown/doc-apiv3.md')
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1 id="api-reference">API Reference</h1>
+        <h1 id="api-reference">API Reference (Community Edition)</h1>
     </header>
-    <div class="alert alert-success">
-        Mobingi API is organized around REST. <br />
-        Our API has predictable, resource-oriented URLs. We support CORS (Cross-Origin Resource Sharing), allowing you to interact securely with our API.
-    </div>
 
     <?php echo $parser->text($content); ?>
 

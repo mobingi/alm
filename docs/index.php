@@ -31,10 +31,11 @@ foreach($routeFiles as $routeFile) {
 $app->get('/', function ($request, $response, $args) {
 
     return $this->view->render($response, 'page-home.php', [
-        'title' => 'Mobingi Documentation Site'
+        'title' => 'Mobingi Documentation Site (CE)'
     ]);
 
 });
+
 
 
 
