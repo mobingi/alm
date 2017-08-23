@@ -60,22 +60,203 @@ Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
 
 ## ALM Templates {#alm-templates}
 
+xxxxxxxxxxxxx.
 
-### Verify Template {#templates-verify}
+### Create Template {#templates-create}
 
 <div class="callout callout-info">
-POST <code>/v3/alm/template/verify</code>
+POST <code>/v3/alm/template</code>
 </div>
 
-Request Header
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| template       | string        | Yes       | Json strings            |
+
+_template_ columns
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| label       | string        | Yes       | template title            |
+| description       | string        | Yes       | template short information            |
+
+
+Example Request:
+
+```bash
+curl -X POST https://api.mobingi.com/v3/alm/template \
+-H "Content-Type: application/json, Authorization:Bearer xxxxxxxxxxxxx \
+-d '{"template":"{xxxx:xxxxx,label:123,description:123}"}'
+
 ```
-Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
+Request Header:
+
+```json
+Authorization: Bearer eyJ0eXA...
+Content-Type: application/json
+```
+Request Body:
+
+```json
+template: "{alm-template json string}"
+```
+
+Response Body:
+
+```json
+{
+    "success" : "true",
+    "templateId" : "xxxxxxxx",
+    "versionId" : "xxxxxxxx"
+}
+```
+
+### Update Template {#templates-update}
+
+<div class="callout callout-info">
+PUT <code>/v3/alm/template/{templateId}</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| versionId       | string        |        | Copy from other version            |
+| template       | string        |        | Json strings for update alm-template           |
+| label       | string        |        | Use coping from other version, if change.            |
+| description       | string        |        | Use coping from other version, if change.            |
+
+
+Request Header:
+
+```json
+Authorization: Bearer eyJ0eXA...
+Content-Type: application/json
+```
+Request Body:
+
+update template
+```json
+template: "{alm-template json string}"
+```
+
+copy template from other version
+```json
+versionId: "sFVYDoe08fxPjNgYvauYGOYCeXbOTE.dSIGdk="
+: "sFVYDoe08fxPjNgYvauYGOYCeXbOTE.dSIGdk="
+label: "new label"
+description: "new description"
+```
+
+
+Response Body:
+
+```json
+{
+    "success" : "true",
+    "templateId" : "xxxxxxxx",
+    "versionId" : "xxxxxxxx"
+}
+```
+
+### Describe Template {#templates-describe}
+
+<div class="callout callout-info">
+GET <code>/v3/alm/template/{templateId}?versionId=XXXXXX</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| versionId       | string        |        | if need old version.            |
+
+
+
+Request Header:
+
+```json
+Authorization: Bearer eyJ0eXA...
 Content-Type: application/json
 ```
 
-Response Body
+
+Response Body:
+
 ```json
 {
-    "..":".."
+    "templateId": "XXXXXXXXXXXXX",
+    "versionId": "XXXXXXXXXXXXXXXXXXX",
+    "user_id": "XXXXXXXX",
+    "username": "UUUUUUUU",
+    "templateBody": {
+        "version": "2017-05-05",
+        "label": "new label",
+        "description": "new description",
+        "vendor": {
+            "aws": {
+              "cred": "AKIAJ2*********2DZLA"
+            }            
+        },
+        "configurations": [
+        ....
+
+        ]
+    },
+    "create_time": "2017-08-23T09:10:13+09:00",
+    "update_time": "2017-08-23T09:34:15+09:00",
+    "versions": {
+        {
+            "VersionId": "XXXXXXXXXXXXXXXXXXX",
+            "latest": true,
+            ....
+        },
+        {
+            "VersionId": "YYYYYYYYYYYYYYYYY",
+            "latest": false,
+            ....            
+        }
+    }
 }
+```
+
+
+### List Template {#templates-list}
+
+<div class="callout callout-info">
+GET <code>/v3/alm/template</code>
+</div>
+
+
+
+Request Header:
+
+```json
+Authorization: Bearer eyJ0eXA...
+Content-Type: application/json
+```
+
+
+Response Body:
+
+```json
+[
+    {
+        "template_id": "578e0e1b923c9-HBTA5YeeE-testtest",
+        "versionId": "qKoTXPV62lP2PEoPF15aj.QKpq3VCyS4",
+        "user_id": "578e0e1b923c9",
+        "username": "testtest",
+        "label": "label test",
+        "description": "desc test"
+        "vendor": {
+            "aws": {
+              "cred": "AKIAJ2*********2DZLA"
+            }            
+        },
+        "create_time": "2017-08-23T09:10:13+09:00",
+        "update_time": "2017-08-23T09:34:15+09:00",
+    },
+    {
+        ...
+    }
+]
+
 ```
