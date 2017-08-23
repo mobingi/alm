@@ -186,7 +186,7 @@ Response Body:
     "templateId": "XXXXXXXXXXXXX",
     "versionId": "XXXXXXXXXXXXXXXXXXX",
     "user_id": "XXXXXXXX",
-    "username": "UUUUUUUU",
+    "username": "UUUUUUUU",    
     "templateBody": {
         "version": "2017-05-05",
         "label": "new label",
@@ -203,7 +203,7 @@ Response Body:
     },
     "create_time": "2017-08-23T09:10:13+09:00",
     "update_time": "2017-08-23T09:34:15+09:00",
-    "versions": {
+    "versions": [
         {
             "VersionId": "XXXXXXXXXXXXXXXXXXX",
             "latest": true,
@@ -214,7 +214,7 @@ Response Body:
             "latest": false,
             ....            
         }
-    }
+    ]
 }
 ```
 
