@@ -60,9 +60,10 @@ Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
 
 ## ALM Templates {#alm-templates}
 
-xxxxxxxxxxxxx.
 
-### Create Template {#templates-create}
+### Apply Template {#template-apply}
+
+Applies the _Mobingi Alm_ template and creates the stack resources if template format is valid.
 
 <div class="callout callout-info">
 POST <code>/v3/alm/template</code>
@@ -71,40 +72,63 @@ POST <code>/v3/alm/template</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| php:input       | string        | Yes       | Json strings            |
+|  { _template body_ }  | string        | Yes       |  Mobingi Alm template body in json string format            |
 
 
-Example Request:
-
+Request Header
 ```bash
-curl -X POST https://api.mobingi.com/v3/alm/template \
--H "Content-Type: application/json, Authorization:Bearer xxxxxxxxxxxxx \
--d '{"template":"{xxxx:xxxxx,label:123,description:123}"}'
-
-```
-Request Header:
-
-```json
-Authorization: Bearer eyJ0eXA...
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
 Content-Type: application/json
 ```
-Request Body:
 
-```json
-"{alm-template json string}"
-```
-
-Response Body:
-
-```json
+Request body
+```bash
 {
-    "success" : "true",
-    "template_id" : "xxxxxxxx",
-    "version_id" : "xxxxxxxx"
+  "version": "2017-03-03",
+  "label": "template version label #1",
+  "description": "This template creates a sample stack with EC2 instance on AWS",
+  "vendor": {
+    "aws": {
+      "cred": "AKIAJ...DZLA",
+      "region": "ap-northeast-1"
+    }
+  },
+  "configurations": [
+    {
+      "role": "web",
+      "flag": "Web01",
+      "provision": {
+        "image": "${computed}",
+        "volume_type": "${computed}",
+        "instance_type": "t2.micro",
+        "instance_count": 1,
+        "keypair": true
+      }
+    }
+  ]
 }
 ```
 
-### Update Template {#templates-update}
+Response Body
+
+```bash
+HTTP/1.1 201 Created
+
+{
+  "status": "success",
+  "stack_status": "CREATE_IN_PROGRESS",
+  "template_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+  "version_id": "98O0jK6CQk8qLi14S2SLU8z3JIo3.JPx"
+}
+```
+
+
+
+### Update Template {#template-update}
+
+Updates the _Mobingi Alm_ template and applies the changes to stack resources.
+
+_Note:_ `vendor` section will be ignored when performing this API call. You can not change cloud vendors after the stack is created.
 
 <div class="callout callout-info">
 PUT <code>/v3/alm/template/{template_id}</code>
@@ -113,171 +137,59 @@ PUT <code>/v3/alm/template/{template_id}</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| version_id       | string        |        | Copy from other version            |
-| template       | string        |        | Json strings for update alm-template           |
-| label       | string        |        | Use coping from other version, if change.            |
-| description       | string        |        | Use coping from other version, if change.            |
+| { _template body_ } | string        |        | Mobingi Alm template body in json string format            |
 
 
-Request Header:
-
-```json
-Authorization: Bearer eyJ0eXA...
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
 Content-Type: application/json
 ```
-Request Body:
 
-update template
-```json
-template: "{alm-template json string}"
-```
-
-copy template from other version
-```json
-version_id: "sFVYDoe0************TE.dSIGdk="
-label: "new label"
-description: "new description"
-```
-
-
-Response Body:
-
-```json
+Request body
+```bash
 {
-    "success" : "true",
-    "template_id" : "xxxxxxxx",
-    "version_id" : "xxxxxxxx"
-}
-```
-
-### Describe Template {#templates-describe}
-
-<div class="callout callout-info">
-GET <code>/v3/alm/template/{template_id}?version_id=XXXXXX</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-| version_id       | string        |        | if need old version.            |
-
-
-
-Request Header:
-
-```json
-Authorization: Bearer eyJ0eXA...
-Content-Type: application/json
-```
-
-
-Response Body:
-
-```json
-{
-    "auth_token": "xxxxxxxxxx",
-    "nickname": "xxxxxxxxxx",
-    "stack_id": "XXXXXXXXXXXXX",
-    "stack_status": "CREATE_IN_PROGRESS",
-    "version_id": "XXXXXXXXXXXXXXXXXXX",
-    "vendor": {
-        "aws": {
-          "cred": "AKIAJ2*********2DZLA"
-        }            
-    },
-    "user_id": "XXXXXXXX",
-    "username": "UUUUUUUU",    
-    "configuration": {
-        "version": "2017-05-05",
-        "label": "new label",
-        "description": "new description",
-        "vendor": {
-            "aws": {
-              "cred": "AKIAJ2*********2DZLA"
-            }            
-        },
-        "configurations": [
-        ....
-
-        ]
-    },
-    "create_time": "2017-08-23T09:10:13+09:00",
-    "update_time": "2017-08-23T09:34:15+09:00",
-    "versions": [
-        {
-            "VersionId": "XXXXXXXXXXXXXXXXXXX",
-            "latest": true,
-            ....
-        },
-        {
-            "VersionId": "YYYYYYYYYYYYYYYYY",
-            "latest": false,
-            ....            
-        }
-    ]
-}
-```
-
-
-### List Template {#templates-list}
-
-<div class="callout callout-info">
-GET <code>/v3/alm/template</code>
-</div>
-
-
-
-Request Header:
-
-```json
-Authorization: Bearer eyJ0eXA...
-Content-Type: application/json
-```
-
-
-Response Body:
-
-```json
-[
-    {
-        "auth_token": "xxxxxxxxxx",
-        "nickname": "xxxxxxxxxx",
-        "stack_id": "XXXXXXXXXXXXX",
-        "stack_status": "CREATE_IN_PROGRESS",
-        "version_id": "XXXXXXXXXXXXXXXXXXX",
-        "vendor": {
-            "aws": {
-              "cred": "AKIAJ2*********2DZLA"
-            }            
-        },
-        "user_id": "XXXXXXXX",
-        "username": "UUUUUUUU",    
-        "configuration": {
-            "version": "2017-05-05",
-            "label": "new label",
-            "description": "new description",
-            "vendor": {
-                "aws": {
-                  "cred": "AKIAJ2*********2DZLA"
-                }            
-            },
-            "configurations": [
-            ....
-
-            ]
-        },
-        "create_time": "2017-08-23T09:10:13+09:00",
-        "update_time": "2017-08-23T09:34:15+09:00"
-    },
-    {
-        ...
+  "version": "2017-03-03",
+  "label": "template version label #2",
+  "description": "This template creates a sample stack with EC2 instance on AWS",
+  "vendor": {
+    "aws": {
+      "cred": "AKIAJ...DZLA",
+      "region": "ap-northeast-1"
     }
-]
+  },
+  "configurations": [
+    {
+      "role": "web",
+      "flag": "Web01",
+      "provision": {
+        "image": "${computed}",
+        "instance_type": "m3.medium",
+        "instance_count": 2,
+        "keypair": true
+      }
+    }
+  ]
+}
+```
 
+Response Body
+
+```bash
+HTTP/1.1 202 Accepted
+
+{
+  "status": "success",
+  "stack_status": "UPDATE_IN_PROGRESS",
+  "template_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+  "version_id": "gCn2JuPhndwxMZuidOER0yyxM8jZB6Vn"
+}
 ```
 
 
-### Compare Template {#templates-compare}
+### Compare Template {#template-compare}
+
+Compares the resource changes between two _Mobingi Alm_ templates.
 
 <div class="callout callout-info">
 POST <code>/v3/alm/template/compare</code>
@@ -285,117 +197,207 @@ POST <code>/v3/alm/template/compare</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| id       | array        |        | array  2value only            |
-| body       | array        |        | array 2value only            |
-
- - first priority is id.
-
-Compare(source, target)
- | Parameters    |  Detail       |
- | ------------- | :------------|
- | source (edited)        | id[0] if no id, use body[0]   |
- | target (original)        | id[1] if no id, use body[1] or body[0] |
-
-Compare Result
-| Parameters    |  Detail       |
-| ------------- | :------------|
-| new        | new values   |
-| removed        | deleted values |
-| edited        | changed values. output old value,new value  |
+| id       | array        |    conditional    |    items contain template id and version information         |
+| body       | array        |    conditional    |   items contain template body source         |
 
 
 
-
-Request Header:
-
-```json
-Authorization: Bearer eyJ0eXA...
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
 Content-Type: application/json
 ```
 
-Request Body:
-
-
-```json
-id:[
-    {"mo-578e0********9-7********RY-tk":
-        {"version":"EhF********eFpW2"}
-    },
-    {"mo-578e0********9-7********RY-tk":
-        {"version":"Xmxk*********Mu._MXVO4lGZuoXk"}
-    }
-]
-```
-
-Response Body:
-
-
-```
+Request body
+```bash
 {
-    "status": "success",
-    "source": {
-        "hoge": "hoge",
-        "fufdfdfdga": "fhhhuga",
-        "label": "xx222222211originalxccccccccddddabel test",
-        "description": "desc tefdfdfdffffst"
+  "id": [
+    {
+      "mo-5447826c870e7-ZgNTSRM8K-tk": {
+        "version": "98O0jK5CQk8gLi14S2SLU8z3JIo3.JPx"
+      }
     },
-    "target": {
-        "hoge": "hoge",
-        "fufdfdfdga": "fhhhuga",
-        "label": "xx11111111originalxccccccccddddabel test",
-        "description": "desc tefdfdfdffffst"
-    },
-    "diff": {
-        "new": [],
-        "removed": [],
-        "edited": {
-            "label": {
-                "oldvalue": "xx11111111originalxccccccccddddabel test",
-                "newvalue": "xx222222211originalxccccccccddddabel test"
-            }
-        }
+    {
+      "mo-5447826c870e7-ZgNTSRM8K-tk": {
+        "version": "gCn2JuPhndwxMZuodOER0yyxM8jZB6Vn"
+      }
     }
+  ]
 }
 ```
 
-Sample2:
+Response Body
 
-```json
-id:[
-    {"mo-5*******c9-7W*****RY-tk":
-        {"version":"EhFEL**********UxjyYZxeFpW2"}
+```bash
+HTTP/1.1 202 Accepted
+
+{
+  "status": "success",
+  "source":{
+      "version": "2017-03-03",
+      "label": "template version label #1",
+      "description": "This template creates a sample stack with EC2 instance on AWS",
+      "vendor": {
+        "aws": {
+          "cred": "AKIAJ...DZLA",
+          "region": "ap-northeast-1"
+        }
+      },
+      "configurations": [
+        {
+          "role": "web",
+          "flag": "Web01",
+          "provision": {
+            "image": "${computed}",
+            "instance_type": "t2.micro",
+            "instance_count": 1,
+            "keypair": true
+          }
+        }
+      ]
+  },
+  "target": {
+      "version": "2017-03-03",
+      "label": "template version label #2",
+      "description": "This template creates a sample stack with EC2 instance on AWS",
+      "vendor": {
+        "aws": {
+          "cred": "AKIAJ...DZLA",
+          "region": "ap-northeast-1"
+        }
+      },
+      "configurations": [
+        {
+          "role": "web",
+          "flag": "Web01",
+          "provision": {
+            "image": "${computed}",
+            "instance_type": "m3.medium",
+            "instance_count": 2,
+            "keypair": true
+          }
+        }
+      ]
+  },
+  "diff": {
+    "new": [],
+    "removed": {
+      "configurations\/1\/provision\/volume_type": "${computed}"
+    },
+    "edited": {
+      "label": {
+        "oldvalue": "template version label #1",
+        "newvalue": "template version label #2"
+      },
+      "configurations\/provision\/instance_type": {
+        "oldvalue": "t2.micro",
+        "newvalue": "m3.medium"
+      },
+      "configurations\/provision\/instance_count": {
+        "oldvalue": 1,
+        "newvalue": 2
+      }
     }
-]
-body:[
-    {"test":"1111"},
-    {"test":"333"}
+  }
+}
+```
+
+
+### List Template {#template-list}
+
+List all _Mobingi Alm_ template versions
+
+<div class="callout callout-info">
+GET <code>/v3/alm/template</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| template_id       | string        |   Yes     |  The unique id returned when applying the template     |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200 OK
+
+[
+  {
+    "version_id": "1kk2HiGLxF1fThVLJvC0h6fd5z3QWOiM",
+    "latest": true,
+    "last_modified": "2017-08-25T10:40:29.000Z",
+    "size": "2963"
+  },
+  {
+    "version_id": "gCn2JuPhndwxMZuodOER0yyxM8jZB6Vn",
+    "latest": false,
+    "last_modified": "2017-08-25T10:20:38.000Z",
+    "size": "211"
+  },
+  {
+    "version_id": "98O0jK5CQk8gLi14S2SLU8z3JIo3.JPx",
+    "latest": false,
+    "last_modified": "2017-08-25T08:48:12.000Z",
+    "size": "2940"
+  }
 ]
 ```
-Response Body:
 
-```json
+
+### Describe Template {#template-describe}
+
+Describes the
+<div class="callout callout-info">
+GET <code>/v3/alm/template/{template_id}</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| version_id       | string        |   No     | The id of the template version associated with stack. If empty or "latest" provided, the most updated template version will be returned      |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200 OK
+
 {
-    "status": "success",
-    "source": {
-        "hoge": "hoge",
-        "fufdfdfdga": "fhhhuga",
-        "label": "xx222222211originalxccccccccddddabel test",
-        "description": "desc tefdfdfdffffst"
-    },
-    "target": {
-        "test": "333"
-    },
-    "diff": {
-        "new": {
-            "hoge": "hoge",
-            "fufdfdfdga": "fhhhuga",
-            "label": "xx222222211originalxccccccccddddabel test",
-            "description": "desc tefdfdfdffffst"
-        },
-        "removed": {
-            "test": "333"
-        },
-        "edited": []
+  "version": "2017-03-03",
+  "label": "template version label #2",
+  "description": "This template creates a sample stack with EC2 instance on AWS",
+  "vendor": {
+    "aws": {
+      "cred": "AKIAJ...DZLA",
+      "region": "ap-northeast-1"
     }
+  },
+  "configurations": [
+    {
+      "role": "web",
+      "flag": "Web01",
+      "provision": {
+        "image": "${computed}",
+        "instance_type": "m3.medium",
+        "instance_count": 2,
+        "keypair": true
+      }
+    }
+  ]
 }
 ```
