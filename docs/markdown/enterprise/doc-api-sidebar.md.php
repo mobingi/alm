@@ -14,12 +14,12 @@
         </ul>
     </li>
     <li>
-        <a href="#alm-templates">ALM Template</a>
+        <a href="#alm-templates">Alm Template</a>
         <ul>
             <li><a href="#template-apply">Apply Template</a></li>
-            <li><a href="#template-update">Update Stack</a></li>
+            <li><a href="#template-update">Update Template</a></li>
             <li><a href="#template-compare">Compare Template</a></li>
-            <li><a href="#template-list">List Template</a></li>
+            <li><a href="#template-list">Template Versions</a></li>
             <li><a href="#template-describe">Describe Template</a></li>
         </ul>
     </li>

@@ -39,7 +39,7 @@ Example Request:
 ```bash
 curl -X POST https://api.mobingi.com/v3/access_token \
 -H "Content-Type: application/json" \
--d '{"grant_type":"client_credentials","client_id":"lg-5447826c870e7-xBV0OSJEN-tm","client_secret":"sFVYDoe08fxPjNgYvauYGOYCeXbOTE","grant_type":"client_credentials"}'
+-d '{"grant_type":"client_credentials","client_id":"lg-5447820c870e1-xBV0OpTEN-tm","client_secret":"sFVYDoe07fxPjNgYvauYGOYCeXbOTE","grant_type":"client_credentials"}'
 ```
 
 Response Body:
@@ -137,7 +137,7 @@ PUT <code>/v3/alm/template/{template_id}</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| { _template body_ } | string        |        | Mobingi Alm template body in json string format            |
+| { _template body_ } | string        |   Yes     | Mobingi Alm template body in json string format            |
 
 
 Request Header
@@ -250,6 +250,7 @@ HTTP/1.1 202 Accepted
           "provision": {
             "image": "${computed}",
             "instance_type": "t2.micro",
+            "volume_type": "${computed}",
             "instance_count": 1,
             "keypair": true
           }
@@ -303,9 +304,9 @@ HTTP/1.1 202 Accepted
 ```
 
 
-### List Template {#template-list}
+### Template Versions {#template-list}
 
-List all _Mobingi Alm_ template versions
+List _Mobingi Alm_ template versions
 
 <div class="callout callout-info">
 GET <code>/v3/alm/template</code>
@@ -354,7 +355,8 @@ HTTP/1.1 200 OK
 
 ### Describe Template {#template-describe}
 
-Describes the
+Describes the template body of a specific version.
+
 <div class="callout callout-info">
 GET <code>/v3/alm/template/{template_id}</code>
 </div>
@@ -362,7 +364,7 @@ GET <code>/v3/alm/template/{template_id}</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| version_id       | string        |   No     | The id of the template version associated with stack. If empty or "latest" provided, the most updated template version will be returned      |
+| version_id       | string        |   No     | The id of the template version associated with the template/stack. If empty or "latest" provided, the most updated template version is returned      |
 
 
 
