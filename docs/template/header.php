@@ -4,13 +4,13 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
     '::1'
 ))){
 	// on server
-	$domain = '//' . "{$_SERVER['HTTP_HOST']}" .'/docs/template/';
+	$domain = '//' . "{$_SERVER['HTTP_HOST']}" .'/template/';
 	$siteUrl = '//' . "{$_SERVER['HTTP_HOST']}" . '/';
 }else{
 	// on localhost development
     $scriptname = explode('/', $_SERVER['SCRIPT_NAME']);
-	$domain = "//" . $_SERVER["HTTP_HOST"] . "/" . $scriptname[1] ."/docs/template/";
-	$siteUrl = "//" . $_SERVER["HTTP_HOST"] . "/" . $scriptname[1] ."/";
+	$domain = "//" . $_SERVER["HTTP_HOST"] . "/template/";
+	$siteUrl = "//" . $_SERVER["HTTP_HOST"] . "/";
 }
 
 ?>
@@ -86,7 +86,7 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="<?php echo $siteUrl; ?>docs"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="max-height:66px;">docs</a>
+					<a class="navbar-brand" href="<?php echo $siteUrl; ?>"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="max-height:66px;">docs</a>
 				</div>
 				<!-- END Toggle buttons and brand -->
 

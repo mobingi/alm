@@ -14,7 +14,7 @@ include_once 'header.php';
         <div class="row">
           <div class="col-md-4">
             <div class="promo">
-              <a href="<?php echo $siteUrl; ?>docs/getting-started">
+              <a href="<?php echo $siteUrl; ?>getting-started">
                 <i class="fa fa-star-half-o top-page"></i>
               </a>
               <h3>Get Started</h3>
@@ -23,7 +23,7 @@ include_once 'header.php';
           </div>
           <div class="col-md-4">
             <div class="promo">
-              <a href="<?php echo $siteUrl; ?>docs/documentation">
+              <a href="<?php echo $siteUrl; ?>documentation">
                 <i class="fa fa-book top-page"></i>
               </a>
               <h3>Documentation</h3>
@@ -32,7 +32,7 @@ include_once 'header.php';
           </div>
           <div class="col-md-4">
             <div class="promo">
-              <a href="<?php echo $siteUrl; ?>docs/api/v3"><i class="fa fa-code top-page"></i></a>
+              <a href="<?php echo $siteUrl; ?>api/v3"><i class="fa fa-code top-page"></i></a>
               <h3>API Reference</a></h3>
               <p>
                 API Reference on building your applications against our RESTful API service.<br />
