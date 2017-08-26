@@ -18,9 +18,16 @@
         <ul>
             <li><a href="#template-apply">Apply Template</a></li>
             <li><a href="#template-update">Update Template</a></li>
-            <li><a href="#template-compare">Compare Template</a></li>
+            <li><a href="#template-compare">Compare Templates</a></li>
             <li><a href="#template-list">Template Versions</a></li>
             <li><a href="#template-describe">Describe Template</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#stacks">Stacks</a>
+        <ul>
+            <li><a href="#stack-list">List Stacks</a></li>
+            <li><a href="#stack-describe">Describe Stack</a></li>
         </ul>
     </li>
 

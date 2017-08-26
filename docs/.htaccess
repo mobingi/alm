@@ -1,10 +1,6 @@
 Options -MultiViews
 RewriteEngine on
 
-# exceptions for localhost
-RewriteCond %{HTTP_HOST}  \.
-RewriteCond  %{HTTP_HOST} !\.com$ [OR]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

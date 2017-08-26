@@ -187,7 +187,7 @@ HTTP/1.1 202 Accepted
 ```
 
 
-### Compare Template {#template-compare}
+### Compare Templates {#template-compare}
 
 Compares the resource changes between two _Mobingi Alm_ templates.
 
@@ -401,5 +401,127 @@ HTTP/1.1 200 OK
       }
     }
   ]
+}
+```
+
+
+## Stacks {#stacks}
+
+
+### List Stacks {#stack-list}
+
+List all stacks running under current organization account.
+
+<div class="callout callout-info">
+POST <code>/v3/alm/stack</code>
+</div>
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200 OK
+
+[
+    {
+      "auth_token": "zQT8zJ37o9iZDIAFOVOoZzLCu0nR",
+      "user_id": "5447820c870e1",
+      "configuration": {
+        "version": "2017-03-03",
+        "label": "template version label #2",
+        "description": "This template creates a sample stack with EC2 instance on AWS",
+        "vendor": {
+          "aws": {
+            "cred": "AKIAJ...DZLA",
+            "region": "ap-northeast-1"
+          }
+        },
+        "configurations": [
+          {
+            "role": "web",
+            "flag": "Web01",
+            "provision": {
+              "image": "${computed}",
+              "instance_type": "m3.medium",
+              "instance_count": 2,
+              "keypair": true
+            }
+          }
+        ]
+      },
+      "nickname": "clean sail demonstrate",
+      "create_time": "2017-08-26T19:31:25+09:00",
+      "username": "thompson",
+      "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+      "stack_status": "CREATE_COMPLETE",
+      "version_id": "1kk2HiGLxF1fThVLJvC0h6fd5z3QWOiM"
+  },
+  {
+      ..
+  }
+]
+```
+
+
+
+### Describe Stack {#stack-describe}
+
+Describes the stack detail information.
+
+<div class="callout callout-info">
+POST <code>/v3/alm/stack/{stack_id}</code>
+</div>
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+
+Response Body
+
+```bash
+HTTP/1.1 201 Created
+
+{
+  "auth_token": "zQT8zJ37o9iZDIAFOVOoZzLCu0nR",
+  "user_id": "5447820c870e1",
+  "configuration": {
+    "version": "2017-03-03",
+    "label": "template version label #2",
+    "description": "This template creates a sample stack with EC2 instance on AWS",
+    "vendor": {
+      "aws": {
+        "cred": "AKIAJ...DZLA",
+        "region": "ap-northeast-1"
+      }
+    },
+    "configurations": [
+      {
+        "role": "web",
+        "flag": "Web01",
+        "provision": {
+          "image": "${computed}",
+          "instance_type": "m3.medium",
+          "instance_count": 2,
+          "keypair": true
+        }
+      }
+    ]
+  },
+  "nickname": "clean sail demonstrate",
+  "create_time": "2017-08-26T19:31:25+09:00",
+  "username": "thompson",
+  "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+  "stack_status": "CREATE_COMPLETE",
+  "version_id": "1kk2HiGLxF1fThVLJvC0h6fd5z3QWOiM"
 }
 ```
