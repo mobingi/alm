@@ -532,7 +532,7 @@ In this section, all endpoints are designated to work with Alm-Agent in order to
 
 ### Describe Container Configs {#alm-agent-container-config}
 
-This endpoint describes the content of `container` section from _Mobingi Alm Template_ configurations, identified by `flag` name.
+This endpoint describes the content of container section from _Mobingi Alm Template_ configurations, identified by `flag` name.
 This API call is used by Alm-Agent to retrieve server environment setup and application deployment, etc.
 
 <div class="callout callout-info">
@@ -571,7 +571,7 @@ HTTP/1.1 200 OK
   "updated": 1492161755
 }
 ```
-
+__Note:__ _If the response has an empty body, it could mean that wrong `flag` value is passed, or this layer of configuration doesn't have container section definied._
 
 ### Spot Termination Notification {#alm-agent-spot-terminate-notification}
 
