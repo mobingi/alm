@@ -489,7 +489,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200 OK
 
 {
   "auth_token": "zQT8zJ37o9iZDIAFOVOoZzLCu0nR",
