@@ -558,7 +558,7 @@ Response Body
 HTTP/1.1 200 OK
 
 {
-  "image": "registry.mobingi.com\/mobingi\/ubuntu-apache2-php5",
+  "image": "registry.mobingi.com/mobingi/ubuntu-apache2-php5",
   "environment_variables": {
     "Stage": "_development",
     "DB_USERNAME": "root",
@@ -567,7 +567,7 @@ HTTP/1.1 200 OK
   },
   "gitReference": "master",
   "gitPrivateKey": "-----BEGIN PRIVATE ...\n-----END PRIVATE KEY-----\n",
-  "gitRepo": "https:\/\/github.com\/mobingilabs\/default-site-php.git",
+  "gitRepo": "https://github.com/mobingilabs/default-site-php.git",
   "updated": 1492161755
 }
 ```
