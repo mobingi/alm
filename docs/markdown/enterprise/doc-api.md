@@ -528,21 +528,23 @@ HTTP/1.1 200 OK
 
 ## Alm-Agent {#alm-agent}
 
-In this section, all endpoints are designated to work with Alm-Agent in order to perform application lifecycle automation on the VM side. If you are a contributor to the OSS repo [github.com/mobingi/alm-agent](https://github.com/mobingi/alm-agent), you're looking at the right reference. If you are a developer working on integrating ALM with your client applications or contributor to API/UI only, you can ignore the references below.
+_In this section, all endpoints are designated to work with Mobingi alm-agent in order to perform application lifecycle automation by Mobingi.
+Mobingi alm-agent is the Linux server side program that automatically installed during instance launch and initialization.
+If you are a contributor to the OSS repo [github.com/mobingi/alm-agent](https://github.com/mobingi/alm-agent), you're looking at the right reference here. If you are a developer working on integrating Mobingi ALM with your client applications or contributing to Mobingi API/UI only, you can ignore this API references section._
 
-### Describe Container Configs {#alm-agent-container-config}
+### Describe Configuration {#alm-agent-container-config}
 
-This endpoint describes the content of container section from _Mobingi Alm Template_ configurations, identified by `flag` name.
-This API call is used by Alm-Agent to retrieve server environment setup and application deployment, etc.
+This endpoint is used by Mobingi alm-agent to describing `container` section of the layer configuration from Mobingi Alm Template, identified by `flag` name.
 
 <div class="callout callout-info">
-GET <code>/v3/alm/template/{template_id}/container</code>
+GET <code>/v3/alm/agent/config</code>
 </div>
 
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| flag       | string        |   Yes     | The flag name of the layer defined in your _Mobingi Alm Template_ body's configurations      |
+| stack_id       | string        |   Yes     | the stack id where the instance is associated to     |
+| flag       | string        |   Yes     | The flag identifier of the configuration layer    |
 
 
 
@@ -571,22 +573,25 @@ HTTP/1.1 200 OK
   "updated": 1492161755
 }
 ```
-__Note:__ _If the response has an empty body, it could mean that wrong `flag` value is passed, or this layer of configuration doesn't have container section definied._
+__Note:__ _If the response has an empty body, it could mean that wrong `flag` name was provided, or it doesn't have any container config defined._
 
-### Spot Termination Notification {#alm-agent-spot-terminate-notification}
 
-This endpoint listens to the notification sent by Alm-Agent when a Spot Instance is scheduled to be shutdown.
+
+### Update Container Status {#alm-agent-update-container-status}
+
+This endpoint listens to the notifications sent by Mobingi alm-agent with the status updates during a container's lifecycle. Possible status examples: _starting_, _updating_, _restarting_, _running_, _terminated_, etc.
 
 
 <div class="callout callout-info">
-POST <code>/v3/event/spot/shutdown</code>
+POST <code>/v3/alm/agent/container_status</code>
 </div>
 
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
 | stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
-| instance_id       | string        |   Yes     |   The server instance id where alm-agent is installed on |
+| instance_id       | string        |   Yes     |   The server instance id where Mobingi alm-agent is installed on |
+| status       | string        |   Yes     |  sample values: _starting_, _updating_, _restarting_, _running_, _terminated_  |
 
 
 
@@ -605,22 +610,25 @@ HTTP/1.1 202 Accepted
 ```
 
 
-### Update Container Status {#alm-agent-update-container-status}
+### Update Instance Status {#alm-agent-update-instance-status}
 
-This endpoint receives the notification sent by Alm-Agent with the status change during a container's lifecycle. Possible update values include _starting_, _updating_, _restarting_, _running_, _terminated_, etc.
+This endpoint listens to the notifications sent by Mobingi alm-agent when a server instance has a status update.
+
+For example, when an instance is launched and ready, alm-agent will call this endpoint to register itself.
+
+Another example, when an AWS spot instance is scheduled to be shutdown, this endpoint will receive the notice and allow Mobingi system to perform other necessary actions.
 
 
 <div class="callout callout-info">
-POST <code>/v3/event/spot/shutdown</code>
+POST <code>/v3/alm/agent/instance_status</code>
 </div>
 
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
 | stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
-| instance_id       | string        |   Yes     |   The server instance id where alm-agent is installed on |
-| status       | string        |   Yes     |  sample values: _starting_, _updating_, _restarting_, _running_, _terminated_  |
-
+| instance_id       | string        |   Yes     |   The server instance id where Mobingi alm-agent is installed on |
+| status       | string        |   Yes     |  sample values: <i>spot_terminate</i>  |
 
 
 Request Header
