@@ -536,7 +536,7 @@ This endpoint describes the content of `container` section from _Mobingi Alm Tem
 This API call is used by Alm-Agent to retrieve server environment setup and application deployment, etc.
 
 <div class="callout callout-info">
-POST <code>/v3/alm/template/{template_id}/container</code>
+GET <code>/v3/alm/template/{template_id}/container</code>
 </div>
 
 
