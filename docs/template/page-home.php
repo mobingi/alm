@@ -14,7 +14,7 @@ include_once 'header.php';
         <div class="row">
           <div class="col-md-4">
             <div class="promo">
-              <a href="<?php echo $siteUrl; ?>getting-started">
+              <a href="">
                 <i class="fa fa-star-half-o top-page"></i>
               </a>
               <h3>Get Started</h3>
@@ -23,7 +23,7 @@ include_once 'header.php';
           </div>
           <div class="col-md-4">
             <div class="promo">
-              <a href="<?php echo $siteUrl; ?>documentation">
+              <a href="">
                 <i class="fa fa-book top-page"></i>
               </a>
               <h3>Documentation</h3>

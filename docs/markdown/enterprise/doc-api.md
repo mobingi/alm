@@ -525,3 +525,114 @@ HTTP/1.1 200 OK
   "version_id": "1kk2HiGLxF1fThVLJvC0h6fd5z3QWOiM"
 }
 ```
+
+## Alm-Agent {#alm-agent}
+
+In this section, all endpoints are designated to work with Alm-Agent in order to perform application lifecycle automation on the VM side. If you are a contributor to the OSS repo [github.com/mobingi/alm-agent](https://github.com/mobingi/alm-agent), you're looking at the right reference. If you are a developer working on integrating ALM with your client applications or contributor to API/UI only, you can ignore the references below.
+
+### Describe Container Configs {#alm-agent-container-config}
+
+This endpoint describes the content of `container` section from _Mobingi Alm Template_ configurations, identified by `flag` name.
+This API call is used by Alm-Agent to retrieve server environment setup and application deployment, etc.
+
+<div class="callout callout-info">
+POST <code>/v3/alm/template/{template_id}/container</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| flag       | string        |   Yes     | The flag name of the layer defined in your _Mobingi Alm Template_ body's configurations      |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200 OK
+
+{
+  "image": "registry.mobingi.com\/mobingi\/ubuntu-apache2-php5",
+  "environment_variables": {
+    "Stage": "_development",
+    "DB_USERNAME": "root",
+    "DB_PSSSWORD": "7zk3FBP37",
+    "my_secret": "D3nz!lwA_h1ngt0n"
+  },
+  "gitReference": "master",
+  "gitPrivateKey": "-----BEGIN PRIVATE ...\n-----END PRIVATE KEY-----\n",
+  "gitRepo": "https:\/\/github.com\/mobingilabs\/default-site-php.git",
+  "updated": 1492161755
+}
+```
+
+
+### Spot Termination Notification {#alm-agent-spot-terminate-notification}
+
+This endpoint listens to the notification sent by Alm-Agent when a Spot Instance is scheduled to be shutdown.
+
+
+<div class="callout callout-info">
+POST <code>/v3/event/spot/shutdown</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
+| instance_id       | string        |   Yes     |   The server instance id where alm-agent is installed on |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 202 Accepted
+
+
+```
+
+
+### Update Container Status {#alm-agent-update-container-status}
+
+This endpoint receives the notification sent by Alm-Agent with the status change during a container's lifecycle. Possible update values include _starting_, _updating_, _restarting_, _running_, _terminated_, etc.
+
+
+<div class="callout callout-info">
+POST <code>/v3/event/spot/shutdown</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
+| instance_id       | string        |   Yes     |   The server instance id where alm-agent is installed on |
+| status       | string        |   Yes     |  sample values: _starting_, _updating_, _restarting_, _running_, _terminated_  |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 202 Accepted
+
+
+```

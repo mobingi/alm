@@ -86,12 +86,15 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="<?php echo $siteUrl; ?>"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="max-height:66px;">docs</a>
+					<a class="navbar-brand" href="<?php echo $siteUrl; ?>" style="font-size:inherit;font-weight:bold"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="max-height:40px;">| &nbsp; Learn Center</a>
 				</div>
 				<!-- END Toggle buttons and brand -->
 
 				<!-- Top navbar -->
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
+					<ul class="nav navbar-nav navbar-left">
+                        <li><a href="<?php $siteUrl; ?>/enterprise"><button type="button" class="btn btn-xs btn-dark">Enterprise Version</button></a></li>
+					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="https://mobingi.com" target="_blank">visit mobingi.com</a></li>
 					</ul>
@@ -103,7 +106,7 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 		<!-- END Top navbar & branding -->
 
 		<!-- Banner -->
-		<div class="banner auto-size" style="background-color: #0062DF;padding-top:20px">
+		<div class="banner auto-size" style="background-color: #0062DF;padding-top:0px">
 			<!-- <div class="container text-white">
 				<h1>RESTful <strong>API</strong> Reference</h1>
 			</div> -->
