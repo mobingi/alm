@@ -532,49 +532,6 @@ _In this section, all endpoints are designated to work with Mobingi alm-agent in
 Mobingi alm-agent is the Linux server side program that automatically installed during instance launch and initialization.
 If you are a contributor to the OSS repo [github.com/mobingi/alm-agent](https://github.com/mobingi/alm-agent), you're looking at the right reference here. If you are a developer working on integrating Mobingi ALM with your client applications or contributing to Mobingi API/UI only, you can ignore this API references section._
 
-### Describe Configuration {#alm-agent-container-config}
-
-This endpoint is used by Mobingi alm-agent to describing `container` section of the layer configuration from Mobingi Alm Template, identified by `flag` name.
-
-<div class="callout callout-info">
-GET <code>/v3/alm/agent/config</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-| stack_id       | string        |   Yes     | the stack id where the instance is associated to     |
-| flag       | string        |   Yes     | The flag identifier of the configuration layer    |
-
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200 OK
-
-{
-  "image": "registry.mobingi.com/mobingi/ubuntu-apache2-php5",
-  "environment_variables": {
-    "Stage": "_development",
-    "DB_USERNAME": "root",
-    "DB_PSSSWORD": "7zk3FBP37",
-    "my_secret": "D3nz!lwA_h1ngt0n"
-  },
-  "gitReference": "master",
-  "gitPrivateKey": "-----BEGIN PRIVATE ...\n-----END PRIVATE KEY-----\n",
-  "gitRepo": "https://github.com/mobingilabs/default-site-php.git",
-  "updated": 1492161755
-}
-```
-__Note:__ _If the response has an empty body, it could mean that wrong `flag` name was provided, or it doesn't have any container config defined._
-
 
 ### Register Agent Status {#alm-agent-register-agent-status}
 
@@ -648,3 +605,45 @@ HTTP/1.1 202 Accepted
 
 
 ```
+### Describe Container Configuration {#alm-agent-container-config}
+
+This endpoint is used by Mobingi alm-agent to describing `container` section of the layer configuration from Mobingi Alm Template, identified by `flag` name.
+
+<div class="callout callout-info">
+GET <code>/v3/alm/agent/config</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+| stack_id       | string        |   Yes     | the stack id where the instance is associated to     |
+| flag       | string        |   Yes     | The flag identifier of the configuration layer    |
+
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200 OK
+
+{
+  "image": "registry.mobingi.com/mobingi/ubuntu-apache2-php5",
+  "environment_variables": {
+    "Stage": "_development",
+    "DB_USERNAME": "root",
+    "DB_PSSSWORD": "7zk3FBP37",
+    "my_secret": "D3nz!lwA_h1ngt0n"
+  },
+  "gitReference": "master",
+  "gitPrivateKey": "-----BEGIN PRIVATE ...\n-----END PRIVATE KEY-----\n",
+  "gitRepo": "https://github.com/mobingilabs/default-site-php.git",
+  "updated": 1492161755
+}
+```
+__Note:__ _If the response has an empty body, it could mean that wrong `flag` name was provided, or it doesn't have any container config defined._
