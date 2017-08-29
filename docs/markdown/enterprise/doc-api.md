@@ -63,7 +63,7 @@ Authorization: Bearer eyJ0eXAiOiJQiLCJhbGciOMeXzQfME
 
 ### Apply Template {#template-apply}
 
-Applies the _Mobingi Alm_ template and creates the stack resources if template format is valid.
+Applies the Mobingi Alm template and creates stack.
 
 <div class="callout callout-info">
 POST <code>/v3/alm/template</code>
@@ -117,7 +117,7 @@ HTTP/1.1 201 Created
 {
   "status": "success",
   "stack_status": "CREATE_IN_PROGRESS",
-  "template_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+  "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
   "version_id": "98O0jK6CQk8qLi14S2SLU8z3JIo3.JPx"
 }
 ```
@@ -126,12 +126,12 @@ HTTP/1.1 201 Created
 
 ### Update Template {#template-update}
 
-Updates the _Mobingi Alm_ template and applies the changes to stack resources.
+Updates the Mobingi Alm template and applies the changes to stack resources.
 
 _Note:_ `vendor` section will be ignored when performing this API call. You can not change cloud vendors after the stack is created.
 
 <div class="callout callout-info">
-PUT <code>/v3/alm/template/{template_id}</code>
+PUT <code>/v3/alm/template/{stack_id}</code>
 </div>
 
 
@@ -181,7 +181,7 @@ HTTP/1.1 202 Accepted
 {
   "status": "success",
   "stack_status": "UPDATE_IN_PROGRESS",
-  "template_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
+  "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
   "version_id": "gCn2JuPhndwxMZuidOER0yyxM8jZB6Vn"
 }
 ```
@@ -189,7 +189,7 @@ HTTP/1.1 202 Accepted
 
 ### Compare Templates {#template-compare}
 
-Compares the resource changes between two _Mobingi Alm_ templates.
+Compares the resource changes between two Mobingi Alm templates.
 
 <div class="callout callout-info">
 POST <code>/v3/alm/template/compare</code>
@@ -197,7 +197,7 @@ POST <code>/v3/alm/template/compare</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| id       | array        |    conditional    |    items contain template id and version information         |
+| id       | array        |    conditional    |    items contain stack id and version information         |
 | body       | array        |    conditional    |   items contain template body source         |
 
 
@@ -306,7 +306,7 @@ HTTP/1.1 202 Accepted
 
 ### Template Versions {#template-list}
 
-List _Mobingi Alm_ template versions
+List Mobingi Alm template versions
 
 <div class="callout callout-info">
 GET <code>/v3/alm/template</code>
@@ -315,7 +315,7 @@ GET <code>/v3/alm/template</code>
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| template_id       | string        |   Yes     |  The unique id returned when applying the template     |
+| stack_id       | string        |   Yes     |  The unique id returned when applying the template     |
 
 
 
@@ -358,13 +358,13 @@ HTTP/1.1 200 OK
 Describes the template body of a specific version.
 
 <div class="callout callout-info">
-GET <code>/v3/alm/template/{template_id}</code>
+GET <code>/v3/alm/template/{stack_id}</code>
 </div>
 
 
 | Parameters    | Type          | Required  | Detail       |
 | ------------- |:-------------:| ---------:| :------------|
-| version_id       | string        |   No     | The id of the template version associated with the template/stack. If empty or "latest" provided, the most updated template version is returned      |
+| version_id       | string        |   No     | The id of the template version associated with the stack. If empty or "latest" provided, the most updated template version is returned      |
 
 
 
@@ -579,7 +579,7 @@ __Note:__ _If the response has an empty body, it could mean that wrong `flag` na
 
 ### Update Container Status {#alm-agent-update-container-status}
 
-This endpoint listens to the notifications sent by Mobingi alm-agent with the status updates during a container's lifecycle. Possible status examples: _starting_, _updating_, _restarting_, _running_, _terminated_, etc.
+This endpoint listens to the notifications sent by Mobingi alm-agent with the status updates during a container's lifecycle. Possible status update examples: _starting_, _updating_, _restarting_, _running_, _terminated_, etc.
 
 
 <div class="callout callout-info">
