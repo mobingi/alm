@@ -34,8 +34,8 @@
         <a href="#alm-agent">Alm-Agent</a>
         <ul>
             <li><a href="#alm-agent-container-config">Describe Configuration</a></li>
-            <li><a href="#alm-agent-update-container-status">Update Container Status</a></li>
-            <li><a href="#alm-agent-update-instance-status">Update Instance Status</a></li>
+            <li><a href="#alm-agent-register-agent-status">Register Agent Status</a></li>
+            <li><a href="#alm-agent-register-container-status">Register Container Status</a></li>
 
         </ul>
     </li>
