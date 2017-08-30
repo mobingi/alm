@@ -25,4 +25,12 @@ $app->group('/enterprise', function () {
 
     });
 
+    $this->get('/cli', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/page-cli.php', [
+            'title' => 'Use Mobingi command line (EE)'
+        ]);
+
+    });
+
 });
