@@ -2,7 +2,7 @@
 
 This is the first command you need to run to use the other commands. To login, run
 
-```
+```bash
 $ mobingi-cli login --client-id=foo --client-secret=bar
 [mobingi-cli]: info: Login successful.
 ```
@@ -15,7 +15,7 @@ This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that wil
 
 Examples:
 
-```
+```bash
 $ mobingi-cli stack list
 STACK ID                          STACK NAME                   PLATFORM     STATUS              ...
 mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREATE_COMPLETE     ...
@@ -26,7 +26,7 @@ mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREA
 
 Example:
 
-```
+```bash
 $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 {
   "auth_token": "...",
@@ -62,7 +62,7 @@ $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 
 Starting in v3, we create stacks using ALM templates. Below is an example of a very simple template that creates a single EC2 instance:
 
-```
+```bash
 {
   "version": "2017-03-03",
   "label": "template version label #1",
@@ -96,7 +96,7 @@ Starting in v3, we create stacks using ALM templates. Below is an example of a v
 
 Example:
 
-```
+```bash
 $ mobingi-cli stack create --alm-template=/home/user/aws-single-ec2.json
 [mobingi-cli]: info: [201 Created] return payload:
 {
@@ -113,14 +113,14 @@ You can run `$ mobingi-cli stack create -h` to see the defaults.
 
 Examples:
 
-```
+```bash
 $ mobingi-cli stack create --nickname=sample
 $ mobingi-cli stack create --nickname=sample --min=2 --max=2
 ```
 
 If the `--cred` option is not provided (just like in the examples above), cli will attempt to get your list of credentials and use the first one (if more than one). You can view your credentials list using the command:
 
-```
+```bash
 $ mobingi-cli creds list
 ```
 
@@ -130,7 +130,7 @@ $ mobingi-cli creds list
 
 Similar to stack creation, you only need to update some parts of your ALM template to update your stack.
 
-```
+```bash
 $ mobingi-cli stack update --id mo-58c2297d25645-q38pTmeey-tk \
       --alm-template /home/user/aws-single_ec2_update.json
 [mobingi-cli]: info: [202 Accepted] return payload:
@@ -146,7 +146,7 @@ $ mobingi-cli stack update --id mo-58c2297d25645-q38pTmeey-tk \
 
 Examples:
 
-```
+```bash
 $ mobingi-cli stack update --id=foo --min=5 --max=20
 $ mobingi-cli stack update --id=foo --spot-range=25
 ```
@@ -155,7 +155,7 @@ $ mobingi-cli stack update --id=foo --spot-range=25
 
 Example:
 
-```
+```bash
 $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 [mobingi-cli]: info: [200 OK] return payload:
 {
@@ -169,7 +169,7 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 
 Example:
 
-```
+```bash
 $ mobingi-cli stack list
 STACK ID                          STACK NAME                   PLATFORM     STATUS              ...
 mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREATE_COMPLETE     ...
@@ -187,7 +187,7 @@ You can compare template versions from the same stack, versions from different s
 
 Example (based from example above):
 
-```
+```bash
 $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
       --src-vid jbyW_PxMAauQmOS31dUhij4KIqHAtqW2 \
       --tgt-vid 1xoPd.cg3juHK94vC8IdUh1bexx7sQ1T
@@ -218,7 +218,7 @@ $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
 
 To view help information, run the command:
 
-```
+```bash
 $ mobingi-cli template compare -h
 ```
 
@@ -230,7 +230,7 @@ $ mobingi-cli template compare -h
 
 Example:
 
-```
+```bash
 $ mobingi-cli svrconf show --id=foo
 ```
 
@@ -240,25 +240,25 @@ You can get the stack id from the `stack list` command.
 
 Examples:
 
-```
+```bash
 $ mobingi-cli svrconf update --id=foo --env=KEY1:value1,KEY2:value2,KEYx:valuex
 ```
 
 If you have whitespaces in the input, enclose it with double quotes
 
-```
+```bash
 $ mobingi-cli svrconf update --id=foo --env="KEY1: value1, KEY2: value2, KEYx: valuex"
 ```
 
 To clear all environment variables, set `--env=null` option
 
-```
+```bash
 $ mobingi-cli svrconf update --id=foo --env=null
 ```
 
 To update server config filepath, run
 
-```
+```bash
 $ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/default
 ```
 
@@ -270,7 +270,7 @@ Note that when you provide update options simultaneously (for example, you provi
 
 Examples:
 
-```
+```bash
 $ mobingi-cli creds list
 VENDOR     ID                       ACCOUNT     LAST MODIFIED
 aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
@@ -282,7 +282,7 @@ aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 
 Example:
 
-```
+```bash
 $ mobingi-cli registry catalog --username=subuser1 --password=xxxxxx --apiver v2
 subuser1/foo
 ```
@@ -293,7 +293,7 @@ Note that this command is inherently slow.
 
 Example:
 
-```
+```bash
 $ mobingi-cli registry tags --username=subuser1 --password=xxxxxx --image foo --apiver v2
 IMAGE                  TAG
 subuser1/foo           latest
@@ -303,7 +303,7 @@ subuser1/foo           latest
 
 Example:
 
-```
+```bash
 $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
       --image foo:latest --apiver v2
 {
@@ -344,7 +344,7 @@ You can also write the output to a file via the `--fmt=full_path_to_file` option
 
 Example:
 
-```
+```bash
 $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
       --image=foo:latest --apiver v2
 ```
@@ -353,7 +353,7 @@ $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
 
 To get token for Docker Registry API access, run
 
-```
+```bash
 $ mobingi-cli registry token \
       --username=foo \
       --password=bar \
@@ -363,7 +363,7 @@ $ mobingi-cli registry token \
 
 where `username` is a subuser under your Mobingi account. You can also remove `--service`, `--username` and/or `--password`.
 
-```
+```bash
 $ mobingi-cli registry token --scope="repository:foo/container:*"
 Username:
 Password:
@@ -373,7 +373,7 @@ By default, it will only print the token value. To print the raw JSON output, ap
 
 This is useful when you want to access the registry directly using other tools. For example, you can use the token when using Docker Registry API via `curl`.
 
-```
+```bash
 $ curl -H "Authorization: Bearer token" \
       -H "Accept application/vnd.docker.distribution.manifest.v2+json" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
