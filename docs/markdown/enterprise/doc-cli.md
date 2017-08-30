@@ -1,4 +1,4 @@
-### Login {#login}
+### login {#login}
 
 This is the first command you need to run to use the other commands. To login, run
 
@@ -9,9 +9,7 @@ $ mobingi-cli login --client-id=foo --client-secret=bar
 
 This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
 
-### Stack operations {#stackops}
-
-#### List stacks {#stack-list}
+### stack list {#stack-list}
 
 Examples:
 
@@ -22,7 +20,7 @@ mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREA
 mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREATE_COMPLETE     ...
 ```
 
-#### Describe a stack {#stack-describe}
+### stack describe {#stack-describe}
 
 Example:
 
@@ -56,7 +54,7 @@ $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 }   
 ```
 
-#### Create a stack {#stack-create}
+### stack create {#stack-create}
 
 <div class="callout callout-info">
 API v3
@@ -128,7 +126,7 @@ If the `--cred` option is not provided (just like in the examples above), cli wi
 $ mobingi-cli creds list
 ```
 
-#### Update stack {#stack-update}
+### stack update {#stack-update}
 
 <div class="callout callout-info">
 API v3
@@ -159,7 +157,7 @@ $ mobingi-cli stack update --id=foo --min=5 --max=20
 $ mobingi-cli stack update --id=foo --spot-range=25
 ```
 
-#### Delete a stack {#stack-delete}
+### stack delete {#stack-delete}
 
 Example:
 
@@ -171,9 +169,7 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 }
 ```
 
-### ALM template operations {#templateops}
-
-#### List stack template versions {#template-versions}
+### template versions {#template-versions}
 
 Example:
 
@@ -189,7 +185,7 @@ jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC   
 1xoPd.cg3juHK94vC8IdUh1bexx7sQ1T     false      Tue, 29 Aug 2017 09:47:50 UTC     453
 ```
 
-#### Compare template versions {#template-compare}
+### template compare {#template-compare}
 
 You can compare template versions from the same stack, versions from different stacks, or a local template file to a specific template version.
 
@@ -230,15 +226,13 @@ To view help information, run the command:
 $ mobingi-cli template compare -h
 ```
 
-### Server config operations {#svrconfops}
+### svrconf show {#svrconf-show}
 
 Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
 
 <div class="callout callout-info">
 API v2
 </div>
-
-#### Show server config {#svrconf-show}
 
 Example:
 
@@ -248,7 +242,7 @@ $ mobingi-cli svrconf show --id=foo
 
 You can get the stack id from the `stack list` command.
 
-#### Update server config {#svrconf-update}
+### svrconf update {#svrconf-update}
 
 Examples:
 
@@ -276,9 +270,7 @@ $ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/de
 
 Note that when you provide update options simultaneously (for example, you provide `--env=FOO:bar` and `--filepath=test` at the same time), the tool will send each option as a separate request.
 
-### Vendor credentials {#creds}
-
-#### View vendor credentials {#creds-view}
+### creds list {#creds-view}
 
 Examples:
 
@@ -288,9 +280,7 @@ VENDOR     ID                       ACCOUNT     LAST MODIFIED
 aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 ```
 
-### Mobingi Docker registry {#registry}
-
-#### List registry catalog {#registry-list-catalog}
+### registry catalog {#registry-list-catalog}
 
 Example:
 
@@ -301,7 +291,7 @@ subuser1/foo
 
 Note that this command is inherently slow.
 
-#### List image tags {#registry-list-tags}
+### registry tags {#registry-list-tags}
 
 Example:
 
@@ -311,7 +301,7 @@ IMAGE                  TAG
 subuser1/foo           latest
 ```
 
-#### Print tag manifest {#registry-tag-manifest}
+### registry manifest {#registry-tag-manifest}
 
 Example:
 
@@ -352,7 +342,7 @@ $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
 
 You can also write the output to a file via the `--fmt=full_path_to_file` option.
 
-#### Delete a tag {#registry-tag-delete}
+### registry delete {#registry-tag-delete}
 
 Example:
 
@@ -361,7 +351,7 @@ $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
       --image=foo:latest --apiver v2
 ```
 
-#### Get token for Docker Registry API {#registry-get-token}
+### registry token {#registry-get-token}
 
 To get token for Docker Registry API access, run
 
