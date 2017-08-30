@@ -569,9 +569,9 @@ POST <code>/v3/alm/agent/agent_status</code>
 | ------------- |:-------------:| ---------:| :------------|
 | stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
 | agent_id       | string        |   Yes     |   The agent's unique identifier |
-| status       | string        |   Yes     |  sample values: <i>spot_terminate</i>  |
+| status       | string        |   Yes     |  Sample values: _starting_, _installing_, _error_, _notice_, <i>spot_terminate</i>, etc..  |
 | instance_id       | string        |   No     |   The server instance id where Mobingi alm-agent is installed on |
-| message       | string        |   No     |  Optional, a description of the status message  |
+| message       | string        |   No     |  Optional, a description of the status message, e.g: _image/repository not found_  |
 
 
 Request Header
@@ -605,7 +605,7 @@ POST <code>/v3/alm/agent/container_status</code>
 | stack_id       | string        |   Yes     |   The stack id which this server instance is belonged to   |
 | agent_id       | string        |   Yes     |   The agent's unique identifier |
 | container_id       | string        |   Yes     |   The container unique id. _Sometimes, this value could be an instance's id. |
-| status       | string        |   Yes     |  sample values: _starting_, _updating_, _restarting_, _running_, _terminated_  |
+| status       | string        |   Yes     |  sample values: _starting_, _updating_, _restarting_, _running_, _terminated_, etc..  |
 | instance_id       | string        |   No     |   The server instance id where Mobingi alm-agent is installed on |
 
 
