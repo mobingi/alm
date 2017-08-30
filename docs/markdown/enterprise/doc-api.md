@@ -200,7 +200,9 @@ POST <code>/v3/alm/template/compare</code>
 | id       | array        |    conditional    |    items contain stack id and version information         |
 | body       | array        |    conditional    |   items contain template body source         |
 
+_Note: You can compare two templates by retrieving them from their version id and stack id. Or, you can compare a target template body (posted in json format to `body` parameter) with a source template retrieved by its version id and stack id._
 
+_The current API version only supports two templates comparison, and you always should retrieve the source template by its version id and stack id. That being said, you have to always pass at least one item in parameter `id` array. Below are two examples:_
 
 Request Header
 ```bash
@@ -208,21 +210,37 @@ Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
 Content-Type: application/json
 ```
 
-Request body
+Request body ( _Example 1_ )
 ```bash
 {
-  "id": [
-    {
-      "mo-5447826c870e7-ZgNTSRM8K-tk": {
-        "version": "98O0jK5CQk8gLi14S2SLU8z3JIo3.JPx"
-      }
-    },
-    {
-      "mo-5447826c870e7-ZgNTSRM8K-tk": {
-        "version": "gCn2JuPhndwxMZuodOER0yyxM8jZB6Vn"
-      }
-    }
-  ]
+    "id": [
+        {
+            "mo-5447826c870e7-ZgNTSRM8K-tk": {
+                "version": "98O0jK5CQk8gLi14S2SLU8z3JIo3.JPx"
+            }
+        },
+        {
+            "mo-5447826c870e7-ZgNTSRM8K-tk": {
+                "version": "gCn2JuPhndwxMZuodOER0yyxM8jZB6Vn"
+            }
+        }
+    ]
+}
+```
+
+Request body ( _Example 2_ )
+```bash
+{
+    "id": [
+        {
+            "mo-5447826c870e7-9S3zWP7jM-tk": {
+                "version": "dK7R9_PuclTqSysMniPTcmpE.5u58RVL"
+            }
+        }
+    ],
+    "body": [
+        "{\n \"version\": \"2017-03-03\",\n \"label\": \"template version label #2\",\n \"description\": \"This template creates a sample stack with EC2 instance on AWS\",\n \"vendor\": {\n \"aws\": {\n \"cred\": \"AKIAJ...DZLA\",\n \"region\": \"ap-northeast-1\"\n }\n },\n \"configurations\": [\n {\n \"role\": \"web\",\n \"flag\": \"Web01\",\n \"provision\": {\n \"image\": \"${computed}\", \"instance_type\": \"m3.medium\",\n \"instance_count\": 2,\n \"keypair\": true,\n }\n }\n ]\n }"
+    ]
 }
 ```
 
