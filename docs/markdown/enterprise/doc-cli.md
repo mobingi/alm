@@ -1,4 +1,4 @@
-## Login
+### Login {#login}
 
 This is the first command you need to run to use the other commands. To login, run
 
@@ -9,9 +9,9 @@ $ mobingi-cli login --client-id=foo --client-secret=bar
 
 This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
 
-## Stack operations
+### Stack operations {#stackops}
 
-### List stacks
+#### List stacks {#stack-list}
 
 Examples:
 
@@ -22,7 +22,7 @@ mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREA
 mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREATE_COMPLETE     ...
 ```
 
-### Describe a stack
+#### Describe a stack {#stack-describe}
 
 Example:
 
@@ -56,9 +56,11 @@ $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 }   
 ```
 
-### Create a stack
+#### Create a stack {#stack-create}
 
-#### API v3
+<div class="callout callout-info">
+API v3
+</div>
 
 Starting in v3, we create stacks using ALM templates. Below is an example of a very simple template that creates a single EC2 instance:
 
@@ -107,7 +109,9 @@ $ mobingi-cli stack create --alm-template=/home/user/aws-single-ec2.json
 }
 ```
 
-#### API v2
+<div class="callout callout-info">
+API v2
+</div>
 
 You can run `$ mobingi-cli stack create -h` to see the defaults.
 
@@ -124,9 +128,11 @@ If the `--cred` option is not provided (just like in the examples above), cli wi
 $ mobingi-cli creds list
 ```
 
-### Update stack
+#### Update stack {#stack-update}
 
-#### API v3
+<div class="callout callout-info">
+API v3
+</div>
 
 Similar to stack creation, you only need to update some parts of your ALM template to update your stack.
 
@@ -142,7 +148,9 @@ $ mobingi-cli stack update --id mo-58c2297d25645-q38pTmeey-tk \
 }
 ```
 
-#### API v2
+<div class="callout callout-info">
+API v2
+</div>
 
 Examples:
 
@@ -151,7 +159,7 @@ $ mobingi-cli stack update --id=foo --min=5 --max=20
 $ mobingi-cli stack update --id=foo --spot-range=25
 ```
 
-### Delete a stack
+#### Delete a stack {#stack-delete}
 
 Example:
 
@@ -163,9 +171,9 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 }
 ```
 
-## ALM template operations
+### ALM template operations {#templateops}
 
-### List stack template versions
+#### List stack template versions {#template-versions}
 
 Example:
 
@@ -181,7 +189,7 @@ jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC   
 1xoPd.cg3juHK94vC8IdUh1bexx7sQ1T     false      Tue, 29 Aug 2017 09:47:50 UTC     453
 ```
 
-### Compare template versions
+#### Compare template versions {#template-compare}
 
 You can compare template versions from the same stack, versions from different stacks, or a local template file to a specific template version.
 
@@ -222,11 +230,15 @@ To view help information, run the command:
 $ mobingi-cli template compare -h
 ```
 
-## Server config operations
+### Server config operations {#svrconfops}
 
-> Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
+Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
 
-### Show server config
+<div class="callout callout-info">
+API v2
+</div>
+
+#### Show server config {#svrconf-show}
 
 Example:
 
@@ -236,7 +248,7 @@ $ mobingi-cli svrconf show --id=foo
 
 You can get the stack id from the `stack list` command.
 
-### Update server config
+#### Update server config {#svrconf-update}
 
 Examples:
 
@@ -264,9 +276,9 @@ $ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/de
 
 Note that when you provide update options simultaneously (for example, you provide `--env=FOO:bar` and `--filepath=test` at the same time), the tool will send each option as a separate request.
 
-## Vendor credentials
+### Vendor credentials {#creds}
 
-### View vendor credentials
+#### View vendor credentials {#creds-view}
 
 Examples:
 
@@ -276,9 +288,9 @@ VENDOR     ID                       ACCOUNT     LAST MODIFIED
 aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 ```
 
-## Mobingi Docker registry
+### Mobingi Docker registry {#registry}
 
-### List registry catalog
+#### List registry catalog {#registry-list-catalog}
 
 Example:
 
@@ -289,7 +301,7 @@ subuser1/foo
 
 Note that this command is inherently slow.
 
-### List image tags
+#### List image tags {#registry-list-tags}
 
 Example:
 
@@ -299,7 +311,7 @@ IMAGE                  TAG
 subuser1/foo           latest
 ```
 
-### Print tag manifest
+#### Print tag manifest {#registry-tag-manifest}
 
 Example:
 
@@ -340,7 +352,7 @@ $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
 
 You can also write the output to a file via the `--fmt=full_path_to_file` option.
 
-### Delete a tag
+#### Delete a tag {#registry-tag-delete}
 
 Example:
 
@@ -349,7 +361,7 @@ $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
       --image=foo:latest --apiver v2
 ```
 
-### Get token for Docker Registry API
+#### Get token for Docker Registry API {#registry-get-token}
 
 To get token for Docker Registry API access, run
 
@@ -379,6 +391,6 @@ $ curl -H "Authorization: Bearer token" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
 ```
 
-## Verbose output
+### Verbose output {#verbose}
 
 You can use the global `--verbose` option if you want to see more information during the command execution.
