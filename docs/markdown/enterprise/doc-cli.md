@@ -107,6 +107,13 @@ $ mobingi-cli login --client-id=foo --client-secret=bar
 
 This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
 
+By default, all endpoints are set to Mobingi production during login. You can use the `--endpoints` flag to target alternative endpoints. For example, if you have a Mobingi dev account, you can use the following login command:
+
+```bash
+$ mobingi-cli login --client-id foo --client-secret bar --endpoints dev
+[mobingi-cli]: info: Login successful.
+```
+
 ### command: stack list {#stack-list}
 
 Examples:
