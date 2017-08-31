@@ -381,6 +381,14 @@ $ curl -H "Authorization: Bearer token" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
 ```
 
+### version {#version}
+
+Prints the cli version.
+
+```
+$ mobingi-cli version
+```
+
 ### Verbose output {#verbose}
 
 You can use the global `--verbose` option if you want to see more information during the command execution.
