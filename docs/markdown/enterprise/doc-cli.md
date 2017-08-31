@@ -385,7 +385,7 @@ $ curl -H "Authorization: Bearer token" \
 
 Prints the cli version.
 
-```
+```bash
 $ mobingi-cli version
 ```
 
