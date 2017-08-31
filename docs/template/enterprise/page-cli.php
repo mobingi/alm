@@ -17,7 +17,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/
 <!-- Sidebar -->
 
     <!-- Sidebar -->
-    <aside class="col-sm-3 sidebar">
+    <aside class="col-sm-2 sidebar">
         <?php include_once realpath(__DIR__ . '/../..').'/markdown/enterprise/doc-cli-sidebar.md.php'; ?>
     </aside>
     <!-- END Sidebar -->
@@ -26,7 +26,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/
 
 
 <!-- Main content -->
-<article class="col-sm-9 main-content" role="main">
+<article class="col-sm-10 main-content" role="main">
     <div class="alert alert-info">
         <i>You're viewing Enterprise Edition Mobingi-cli Document site.</i>
     </div>
