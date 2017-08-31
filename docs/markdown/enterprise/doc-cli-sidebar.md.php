@@ -1,7 +1,9 @@
 <!-- Sidebar is not parsed thru script to give you more control over style-->
 
 <ul class="nav sidenav dropable sticky">
-    <li class="active"><a href="#login">login</a></li>
+    <li class="active"><a href="#overview">Overview</a></li>
+    <li><a href="#global-flags">Global flags</a></li>
+    <li><a href="#login">login</a></li>
     <li>
         <a href="#stack-list">stack</a>
         <ul>
