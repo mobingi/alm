@@ -75,11 +75,28 @@ Use "mobingi-cli stack [command] --help" for more information about a command.
 
 ### Global flags {#global-flags}
 
-Global flags are all optional and can be applied to any subcommand.
+Global flags are all optional and can be applied to any subcommand. You can use '=' or whitespace when assigning a value to the flag. This applies to any command's local flags as well. For example, you can login using any of these commands:
 
-* `--apiver` - specify the API version used in the current command. The default version is `v3`. The only other supported version is `v2`.
+```bash
+$ mobingi-cli login --client-id=foo --client-secret=bar
+[mobingi-cli]: info: Login successful.
 
-### login {#login}
+$ mobingi-cli login --client-id foo --client-secret bar
+[mobingi-cli]: info: Login successful.
+```
+
+* `--token` - the access token to use in the command. By default, mobingi-cli will save your access token to the config file after login (see [login](#login) command).
+* `--url` - the base API url to use in the command. By default, this is set to 'https://api.mobingi.com'. You can use this flag if you are hosting your own backend. This is used by devs when testing the cli against the dev and test environments.
+* `--rurl` - the base registry url to use in the command. This is applicable to Mobingi Registry related commands. By default, this is set to 'https://registry.mobingi.com'. This is used by devs when testing the cli against the dev and test environments.
+* `--apiver` - specify the API version used in the current command. The default version is v3. The only other supported version is v2.
+* `--fmt, -f` - output format of the command. Supported values are 'raw', and 'json'. Not all commands support this flag.
+* `--out, -o` - full path of the file to write the command output. Not all commands support this flag.
+* `--indent` - padding/indentation (or the number of whitespaces to be added) when the output format used in 'json'. By default, this is set to 2.
+* `--timeout` - the timeout value (in seconds) for the command's http request (if applicable). By default, this is set to 120 seconds.
+* `--verbose` - when set to 'true', the command will print additional information during the command's execution.
+* `--debug` - when set to 'true', the command will print a stack trace when error occurs during the command's execution.
+
+### command: login {#login}
 
 This is the first command you need to run to use the other commands. To login, run
 
@@ -90,7 +107,7 @@ $ mobingi-cli login --client-id=foo --client-secret=bar
 
 This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
 
-### stack list {#stack-list}
+### command: stack list {#stack-list}
 
 Examples:
 
@@ -101,7 +118,7 @@ mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREA
 mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREATE_COMPLETE     ...
 ```
 
-### stack describe {#stack-describe}
+### command: stack describe {#stack-describe}
 
 Example:
 
@@ -135,7 +152,7 @@ $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 }   
 ```
 
-### stack create {#stack-create}
+### command: stack create {#stack-create}
 
 <div class="callout callout-info">
 API v3
@@ -207,7 +224,7 @@ If the `--cred` option is not provided (just like in the examples above), cli wi
 $ mobingi-cli creds list
 ```
 
-### stack update {#stack-update}
+### command: stack update {#stack-update}
 
 <div class="callout callout-info">
 API v3
@@ -238,7 +255,7 @@ $ mobingi-cli stack update --id=foo --min=5 --max=20
 $ mobingi-cli stack update --id=foo --spot-range=25
 ```
 
-### stack delete {#stack-delete}
+### command: stack delete {#stack-delete}
 
 Example:
 
@@ -250,7 +267,7 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 }
 ```
 
-### template versions {#template-versions}
+### command: template versions {#template-versions}
 
 Example:
 
@@ -266,7 +283,7 @@ jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC   
 1xoPd.cg3juHK94vC8IdUh1bexx7sQ1T     false      Tue, 29 Aug 2017 09:47:50 UTC     453
 ```
 
-### template compare {#template-compare}
+### command: template compare {#template-compare}
 
 You can compare template versions from the same stack, versions from different stacks, or a local template file to a specific template version.
 
@@ -307,13 +324,9 @@ To view help information, run the command:
 $ mobingi-cli template compare -h
 ```
 
-### svrconf show {#svrconf-show}
+### command: svrconf show {#svrconf-show}
 
 Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
-
-<div class="callout callout-info">
-API v2
-</div>
 
 Example:
 
@@ -323,7 +336,7 @@ $ mobingi-cli svrconf show --id=foo
 
 You can get the stack id from the `stack list` command.
 
-### svrconf update {#svrconf-update}
+### command: svrconf update {#svrconf-update}
 
 Examples:
 
@@ -351,7 +364,7 @@ $ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/de
 
 Note that when you provide update options simultaneously (for example, you provide `--env=FOO:bar` and `--filepath=test` at the same time), the tool will send each option as a separate request.
 
-### creds list {#creds-view}
+### command: creds list {#creds-view}
 
 Examples:
 
@@ -361,7 +374,7 @@ VENDOR     ID                       ACCOUNT     LAST MODIFIED
 aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 ```
 
-### registry catalog {#registry-list-catalog}
+### command: registry catalog {#registry-list-catalog}
 
 Example:
 
@@ -372,7 +385,7 @@ subuser1/foo
 
 Note that this command is inherently slow.
 
-### registry tags {#registry-list-tags}
+### command: registry tags {#registry-list-tags}
 
 Example:
 
@@ -382,7 +395,7 @@ IMAGE                  TAG
 subuser1/foo           latest
 ```
 
-### registry manifest {#registry-tag-manifest}
+### command: registry manifest {#registry-tag-manifest}
 
 Example:
 
@@ -423,7 +436,7 @@ $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
 
 You can also write the output to a file via the `--fmt=full_path_to_file` option.
 
-### registry delete {#registry-tag-delete}
+### command: registry delete {#registry-tag-delete}
 
 Example:
 
@@ -432,7 +445,7 @@ $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
       --image=foo:latest --apiver v2
 ```
 
-### registry token {#registry-get-token}
+### command: registry token {#registry-get-token}
 
 To get token for Docker Registry API access, run
 
@@ -462,14 +475,10 @@ $ curl -H "Authorization: Bearer token" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
 ```
 
-### version {#version}
+### command: version {#version}
 
 Prints the cli version.
 
 ```bash
 $ mobingi-cli version
 ```
-
-### Verbose output {#verbose}
-
-You can use the global `--verbose` option if you want to see more information during the command execution.
