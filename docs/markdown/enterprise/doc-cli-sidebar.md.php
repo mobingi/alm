@@ -20,7 +20,7 @@
         </ul>
     </li>
     <li>
-        <a href="#svrconf-show">[v2] svrconf</a>
+        <a href="#svrconf-show">svrconf</a>
         <ul>
             <li><a href="#svrconf-show">show</a></li>
             <li><a href="#svrconf-update">update</a></li>
