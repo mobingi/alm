@@ -17,9 +17,9 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/
 <!-- Sidebar -->
 
     <!-- Sidebar -->
-    <!-- <aside class="col-sm-3 sidebar">
+    <aside class="col-sm-3 sidebar">
         <?php include_once realpath(__DIR__ . '/../..').'/markdown/enterprise/doc-cli-sidebar.md.php'; ?>
-    </aside> -->
+    </aside>
     <!-- END Sidebar -->
 
 <!-- END Sidebar -->
