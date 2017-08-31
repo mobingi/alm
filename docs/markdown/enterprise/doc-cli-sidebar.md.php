@@ -27,9 +27,9 @@
         </ul>
     </li>
     <li>
-        <a href="#creds-list">creds</a>
+        <a href="#creds-view">creds</a>
         <ul>
-            <li><a href="#creds-list">list</a></li>
+            <li><a href="#creds-view">list</a></li>
         </ul>
     </li>
     <li>
