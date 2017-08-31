@@ -1,3 +1,84 @@
+### Overview {#overview}
+
+mobingi-cli is the official command line interface for Mobingi API and services.
+
+To view a list of the available commands, just run mobingi-cli without arguments:
+
+```bash
+$ mobingi-cli
+Command line interface for Mobingi API and services.
+
+Usage:
+  mobingi-cli [command]
+
+Available Commands:
+  creds       manage your credentials
+  help        help about any command
+  login       login to Mobingi API
+  registry    manage your Mobingi docker registry
+  reset       reset config to defaults
+  stack       manage your stack
+  svrconf     manage your server config file
+  template    manage your ALM templates
+  version     print the version
+
+Flags:
+      --token string    access token
+      --url string      base url for API
+      --rurl string     base url for Docker Registry
+      --apiver string   API version (default "v3")
+  -f, --fmt string      output format (values depends on command)
+  -o, --out string      full file path to write the output
+      --indent int      indent padding when fmt is 'json' (default 2)
+      --timeout int     timeout in seconds (default 120)
+      --verbose         verbose output
+      --debug           debug mode when error occurs
+  -h, --help            help for mobingi-cli
+
+Use "mobingi-cli [command] --help" for more information about a command.
+```
+
+To get help for any command, pass the -h flag to the command. For example, to see help about the stack command:
+
+```bash
+$ mobingi-cli stack -h
+Manage your infrastructure/application stack.
+
+Usage:
+  mobingi-cli stack [flags]
+  mobingi-cli stack [command]
+
+Available Commands:
+  create      create a stack
+  delete      delete a stack
+  describe    display stack details
+  list        list all stacks
+  update      update a stack
+
+Flags:
+  -h, --help   help for stack
+
+Global Flags:
+      --apiver string   API version (default "v3")
+      --debug           debug mode when error occurs
+  -f, --fmt string      output format (values depends on command)
+      --indent int      indent padding when fmt is 'json' (default 2)
+  -o, --out string      full file path to write the output
+      --rurl string     base url for Docker Registry
+      --timeout int     timeout in seconds (default 120)
+      --token string    access token
+      --url string      base url for API
+      --verbose         verbose output
+
+Use "mobingi-cli stack [command] --help" for more information about a command.
+```
+
+### Global flags {#global-flags}
+
+Global flags are all optional and can be applied to any subcommand.
+
+* `--apiver` - specify the API version used in the current command. The default version is `v3`. The only other supported version is `v2`.
+
 ### login {#login}
 
 This is the first command you need to run to use the other commands. To login, run
