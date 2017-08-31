@@ -318,12 +318,6 @@ $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
 }
 ```
 
-To view help information, run the command:
-
-```bash
-$ mobingi-cli template compare -h
-```
-
 ### command: svrconf show {#svrconf-show}
 
 Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
@@ -433,8 +427,6 @@ $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
    ]
 }
 ```
-
-You can also write the output to a file via the `--fmt=full_path_to_file` option.
 
 ### command: registry delete {#registry-tag-delete}
 
