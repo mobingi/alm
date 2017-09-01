@@ -86,15 +86,15 @@ $ mobingi-cli login --client-id foo --client-secret bar
 ```
 
 * `--token` - The access token to use in the command. By default, mobingi-cli will save your access token to the config file after login (see [login](#login) command).
-* `--url` - The base API url to use in the command. By default, this is set to 'https://api.mobingi.com'. You can use this flag if you are hosting your own backend. This is used by devs when testing the cli against the dev and test environments.
-* `--rurl` - The base registry url to use in the command. This is applicable to Mobingi Registry related commands. By default, this is set to 'https://registry.mobingi.com'. This is used by devs when testing the cli against the dev and test environments.
+* `--url` - The base API url to use in the command. By default, this is set to _https://api.mobingi.com_. You can use this flag if you are hosting your own backend. This is used by devs when testing the cli against the dev and test environments.
+* `--rurl` - The base registry url to use in the command. This is applicable to Mobingi Registry related commands. By default, this is set to _https://registry.mobingi.com_. This is used by devs when testing the cli against the dev and test environments.
 * `--apiver` - Specify the API version used in the current command. The default version is v3. The only other supported version is v2.
-* `--fmt, -f` - Output format of the command. Supported values are 'raw', and 'json'. Not all commands support this flag.
+* `--fmt, -f` - Output format of the command. Valid values are: _raw_, _json_. Not all commands support this flag.
 * `--out, -o` - Full path of the file to write the command output. Not all commands support this flag.
-* `--indent` - Padding/indentation (or the number of whitespaces to be added) when the output format used in 'json'. By default, this is set to 2.
+* `--indent` - Padding/indentation (or the number of whitespaces to be added) when the output format used is _json_. By default, this is set to 2.
 * `--timeout` - The timeout value (in seconds) for the command's http request (if applicable). By default, this is set to 120 seconds.
-* `--verbose` - When set to 'true', the command will print additional information during the command's execution.
-* `--debug` - When set to 'true', the command will print a stack trace when error occurs during the command's execution.
+* `--verbose` - When set to true, the command will print additional information during the command's execution.
+* `--debug` - When set to true, the command will print a stack trace when error occurs during the command's execution.
 
 ### command: login {#login}
 
@@ -104,10 +104,10 @@ Log in to Mobingi.
 
 * `--client-id, -i` - Your Mobingi client id.
 * `--client-secret, -s` - Your Mobingi client secret.
-* `--grant-type, -g` - Grant type. Always set to 'client_credentials'.
+* `--grant-type, -g` - Grant type. Always set to "client_credentials".
 * `--username, -u` - Username. Not supported as of now.
 * `--password, -p` - Password. Not supported as of now.
-* `--endpoints` - Setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to 'dev' or 'qa'.
+* `--endpoints` - Setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to _dev_ or _qa_.
 
 This is the first command you need to run to use the other commands. To login, run
 
@@ -116,9 +116,9 @@ $ mobingi-cli login --client-id=foo --client-secret=bar
 [mobingi-cli]: info: Login successful.
 ```
 
-This will create a file `config.yml` under `$HOME/.mobingi-cli/` folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
+This will create a file _config.yml_ under _$HOME/.mobingi-cli/_ folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
 
-By default, all endpoints are set to Mobingi production during login. You can use the `--endpoints` flag to target alternative endpoints. For example, if you have a Mobingi dev account, you can use the following login command:
+By default, all endpoints are set to Mobingi production during login. You can use the --endpoints flag to target alternative endpoints. For example, if you have a Mobingi dev account, you can use the following login command:
 
 ```bash
 $ mobingi-cli login --client-id foo --client-secret bar --endpoints dev
@@ -189,19 +189,19 @@ Create a stack.
 * `--cred` - Your vendor credential ID. If not set, cli will try to get your list of credentials and use the first one in the list, if not empty.
 * `--region` - Region code. By default, this is set to _ap-northeast-1_ (Tokyo).
 * `--nickname` - Your stack's nickname.
-* `--arch` - Stack type. Valid values are: _art_single_, _art_elb_. By default, this is set to _art_elb_.
+* `--arch` - Stack type. Valid values are: "art_single", "art_elb". By default, this is set to "art_elb".
 * `--type` - Instance type. By default, this is set to _m3.medium_.
 * `--image` - Docker registry path to deploy. If you are using _hub.docker.com_, you can omit the domain part (ex. _grayltc/lamp_). Otherwise, specify the full path (ex. _registry.mobingi.com/wayland/lamp_). By default, this is set to _mobingi/ubuntu-apache2-php7:7.1_.
 * `--dhub-user` - Your Docker hub username if repository is private.
 * `--dbuh-pass` - Your Docker hub password if repository is private.
-* `--min` - Minimum number of instances in your autoscaling group when --arch is set to _art_elb_. By default, this is set to 2.
-* `--max` - Maximum number of instances in your autoscaling group when --arch is set to _art_elb_. By default, this is set to 10.
+* `--min` - Minimum number of instances in your autoscaling group when --arch is set to art_elb. By default, this is set to 2.
+* `--max` - Maximum number of instances in your autoscaling group when --arch is set to art_elb. By default, this is set to 10.
 * `--spot-range` - Percentage of spot instance to deploy to autoscaling group. For example, if you have a total of 20 instances running and your spot range is 50 (50%), then there will be a fleet of 10 spot instances and 10 on-demand instances. By default, this is set to 50.
 * `--code` - Your git repository url. This can be updated anytime. By default, this is set to _github.com/mobingilabs/default-site-php_.
 * `--code-ref` - Repository branch. By default, this is set to _master_.
 * `--code-privkey` - Private key if git repository is private.
 * `--usedb` - Set to true if you want to deploy a database.
-* `--dbengine` - Your database engine. Valid values are: _db_mysql_, _db_postgresql_. Requires --usedb flag.
+* `--dbengine` - Your database engine. Valid values are: "db_mysql", "db_postgresql". Requires --usedb flag.
 * `--dbtype` - Database instance/class type. Requires --usedb flag.
 * `--dbstorage` - Database storage in GB. Set between 5 to 6144. Requires --usedb flag.
 * `--dbread-replica1` - Read replica 1. Requires --usedb flag.
