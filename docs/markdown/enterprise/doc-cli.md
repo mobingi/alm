@@ -274,6 +274,17 @@ $ mobingi-cli stack create --nickname=sample --min=2 --max=2 --apiver=v2
 
 ### command: stack update {#stack-update}
 
+Update an existing stack.
+
+**Flags**
+
+* `--alm-template` - Path to your updated ALM template file. Required in v3.
+* `--id` - The stack id to update.
+* `--type` - Instance type. See stack create command for more information.
+* `--min` - Minimum number of instances in your autoscaling group. See stack create command for more information.
+* `--max` - Maximum number of instances in your autoscaling group. See stack create command for more information.
+* `--spot-range` - Percentage of spot instance to deploy to autoscaling group. See stack create command for more information.
+
 **API v3**
 
 Similar to stack creation, you only need to update some parts of your ALM template to update your stack.
@@ -369,7 +380,7 @@ Server config options are replaced by ALM templates starting from v3. The follow
 Example:
 
 ```bash
-$ mobingi-cli svrconf show --id=foo
+$ mobingi-cli svrconf show --id=foo --apiver=v2
 ```
 
 You can get the stack id from the `stack list` command.
@@ -379,25 +390,25 @@ You can get the stack id from the `stack list` command.
 Examples:
 
 ```bash
-$ mobingi-cli svrconf update --id=foo --env=KEY1:value1,KEY2:value2,KEYx:valuex
+$ mobingi-cli svrconf update --id=foo --env=KEY1:value1,KEY2:value2,KEYx:valuex --apiver=v2
 ```
 
 If you have whitespaces in the input, enclose it with double quotes
 
 ```bash
-$ mobingi-cli svrconf update --id=foo --env="KEY1: value1, KEY2: value2, KEYx: valuex"
+$ mobingi-cli svrconf update --id=foo --env="KEY1: value1, KEY2: value2, KEYx: valuex" --apiver=v2
 ```
 
 To clear all environment variables, set `--env=null` option
 
 ```bash
-$ mobingi-cli svrconf update --id=foo --env=null
+$ mobingi-cli svrconf update --id=foo --env=null --apiver=v2
 ```
 
 To update server config filepath, run
 
 ```bash
-$ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/default
+$ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/default --apiver=v2
 ```
 
 Note that when you provide update options simultaneously (for example, you provide `--env=FOO:bar` and `--filepath=test` at the same time), the tool will send each option as a separate request.
@@ -417,7 +428,7 @@ aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 Example:
 
 ```bash
-$ mobingi-cli registry catalog --username=subuser1 --password=xxxxxx --apiver v2
+$ mobingi-cli registry catalog --username=subuser1 --password=xxxxxx --apiver=v2
 subuser1/foo
 ```
 
@@ -428,7 +439,7 @@ Note that this command is inherently slow.
 Example:
 
 ```bash
-$ mobingi-cli registry tags --username=subuser1 --password=xxxxxx --image foo --apiver v2
+$ mobingi-cli registry tags --username=subuser1 --password=xxxxxx --image foo --apiver=v2
 IMAGE                  TAG
 subuser1/foo           latest
 ```
@@ -478,7 +489,7 @@ Example:
 
 ```bash
 $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
-      --image=foo:latest --apiver v2
+      --image=foo:latest --apiver=v2
 ```
 
 ### command: registry token {#registry-get-token}
