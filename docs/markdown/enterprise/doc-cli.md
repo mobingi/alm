@@ -107,7 +107,7 @@ Log in to Mobingi.
 * `--grant-type, -g` - grant type. Always set to 'client_credentials'.
 * `--username, -u` - username. Not needed as of now.
 * `--password, -p` - password. Not needed as of now.
-* `--endpoints` - setup endpoints after login.
+* `--endpoints` - setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to 'dev' or 'qa'.
 
 This is the first command you need to run to use the other commands. To login, run
 
