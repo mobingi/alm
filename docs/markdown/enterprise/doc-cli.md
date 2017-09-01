@@ -98,6 +98,17 @@ $ mobingi-cli login --client-id foo --client-secret bar
 
 ### command: login {#login}
 
+Log in to Mobingi.
+
+**Flags**
+
+* `--client-id, -i` - your Mobingi client id
+* `--client-secret, -s` - your Mobingi client secret
+* `--grant-type, -g` - grant type. Always set to 'client_credentials'.
+* `--username, -u` - username. Not needed as of now.
+* `--password, -p` - password. Not needed as of now.
+* `--endpoints` - setup endpoints after login.
+
 This is the first command you need to run to use the other commands. To login, run
 
 ```bash
