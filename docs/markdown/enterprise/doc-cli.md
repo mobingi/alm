@@ -85,16 +85,16 @@ $ mobingi-cli login --client-id foo --client-secret bar
 [mobingi-cli]: info: Login successful.
 ```
 
-* `--token` - the access token to use in the command. By default, mobingi-cli will save your access token to the config file after login (see [login](#login) command).
-* `--url` - the base API url to use in the command. By default, this is set to 'https://api.mobingi.com'. You can use this flag if you are hosting your own backend. This is used by devs when testing the cli against the dev and test environments.
-* `--rurl` - the base registry url to use in the command. This is applicable to Mobingi Registry related commands. By default, this is set to 'https://registry.mobingi.com'. This is used by devs when testing the cli against the dev and test environments.
-* `--apiver` - specify the API version used in the current command. The default version is v3. The only other supported version is v2.
-* `--fmt, -f` - output format of the command. Supported values are 'raw', and 'json'. Not all commands support this flag.
-* `--out, -o` - full path of the file to write the command output. Not all commands support this flag.
-* `--indent` - padding/indentation (or the number of whitespaces to be added) when the output format used in 'json'. By default, this is set to 2.
-* `--timeout` - the timeout value (in seconds) for the command's http request (if applicable). By default, this is set to 120 seconds.
-* `--verbose` - when set to 'true', the command will print additional information during the command's execution.
-* `--debug` - when set to 'true', the command will print a stack trace when error occurs during the command's execution.
+* `--token` - The access token to use in the command. By default, mobingi-cli will save your access token to the config file after login (see [login](#login) command).
+* `--url` - The base API url to use in the command. By default, this is set to 'https://api.mobingi.com'. You can use this flag if you are hosting your own backend. This is used by devs when testing the cli against the dev and test environments.
+* `--rurl` - The base registry url to use in the command. This is applicable to Mobingi Registry related commands. By default, this is set to 'https://registry.mobingi.com'. This is used by devs when testing the cli against the dev and test environments.
+* `--apiver` - Specify the API version used in the current command. The default version is v3. The only other supported version is v2.
+* `--fmt, -f` - Output format of the command. Supported values are 'raw', and 'json'. Not all commands support this flag.
+* `--out, -o` - Full path of the file to write the command output. Not all commands support this flag.
+* `--indent` - Padding/indentation (or the number of whitespaces to be added) when the output format used in 'json'. By default, this is set to 2.
+* `--timeout` - The timeout value (in seconds) for the command's http request (if applicable). By default, this is set to 120 seconds.
+* `--verbose` - When set to 'true', the command will print additional information during the command's execution.
+* `--debug` - When set to 'true', the command will print a stack trace when error occurs during the command's execution.
 
 ### command: login {#login}
 
@@ -102,12 +102,12 @@ Log in to Mobingi.
 
 **Flags**
 
-* `--client-id, -i` - your Mobingi client id
-* `--client-secret, -s` - your Mobingi client secret
-* `--grant-type, -g` - grant type. Always set to 'client_credentials'.
-* `--username, -u` - username. Not needed as of now.
-* `--password, -p` - password. Not needed as of now.
-* `--endpoints` - setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to 'dev' or 'qa'.
+* `--client-id, -i` - Your Mobingi client id.
+* `--client-secret, -s` - Your Mobingi client secret.
+* `--grant-type, -g` - Grant type. Always set to 'client_credentials'.
+* `--username, -u` - Username. Not supported as of now.
+* `--password, -p` - Password. Not supported as of now.
+* `--endpoints` - Setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to 'dev' or 'qa'.
 
 This is the first command you need to run to use the other commands. To login, run
 
@@ -127,7 +127,9 @@ $ mobingi-cli login --client-id foo --client-secret bar --endpoints dev
 
 ### command: stack list {#stack-list}
 
-Examples:
+List your stacks.
+
+Example:
 
 ```bash
 $ mobingi-cli stack list
@@ -137,6 +139,12 @@ mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREA
 ```
 
 ### command: stack describe {#stack-describe}
+
+Describe a stack.
+
+**Flags**
+
+* `--id` - The stack id to describe.
 
 Example:
 
@@ -172,9 +180,41 @@ $ mobingi-cli stack describe --id mo-58c2297d25645-PxviFSJQV-tk
 
 ### command: stack create {#stack-create}
 
-<div class="callout callout-info">
-API v3
-</div>
+Create a stack.
+
+**Flags**
+
+* `--alm-template` - Path to your ALM template. This is required in v3.
+* `--vendor` - Stack vendor. For now, only AWS is supported.
+* `--cred` - Your vendor credential ID. If not set, cli will try to get your list of credentials and use the first one in the list, if not empty.
+* `--region` - Region code. By default, this is set to _ap-northeast-1_ (Tokyo).
+* `--nickname` - Your stack's nickname.
+* `--arch` - Stack type. Valid values are: _art_single_, _art_elb_. By default, this is set to _art_elb_.
+* `--type` - Instance type. By default, this is set to _m3.medium_.
+* `--image` - Docker registry path to deploy. If you are using _hub.docker.com_, you can omit the domain part (ex. _grayltc/lamp_). Otherwise, specify the full path (ex. _registry.mobingi.com/wayland/lamp_). By default, this is set to _mobingi/ubuntu-apache2-php7:7.1_.
+* `--dhub-user` - Your Docker hub username if repository is private.
+* `--dbuh-pass` - Your Docker hub password if repository is private.
+* `--min` - Minimum number of instances in your autoscaling group when --arch is set to _art_elb_. By default, this is set to 2.
+* `--max` - Maximum number of instances in your autoscaling group when --arch is set to _art_elb_. By default, this is set to 10.
+* `--spot-range` - Percentage of spot instance to deploy to autoscaling group. For example, if you have a total of 20 instances running and your spot range is 50 (50%), then there will be a fleet of 10 spot instances and 10 on-demand instances. By default, this is set to 50.
+* `--code` - Your git repository url. This can be updated anytime. By default, this is set to _github.com/mobingilabs/default-site-php_.
+* `--code-ref` - Repository branch. By default, this is set to _master_.
+* `--code-privkey` - Private key if git repository is private.
+* `--usedb` - Set to true if you want to deploy a database.
+* `--dbengine` - Your database engine. Valid values are: _db_mysql_, _db_postgresql_. Requires --usedb flag.
+* `--dbtype` - Database instance/class type. Requires --usedb flag.
+* `--dbstorage` - Database storage in GB. Set between 5 to 6144. Requires --usedb flag.
+* `--dbread-replica1` - Read replica 1. Requires --usedb flag.
+* `--dbread-replica2` - Read replica 2. Requires --usedb flag.
+* `--dbread-replica3` - Read replica 3. Requires --usedb flag.
+* `--dbread-replica4` - Read replica 4. Requires --usedb flag.
+* `--dbread-replica5` - Read replica 5. Requires --usedb flag.
+* `--use-elasticache` - Set to true if you want to use elasticache.
+* `--elasticache-engine` - Either _Redis_ or _Memcached_. Requires --use-elasticache flag.
+* `--elasticache-nodetype` - Elasticache node size. For example, _cache.r3.large_. Requires --use-elasticache flag.
+* `--elasticache-nodecount` - If Redis, range is 1 to 6. If Memcached, range is 1 to 20. Requires --use-elasticache flag.
+
+**API v3**
 
 Starting in v3, we create stacks using ALM templates. Below is an example of a very simple template that creates a single EC2 instance:
 
@@ -223,9 +263,7 @@ $ mobingi-cli stack create --alm-template=/home/user/aws-single-ec2.json
 }
 ```
 
-<div class="callout callout-info">
-API v2
-</div>
+**API v2**
 
 You can run `$ mobingi-cli stack create -h` to see the defaults.
 
@@ -244,9 +282,7 @@ $ mobingi-cli creds list
 
 ### command: stack update {#stack-update}
 
-<div class="callout callout-info">
-API v3
-</div>
+**API v3**
 
 Similar to stack creation, you only need to update some parts of your ALM template to update your stack.
 
@@ -262,9 +298,7 @@ $ mobingi-cli stack update --id mo-58c2297d25645-q38pTmeey-tk \
 }
 ```
 
-<div class="callout callout-info">
-API v2
-</div>
+**API v2**
 
 Examples:
 
