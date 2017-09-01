@@ -265,19 +265,11 @@ $ mobingi-cli stack create --alm-template=/home/user/aws-single-ec2.json
 
 **API v2**
 
-You can run `$ mobingi-cli stack create -h` to see the defaults.
-
 Examples:
 
 ```bash
-$ mobingi-cli stack create --nickname=sample
-$ mobingi-cli stack create --nickname=sample --min=2 --max=2
-```
-
-If the `--cred` option is not provided (just like in the examples above), cli will attempt to get your list of credentials and use the first one (if more than one). You can view your credentials list using the command:
-
-```bash
-$ mobingi-cli creds list
+$ mobingi-cli stack create --nickname=sample --apiver=v2
+$ mobingi-cli stack create --nickname=sample --min=2 --max=2 --apiver=v2
 ```
 
 ### command: stack update {#stack-update}
@@ -303,8 +295,8 @@ $ mobingi-cli stack update --id mo-58c2297d25645-q38pTmeey-tk \
 Examples:
 
 ```bash
-$ mobingi-cli stack update --id=foo --min=5 --max=20
-$ mobingi-cli stack update --id=foo --spot-range=25
+$ mobingi-cli stack update --id=foo --min=5 --max=20 --apiver=v2
+$ mobingi-cli stack update --id=foo --spot-range=25 --apiver=v2
 ```
 
 ### command: stack delete {#stack-delete}
