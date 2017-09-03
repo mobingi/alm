@@ -352,9 +352,19 @@ jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC   
 
 ### command: template compare {#template-compare}
 
+Compare two template versions.
+
 You can compare template versions from the same stack, versions from different stacks, or a local template file to a specific template version.
 
-Example (based from example above):
+**Flags**
+
+* `--src-sid` - The stack id of the first (or source) template. This flag is required.
+* `--src-vid` - The version id of the first (or source) template. This flag is required.
+* `--tgt-sid` - The stack id of the second (or target) template. If not set, cli will assume you are comparing templates of the same stack.
+* `--tgt-vid` - The version id of the second (or target) template. This flag is required if you are not providing the --tgt-body flag.
+* `--tgt-body` - Path of the template file you want to compare to the first (or source) template. If you set this flag, do not set the --tgt-sid and the --tgt-vid flags as they are ignored.
+
+Example:
 
 ```bash
 $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
