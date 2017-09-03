@@ -437,6 +437,12 @@ Note that when you provide update options simultaneously (for example, you provi
 
 ### command: creds list {#creds-view}
 
+List vendor credentials.
+
+**Flags**
+
+* `--vendor` - The vendor to list credentials. For now, the only supported vendor is "aws".
+
 Examples:
 
 ```bash
@@ -447,14 +453,22 @@ aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 
 ### command: registry catalog {#registry-list-catalog}
 
+List images under supplied username.
+
+**Flags**
+
+* `--username` - Username (Mobingi account subuser)
+* `--password` - Password (Mobingi account subuser)
+* `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
+* `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
+
 Example:
 
 ```bash
+# this command is inherently slow
 $ mobingi-cli registry catalog --username=subuser1 --password=xxxxxx --apiver=v2
 subuser1/foo
 ```
-
-Note that this command is inherently slow.
 
 ### command: registry tags {#registry-list-tags}
 
