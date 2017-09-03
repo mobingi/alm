@@ -312,6 +312,12 @@ $ mobingi-cli stack update --id=foo --spot-range=25 --apiver=v2
 
 ### command: stack delete {#stack-delete}
 
+Delete a stack.
+
+**Flags**
+
+* `--id` - The stack id to delete.
+
 Example:
 
 ```bash
