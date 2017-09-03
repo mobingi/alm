@@ -397,7 +397,11 @@ $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
 
 ### command: svrconf show {#svrconf-show}
 
-Server config options are replaced by ALM templates starting from v3. The following commands are still valid for v2.
+Show a stack's serverconfig (server configuration) contents. Starting from v3, server config options are replaced by ALM templates. The following commands are still valid for v2.
+
+**Flags**
+
+* `--id` - The stack id to query.
 
 Example:
 
@@ -405,31 +409,24 @@ Example:
 $ mobingi-cli svrconf show --id=foo --apiver=v2
 ```
 
-You can get the stack id from the `stack list` command.
-
 ### command: svrconf update {#svrconf-update}
+
+Update a stack's serverconfig (server configuration).
+
+**Flags**
+
+* `--id` - The stack id to update.
+* `--env` - A comma-separated key/value pair(s) for environment variables. If you have whitespaces in the input, enclose it with double quotes. You can also set this flag to "null" to clear all environment variables.
+* `--filepath` - New filepath value if you want to update your filepath.
 
 Examples:
 
 ```bash
+# env examples
 $ mobingi-cli svrconf update --id=foo --env=KEY1:value1,KEY2:value2,KEYx:valuex --apiver=v2
-```
-
-If you have whitespaces in the input, enclose it with double quotes
-
-```bash
 $ mobingi-cli svrconf update --id=foo --env="KEY1: value1, KEY2: value2, KEYx: valuex" --apiver=v2
-```
-
-To clear all environment variables, set `--env=null` option
-
-```bash
 $ mobingi-cli svrconf update --id=foo --env=null --apiver=v2
-```
-
-To update server config filepath, run
-
-```bash
+# filepath example
 $ mobingi-cli svrconf update --id=foo --filepath=git://github.com/mobingilabs/default --apiver=v2
 ```
 
