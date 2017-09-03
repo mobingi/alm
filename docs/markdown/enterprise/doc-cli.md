@@ -78,9 +78,10 @@ Use "mobingi-cli stack [command] --help" for more information about a command.
 Global flags are all optional and can be applied to any subcommand. You can use '=' or whitespace when assigning a value to the flag. This applies to any command's local flags as well. For example, you can login using any of these commands:
 
 ```bash
+# using the '=' for assignment
 $ mobingi-cli login --client-id=foo --client-secret=bar
 [mobingi-cli]: info: Login successful.
-
+# using whitespace for assignment
 $ mobingi-cli login --client-id foo --client-secret bar
 [mobingi-cli]: info: Login successful.
 ```
@@ -339,11 +340,12 @@ List available template versions of a stack.
 Example:
 
 ```bash
+# list stacks first to get the stack id
 $ mobingi-cli stack list
 STACK ID                          STACK NAME                   PLATFORM     STATUS              ...
 mo-58c2297d25645-q38pTmeey-tk     small lunch behave           AWS          CREATE_COMPLETE     ...
 mo-58c2297d25645-PxviFSJQV-tk     chronic leaflet flourish     AWS          CREATE_COMPLETE     ...
-
+# then list the template versions
 $ mobingi-cli template versions --id mo-58c2297d25645-PxviFSJQV-tk
 VERSION ID                           LATEST     LAST MODIFIED                     SIZE
 jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC     472
@@ -367,6 +369,7 @@ You can compare template versions from the same stack, versions from different s
 Example:
 
 ```bash
+# using the examples above
 $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
       --src-vid jbyW_PxMAauQmOS31dUhij4KIqHAtqW2 \
       --tgt-vid 1xoPd.cg3juHK94vC8IdUh1bexx7sQ1T
