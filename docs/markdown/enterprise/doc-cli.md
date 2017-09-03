@@ -472,15 +472,36 @@ subuser1/foo
 
 ### command: registry tags {#registry-list-tags}
 
+List image tags.
+
+**Flags**
+
+* `--username` - Username (Mobingi account subuser)
+* `--password` - Password (Mobingi account subuser)
+* `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
+* `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
+* `--image` - Image name to list.
+
 Example:
 
 ```bash
 $ mobingi-cli registry tags --username=subuser1 --password=xxxxxx --image foo --apiver=v2
 IMAGE                  TAG
 subuser1/foo           latest
+subuser1/foo           2.1
 ```
 
 ### command: registry manifest {#registry-tag-manifest}
+
+Display a tag's manifest.
+
+**Flags**
+
+* `--username` - Username (Mobingi account subuser)
+* `--password` - Password (Mobingi account subuser)
+* `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
+* `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
+* `--image` - Image tag to query. Format is _image:tag_.
 
 Example:
 
@@ -521,6 +542,16 @@ $ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
 
 ### command: registry delete {#registry-tag-delete}
 
+Delete a tag.
+
+**Flags**
+
+* `--username` - Username (Mobingi account subuser)
+* `--password` - Password (Mobingi account subuser)
+* `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
+* `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
+* `--image` - Image tag to query. Format is _image:tag_.
+
 Example:
 
 ```bash
@@ -530,7 +561,16 @@ $ mobingi-cli registry delete --username=subuser1 --password=xxxxxx \
 
 ### command: registry token {#registry-get-token}
 
-To get token for Docker Registry API access, run
+Get an access token for Mobingi Docker Registry access.
+
+**Flags**
+
+* `--username` - Username (Mobingi account subuser)
+* `--password` - Password (Mobingi account subuser)
+* `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
+* `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
+
+Example:
 
 ```bash
 $ mobingi-cli registry token \
@@ -539,16 +579,6 @@ $ mobingi-cli registry token \
       --service="Mobingi Docker Registry" \
       --scope="repository:foo/container:*"
 ```
-
-where `username` is a subuser under your Mobingi account. You can also remove `--service`, `--username` and/or `--password`.
-
-```bash
-$ mobingi-cli registry token --scope="repository:foo/container:*"
-Username:
-Password:
-```
-
-By default, it will only print the token value. To print the raw JSON output, append the `--fmt=raw` option.
 
 This is useful when you want to access the registry directly using other tools. For example, you can use the token when using Docker Registry API via `curl`.
 
@@ -564,4 +594,5 @@ Prints the cli version.
 
 ```bash
 $ mobingi-cli version
+v0.2.3-beta
 ```
