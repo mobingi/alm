@@ -330,6 +330,12 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 
 ### command: template versions {#template-versions}
 
+List available template versions of a stack.
+
+**Flags**
+
+* `--id` - The stack id owning the template versions to be listed.
+
 Example:
 
 ```bash
