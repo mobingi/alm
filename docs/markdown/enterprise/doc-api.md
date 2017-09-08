@@ -431,7 +431,7 @@ HTTP/1.1 200 OK
 List all stacks running under current organization account.
 
 <div class="callout callout-info">
-POST <code>/v3/alm/stack</code>
+GET <code>/v3/alm/stack</code>
 </div>
 
 
@@ -493,7 +493,7 @@ HTTP/1.1 200 OK
 Describes the stack detail information.
 
 <div class="callout callout-info">
-POST <code>/v3/alm/stack/{stack_id}</code>
+GET <code>/v3/alm/stack/{stack_id}</code>
 </div>
 
 
