@@ -63,7 +63,7 @@ $app->group('', function () {
 
     });
 
-    $this->get('/alm-rbac-example', function ($request, $response, $args) {
+    $this->get('/alm-rbac-example-rbac', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-rbac/alm-rbac-example-rbac.php', [
             'title' => 'Example Rbac - ALM Rbac'
