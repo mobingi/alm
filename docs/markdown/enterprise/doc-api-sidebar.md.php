@@ -24,6 +24,22 @@
         </ul>
     </li>
     <li>
+        <a href="#alm-rbac">Alm-Rbac</a>
+        <ul>
+            <li><a href="#rbac-error-response">RBAC Error Response</a></li>
+            <li><a href="#rbac-create-role">Create Role Define</a></li>
+            <li><a href="#rbac-update-role">Update Role Define</a></li>
+            <li><a href="#rbac-delete-role">Delete Role Define</a></li>
+            <li><a href="#rbac-list-role">Describe Roles</a></li>
+            <li><a href="#rbac-describe-userrole-by-username">Describe UserRole Detail</a></li>
+            <li><a href="#rbac-create-userrole">Create User Role</a></li>
+            <li><a href="#rbac-update-userrole">Update User Role</a></li>
+            <li><a href="#rbac-delete-userrole">Delete User Role</a></li>
+            <li><a href="#rbac-describe-userrole">Describe User Roles</a></li>
+            <li><a href="#rbac-describe-role-template">Describe Role Templates</a></li>
+        </ul>
+    </li>
+    <li>
         <a href="#stacks">Stacks</a>
         <ul>
             <li><a href="#stack-list">List Stacks</a></li>
