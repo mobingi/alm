@@ -3,15 +3,23 @@
 
 ### Arn and Resources
 
-mrn:vendor:aws
-mrn:vendor:alicloud
-mrn:vendor:k5
+### Resources
 
 
-mrn:vendor:aws:cred:AAAAAAAAAAAAAAAA
+Vendor
+ - mrn:vendor:aws
+ - mrn:vendor:alicloud
+ - mrn:vendor:k5
 
+Credentials
 
-mrn:stack:mo-xxxxxxxxxxxxxxxx
+ - mrn:vendor:aws:cred:AAAAAAAAAAAAAAAA
+ - mrn:vendor:alicloud:cred:AAAAAAAAAAAAAAAA
+
+Stack
+
+ - mrn:alm:stack:mo-xxxxxxxxxxxxxxxx
+
 
 ### Actions
 
@@ -23,7 +31,7 @@ mrn:stack:mo-xxxxxxxxxxxxxxxx
 |-|createCredential::{vendor}|cred:createCredential::aws|-|filter, id|
 |-|deleteCredential::{vendor}|cred:deleteCredential::aws|-|filter, id|
 |stack|describeStacks|stack:describeStacks|/alm/stack|filter, stack_id|
-|-|updateStack|-|-|
+|-|deleteStack|stack:deleteStack|delete:/alm/stack/{stack_id}|filter, stack_id|
 
 
 
