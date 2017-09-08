@@ -39,5 +39,5 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/do
 <?php include_once __DIR__.'/../footer.php'; ?>
 <script type="text/javascript">
 $("table").addClass("table table-bordered table-striped");
-$("a[href='<?php echo $siteUrl; ?>alm-templates-troubleshooting']").parent('li').addClass("active");
+$("a[href='<?php echo $siteUrl; ?>alm-rbac-troubleshooting']").parent('li').addClass("active");
 </script>
