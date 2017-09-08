@@ -19,11 +19,11 @@ mrn:stack:mo-xxxxxxxxxxxxxxxx
 |:--|:--|:--|:--|:--|
 |vendor|describeVendors|vendor:describeVendors|/vendors|filter, vendor|
 |cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|/credentials/aws|filter, id|
-||describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|/credentials/alicloud|filter, id|
-||createCredential::{vendor}|cred:createCredential::aws||filter, id|
-||deleteCredential::{vendor}|cred:deleteCredential::aws||filter, id|
+|-|describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|/credentials/alicloud|filter, id|
+|-|createCredential::{vendor}|cred:createCredential::aws|-|filter, id|
+|-|deleteCredential::{vendor}|cred:deleteCredential::aws|-|filter, id|
 |stack|describeStacks|stack:describeStacks|/alm/stack|filter, stack_id|
-||updateStack|||
+|-|updateStack|-|-|
 
 
 
