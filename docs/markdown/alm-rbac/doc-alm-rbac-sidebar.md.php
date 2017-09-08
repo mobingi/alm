@@ -3,10 +3,10 @@
 <ul class="nav sidenav dropable sticky">
 
     <li>
-        <a href="<?php echo $siteUrl; ?>what-is-alm-rbac">What is ALM Template</a>
+        <a href="<?php echo $siteUrl; ?>what-is-alm-rbac">What is ALM Rbac</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#concepts">ALM rbac Concepts</a></li>
-            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#how-does-it-work">How does ALM rbac Work?</a></li>
+            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#how-does-it-work">How does ALM Rbac Work?</a></li>
         </ul>
     </li>
     <li>
@@ -16,13 +16,13 @@
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>working-with-alm-rbac">Working with ALM rbac</a>
+        <a href="<?php echo $siteUrl; ?>working-with-alm-rbac">Working with ALM Rbac</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#">sub_item</a></li>
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>alm-rbac-reference">ALM rbac Reference</a>
+        <a href="<?php echo $siteUrl; ?>alm-rbac-reference">ALM Rbac Reference</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#">sub_item</a></li>
         </ul>
