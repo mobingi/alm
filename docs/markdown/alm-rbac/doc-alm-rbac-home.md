@@ -1,5 +1,5 @@
- - mobingi-RBAC is strong Role based access control for mobingiALM.
- - this can manage user roles and access control, filtering data.
+ - ALM RBAC is strong Role Based Access Control for mobingiALM.
+ - This function can manage user roles and access control, filtering data.
 
 ## 1. Getting Started
 
