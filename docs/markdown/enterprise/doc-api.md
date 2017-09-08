@@ -425,40 +425,6 @@ HTTP/1.1 200 OK
 ## ALM RBAC {#alm-rbac}
 
 
-### Reject Response {#rbac-error-response}
-
-- RBAC rejects endpoint access with error code.
-
-Response Body
-
-```bash
-HTTP/1.1 403
-
-{
-    code: 4000
-    message: RBAC response is limited.
-    description: {$message}
-}
-```
-
-- RBAC's some endpoint return filter response.
-- Each endpoint has filter key.
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-[
-    {
-        stack_id : ......
-    }
-    {
-        .....
-    }
-
-]
-```
 
 ### Create Role {#rbac-create-role}
 
@@ -844,7 +810,7 @@ HTTP/1.1 201 Created
 ```
 
 
-### Mobingi Role define Body
+### Mobingi Role define Body {#rbac-role-format}
 
 - This is role define format sample.
 - About Action or Resource strings, Reference RBAC user's guide.
@@ -852,6 +818,15 @@ HTTP/1.1 201 Created
 ```bash
 "Version": "2017-05-05",
 "Statement": [
+    {
+        "Effect": "Deny",
+        "Action": [
+            "stack:describeStacks"
+        ],
+        "Resource": [
+            "mrn:alm:stack:mo-xxxxxxxxxx"
+        ]
+    }
     {
         "Effect": "Allow",
         "Action": [
@@ -865,6 +840,40 @@ HTTP/1.1 201 Created
 
 ```
 
+### Filter or Reject Response {#rbac-error-response}
+
+- RBAC rejects endpoint access with error code.
+
+Response Body
+
+```bash
+HTTP/1.1 403
+
+{
+    code: 4000
+    message: RBAC response is limited.
+    description: {$message}
+}
+```
+
+- RBAC's some endpoint return filtered response.
+- Each endpoint has filter key.
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+[
+    {
+        stack_id : ......
+    }
+    {
+        .....
+    }
+
+]
+```
 
 
 ## Stacks {#stacks}
