@@ -35,7 +35,7 @@ Request body
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 
 {
   "status": "success",
@@ -76,7 +76,7 @@ Request body
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 
 {
   "status": "success",
@@ -103,7 +103,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 
 {
   "status": "success",
@@ -129,7 +129,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 [
     {
         "role_id": morole-544****0e1-ZgNT***M8K-tk,
@@ -167,7 +167,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 [
     {
         role_id: morole-544****0e1-ZgNT***M8K-tk,
@@ -218,8 +218,7 @@ Request body
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
-
+HTTP/1.1 200
 {
   "status": "success",
   "user_role_id": "mour-544****0e1-ZgN****M8K-tk"
@@ -257,7 +256,7 @@ Request body
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 
 {
   "status": "success",
@@ -297,7 +296,7 @@ Request body
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 
 {
   "status": "success",
@@ -324,7 +323,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 [
     {
         "user_role_id": "mour-5447****0e1-TEW****dsIE-tk",
@@ -359,7 +358,7 @@ Content-Type: application/json
 Response Body
 
 ```bash
-HTTP/1.1 201 Created
+HTTP/1.1 200
 [
     {
         "id": "admin",

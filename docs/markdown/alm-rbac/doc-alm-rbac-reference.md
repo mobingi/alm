@@ -17,12 +17,12 @@ mrn:stack:mo-xxxxxxxxxxxxxxxx
 
 |service|action|ex.|endpoint|note|
 |:--|:--|:--|:--|:--|
-|vendor|describeVendors|vendor:describeVendors|/vendors|
-|cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|/credentials/aws|
-||describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|/credentials/alicloud|
-||createCredential::{vendor}|cred:createCredential::aws||
-||deleteCredential::{vendor}|cred:deleteCredential::aws||
-|stack|describeStacks|stack:describeStacks|/alm/stack|
+|vendor|describeVendors|vendor:describeVendors|/vendors|filter, vendor|
+|cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|/credentials/aws|filter, id|
+||describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|/credentials/alicloud|filter, id|
+||createCredential::{vendor}|cred:createCredential::aws||filter, id|
+||deleteCredential::{vendor}|cred:deleteCredential::aws||filter, id|
+|stack|describeStacks|stack:describeStacks|/alm/stack|filter, stack_id|
 ||updateStack|||
 
 
