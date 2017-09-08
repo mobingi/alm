@@ -39,7 +39,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-544****0e1-ZgNTSRM8K-tk"
 }
 ```
 
@@ -80,7 +80,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-544****70e1-ZgNTSRM8K-tk"
 }
 ```
 
@@ -107,7 +107,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-544****0e1-ZgN****M8K-tk"
 }
 ```
 
@@ -132,12 +132,12 @@ Response Body
 HTTP/1.1 201 Created
 [
     {
-        role_id: morole-5447820c870e1-ZgNTSRM8K-tk,
-        user_id: 5447820c870e1,
-        name: sample name,
-        scope: { _role define body_ },
-        create_time: ,
-        update_time:
+        "role_id": morole-544****0e1-ZgNT***M8K-tk,
+        "user_id": 544****0e1,
+        "name": sample name,
+        "scope": { _role define body_ },
+        "create_time": ,
+        "update_time":
     },
     {
         ....
@@ -170,8 +170,8 @@ Response Body
 HTTP/1.1 201 Created
 [
     {
-        role_id: morole-5447820c870e1-ZgNTSRM8K-tk,
-        user_id: 5447820c870e1,
+        role_id: morole-544****0e1-ZgNT***M8K-tk,
+        user_id: 544****0e1,
         name: sample name,
         scope: { _role define body_ },
         create_time: ,
@@ -211,7 +211,7 @@ Request body
 ```bash
 {
   "username": "testtest",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-544****0e1-ZgN****8K-tk"
 }
 ```
 
@@ -222,7 +222,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "user_role_id": "mour-5447820c870e1-ZgNTSRM8K-tk"
+  "user_role_id": "mour-544****0e1-ZgN****M8K-tk"
 }
 ```
 
@@ -261,7 +261,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-5447****0e1-ZgN***M8K-tk"
 }
 ```
 
@@ -301,7 +301,7 @@ HTTP/1.1 201 Created
 
 {
   "status": "success",
-  "role_id": "morole-5447820c870e1-ZgNTSRM8K-tk"
+  "role_id": "morole-5447****0e1-ZgN****M8K-tk"
 }
 ```
 
@@ -327,12 +327,12 @@ Response Body
 HTTP/1.1 201 Created
 [
     {
-        user_role_id: mour-5447820c870e1-TEWdkkdsIE-tk,
-        role_id: morole-5447820c870e1-ZgNTSRM8K-tk,
-        user: { user_id: 5447820c870e1, username: testtest },
-        scope: { _role define body_ },
-        create_time: ,
-        update_time:
+        "user_role_id": "mour-5447****0e1-TEW****dsIE-tk",
+        "role_id": "morole-5447****0e1-ZgN****RM8K-tk",
+        "user": { user_id: 5447****0e1, username: tes***est },
+        "scope": { _role define body_ },
+        "create_time": ,
+        "update_time":
     },
     {
         ....
