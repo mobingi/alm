@@ -329,6 +329,27 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 }
 ```
 
+### command: stack pem {#stack-pem}
+
+Print the stack's pem file, if available.
+
+**Flags**
+
+* `--id` - The stack id to query.
+
+Example:
+
+```bash
+$ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk
+[mobingi-cli]: info: payload:
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAiy5kdqROYbjke0BE8rcT7qUtSKyaaIgqiJLYxlduov2wvnRHSo5O8m67v8UD
+Pkxz4fR/gQXYcpV4/T/3zqTVaGcVNK8ZCE1jRfKt/5QFQkPOJRkDWZZzQqSwUMhnMiK1iE+33fmp
+ITvktdL9OMT0RXjZ4qKq+aifaY9D0XzbR3HWLFcWZ+0tmzUTJDM8F6LivsPUjR8uitiic7KXvlDV
+...
+-----END RSA PRIVATE KEY-----
+```
+
 ### command: template versions {#template-versions}
 
 List available template versions of a stack.
