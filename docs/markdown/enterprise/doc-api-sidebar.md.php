@@ -26,7 +26,7 @@
     <li>
         <a href="#alm-rbac">Alm-Rbac</a>
         <ul>
-            <li><a href="#rbac-error-response">RBAC Error Response</a></li>
+            <li><a href="#rbac-error-response">Error or Filtered Response</a></li>
             <li><a href="#rbac-create-role">Create Role Define</a></li>
             <li><a href="#rbac-update-role">Update Role Define</a></li>
             <li><a href="#rbac-delete-role">Delete Role Define</a></li>

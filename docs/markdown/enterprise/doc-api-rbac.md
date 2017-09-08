@@ -1,7 +1,7 @@
 ## ALM RBAC {#alm-rbac}
 
 
-### Reject Response {#rbac-error-response}
+### Filter or Reject Response {#rbac-error-response}
 
 - RBAC rejects endpoint access with error code.
 
@@ -17,7 +17,7 @@ HTTP/1.1 403
 }
 ```
 
-- RBAC's some endpoint return filter response.
+- RBAC's some endpoint return filtered response.
 - Each endpoint has filter key.
 
 Response Body
