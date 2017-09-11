@@ -20,6 +20,11 @@ Stack
 
  - mrn:alm:stack:mo-xxxxxxxxxxxxxxxx
 
+Template
+
+ - mrn:alm:template:mo-xxxxxxxxxxxxxxxx
+
+
 
 ### Actions
 

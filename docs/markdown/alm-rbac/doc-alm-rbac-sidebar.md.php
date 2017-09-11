@@ -45,12 +45,12 @@
     <li>
         <a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac">Example ALM rbac</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#single-server">Single server</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#single-server-with-hello-world">Single server with "Hello World"</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#single-server-with-custom-subnet">Single server with custom Subnet</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#single-server-with-custom-network-acl">Single server with custom Network ACL</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#single-server-with-custom-security-group">Single server with custom Security Group</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#load-balanced">Load-balanced server stack</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-vendors">Deny vendors</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-credentials-resource">Deny credentials by resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-list-stack">Deny list Stacks</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-list-stack-resource">Deny list Stacks by resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-stack-resource">Deny Stack detail by resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-some-actions">Deny Some Action by some resource</a></li>
         </ul>
     </li>
 
