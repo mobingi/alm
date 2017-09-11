@@ -2,44 +2,41 @@
 
 ### Deny Vendors {#deny-vendors}
 
-- ATTENTION: deny describeVendors depends other actions
+- ATTENTION: _describeVendors_ action has child action dependencies
 
 ```json
 {
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : "vendor:describeVendors",
-          "Resource" : ["mrn:vendor:alicloud"]
-      }
-
+    "Version": "2017-05-05",
+    "Statement": [
+        {
+            "Effect" : "Deny",
+            "Action" : "vendor:describeVendors",
+            "Resource" : ["mrn:vendor:alicloud"]
+        }
     ]
 }
 ```
 
 
-### Deny Credentials by resource {#deny-credentials-resource}
+### Deny Credentials by Resource {#deny-credentials-resource}
 
- - ATTENTION: deny describeCredentials depends other actions
+ - ATTENTION: _describeCredentials_ action has child action dependencies
 
 ```json
 {
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : "cred:describeCredentials::aws",
-          "Resource" : ["mrn:vendor:aws:cred:XXXXXXXXXXXXXX"]
-
-      }
-
+    "Version": "2017-05-05",
+    "Statement": [
+        {
+            "Effect" : "Deny",
+            "Action" : "cred:describeCredentials::aws",
+            "Resource" : ["mrn:vendor:aws:cred:XXXXXXXXXXXXXX"]
+        }
     ]
 }
 ```
 
 
-### Deny List Stack {#deny-list-stack}
+### Deny List Stacks {#deny-list-stack}
 
 ```json
 {
@@ -56,7 +53,7 @@
 }
 ```
 
-### Deny List Stack with filtering resource {#deny-list-stack-resource}
+### Deny List Stacks with Resource Filtering {#deny-list-stack-resource}
 
 ```json
 {
@@ -66,14 +63,12 @@
           "Effect" : "Deny",
           "Action" : "stack:describeStacks",
           "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXXXXX"]
-
       }
-
     ]
 }
 ```
 
-### Deny Get Stack detail by resource {#deny-stack-resource}
+### Deny Describe Stack by Resource {#deny-stack-resource}
 
 ```json
 {
@@ -83,9 +78,7 @@
           "Effect" : "Deny",
           "Action" : "stack:describeStack",
           "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX"]
-
       }
-
     ]
 }
 ```
@@ -103,10 +96,11 @@
               "template:updateAlmTemplate",
               "stack:deleteStack"
           ],
-          "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX","mrn:alm:template:mo-XXXXXXXXXXXXXX"]
-
+          "Resource" : [
+              "mrn:alm:stack:mo-XXXXXXXXXXXXXX",
+              "mrn:alm:template:mo-XXXXXXXXXXXXXX"
+          ]
       }
-
     ]
 }
 ```

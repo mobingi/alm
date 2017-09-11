@@ -23,21 +23,26 @@
         <ul>
             <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#permission-priority">Permission Priority</a></li>
             <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#apply-order">Apply Order</a></li>
-            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#resource-dependance">Resource Dependance</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#resource-dependency">Resource Dependency</a></li>
         </ul>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-rbac-reference">RBAC Reference</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#version">Version</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#statement">Statement</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#effect">Effect</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#action">Action</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#resource">Resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#default-roles">Default Roles</a></li>
         </ul>
     </li>
-    <li>
+    <!-- <li>
         <a href="<?php echo $siteUrl; ?>alm-rbac-troubleshooting">Troubleshooting</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-rbac-troubleshooting#">sub_item</a></li>
         </ul>
-    </li>
+    </li> -->
     <li>
         <a href="<?php echo $siteUrl; ?>alm-rbac-release-history">Release History</a>
         <ul>

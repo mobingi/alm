@@ -1,190 +1,198 @@
+Mobingi ALM RBAC role body is a json format body contains several sections. This page explains the reference on each section. For quick referencing with example roles please refer to [this](https://learn.mobingi.com/alm-rbac-example-rbac) guide.
 
-## Version
+## Version {#version}
 
-## Statement
+Current RBAC version is `2017-05-05`
 
-## Effect
+## Statement {#statement}
 
-## Action
+Statement is the section contains the role policy body
 
-## Resource
+## Effect {#effect}
 
- - #### Mrn
+This section defines what the effect will be when the user requests access. This value is either __allow__ or __deny__.
 
- - #### Mrn
+## Action {#action}
 
-Vendor
+This section defines what actions you will grant. Each Mobingi ALM service has its own set of actions. For example, you might allow a user to list all stacks or deny a user to perform delete stack.
+
+ - RBAC actions:
+
+    |Service|Action|Example|
+    |:--|:--|:--|:--|:--|
+    |vendor|describeVendors|vendor:describeVendors|
+    |cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|
+    |-|describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|
+    |-|createCredential::{vendor}|cred:createCredential::aws|
+    |-|deleteCredential::{vendor}|cred:deleteCredential::aws|
+    |stack|describeStacks|stack:describeStacks|
+    |-|deleteStack|stack:deleteStack|
+    |template|createAlmTemplate|template:createAlmTemplate|
+    |-|updateAlmTemplate|template:updateAlmTemplate|
+
+## Resource {#resource}
+
+Which resources you allow the action on. For example, what specific stack will you allow the user to perform the _describeStack_ action on.
+
+ - when `*` is given, all resources are applied
+ - when explicit value is given, only that resource is applied
+
+### Example Mobingi Resource Names (MRN)
+
+- ### Vendor
  - mrn:vendor:aws
  - mrn:vendor:alicloud
  - mrn:vendor:k5
 
-Credentials
+- ### Credentials
 
  - mrn:vendor:aws:cred:AAAAAAAAAAAAAAAA
- - mrn:vendor:alicloud:cred:AAAAAAAAAAAAAAAA
+ - mrn:vendor:alicloud:cred:*
 
-Stack
+- ### Stack
 
+ - mrn:alm:stack:*
  - mrn:alm:stack:mo-xxxxxxxxxxxxxxxx
 
-Template
+- ### Template
 
- - mrn:alm:template:mo-xxxxxxxxxxxxxxxx
-
-
-
-### Actions
-
-|service|action|ex.|endpoint|note|
-|:--|:--|:--|:--|:--|
-|vendor|describeVendors|vendor:describeVendors|/vendors|filter, vendor|
-|cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|/credentials/aws|filter, id|
-|-|describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|/credentials/alicloud|filter, id|
-|-|createCredential::{vendor}|cred:createCredential::aws|-|filter, id|
-|-|deleteCredential::{vendor}|cred:deleteCredential::aws|-|filter, id|
-|stack|describeStacks|stack:describeStacks|/alm/stack|filter, stack_id|
-|-|deleteStack|stack:deleteStack|delete:/alm/stack/{stack_id}|filter, stack_id|
-|template|createAlmTemplate|template:createAlmTemplate|post:/alm/template|-|
-|-|updateAlmTemplate|template:updateAlmTemplate|put:/alm/template/{stack_id}|stack_id|
+  - mrn:alm:template:*
+  - mrn:alm:template:mo-xxxxxxxxxxxxxxxx
 
 
 
 
-## 3. Default role configuration
 
- - RBAC has internal configuration which fixed by mobingiAPI.
- - Deny rules is most high priority, and Deny rules can not overwrite.
+## Default Roles {#default-roles}
 
-### masteruser
+When your master account is first set up, a default admin role is automatically assigned to your master account. Similarly, when you create a user on Mobingi ALM, a default role is applied automatically to that user and allows certain scopes by default. Below are the default roles:
 
- - Masteruser is superuser as system admin. This role is for masteruser.
 
-```
-{
-    version: "2017-05-05"
-    Statement:[
-        {
-            Effect: "Deny",
-            Action: "vendor:describeVendors",
-            Resource: [
-                "mrn:vendor:alicloud",
-                "mrn:vendor:k5"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "cred:describeCredentials::alicloud",
-                "cred:describeCredentials::k5"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "userrole:describeUserRole"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "template:createAlmTemplate",
-                "template:updateAlmTemplate",
-                "github:createGithubLock"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Allow",
-            Action: [
-                "*"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-    ]
+ - ### Master Account
 
-}
-```
+    ```json
+    {
+        "version": "2017-05-05",
+        "Statement":[
+            {
+                "Effect": "Deny",
+                "Action": "vendor:describeVendors",
+                "Resource": [
+                    "mrn:vendor:alicloud",
+                    "mrn:vendor:k5"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "cred:describeCredentials::alicloud",
+                    "cred:describeCredentials::k5"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "userrole:describeUserRole"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "template:createAlmTemplate",
+                    "template:updateAlmTemplate",
+                    "github:createGithubLock"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "*"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+        ]
 
-### subuser
+    }
+    ```
 
- - Subuser is normal user as end-user. This role is for user account.
+ - ### User
 
-```
-{
-    version: "2017-05-05"
-    Statement:[
-        {
-            Effect: "Deny",
-            Action: "vendor:describeVendors",
-            Resource: [
-                "mrn:vendor:alicloud",
-                "mrn:vendor:k5"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "cred:describeCredentials::alicloud",
-                "cred:describeCredentials::k5"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "role:describeRoles"
-                "role:createRole",
-                "role:updateRole",
-                "role:deleteRole",
-                "user:describeMobingiUsers",
-                "user:createMobingiUser",
-                "user:deleteMobingiUser",
-                "userrole:describeUserRoleByUserName",
-                "userrole:createUserRole",
-                "userrole:updateUserRole",
-                "userrole:deleteUserRole"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: [
-                "cred:createCredentials::aws",
-                "cred:deleteCredentials::aws",
-                "cred:createCredentials::alicloud",
-                "cred:deleteCredentials::alicloud",
-                "cred:createCredentials::k5",
-                "cred:deleteCredentials::k5"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Allow",
-            Action: [
-                "*"
-            ]
-            Resource: [
-                "*"
-            ]
-        },
-    ]
+    ```json
+    {
+        "version": "2017-05-05"
+        "Statement":[
+            {
+                "Effect": "Deny",
+                "Action": "vendor:describeVendors",
+                "Resource": [
+                    "mrn:vendor:alicloud",
+                    "mrn:vendor:k5"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "cred:describeCredentials::alicloud",
+                    "cred:describeCredentials::k5"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "role:describeRoles"
+                    "role:createRole",
+                    "role:updateRole",
+                    "role:deleteRole",
+                    "user:describeMobingiUsers",
+                    "user:createMobingiUser",
+                    "user:deleteMobingiUser",
+                    "userrole:describeUserRoleByUserName",
+                    "userrole:createUserRole",
+                    "userrole:updateUserRole",
+                    "userrole:deleteUserRole"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": [
+                    "cred:createCredentials::aws",
+                    "cred:deleteCredentials::aws",
+                    "cred:createCredentials::alicloud",
+                    "cred:deleteCredentials::alicloud",
+                    "cred:createCredentials::k5",
+                    "cred:deleteCredentials::k5"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "*"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            },
+        ]
 
-}
-
-```
+    }
+    ```

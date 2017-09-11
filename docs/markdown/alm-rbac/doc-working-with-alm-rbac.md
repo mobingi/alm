@@ -3,7 +3,7 @@
 
 When a request is made, the RBAC service decides whether a given request should be allowed or denied. The evaluation logic follows these rules:
 
- - By default, all requests are denied (When you creating a user on Mobingi ALM, a default role is applied and allows certain default scopes)
+ - By default, all requests are denied (_Note: when you creating a user on Mobingi ALM, a [default role](https://learn.mobingi.com/alm-rbac-reference#default-roles) is applied automatically and allows certain scopes by default_ )
  - An explicit allow overrides this default
  - Deny pattern always overrides allow pattern against same resources
  - An explicit deny overrides any allows
@@ -62,20 +62,20 @@ When a request is made, the RBAC service decides whether a given request should 
  - Deny pattern overrides allows
  - Additionally, when response body contains resources that denies by the role, RBAC will filter that resource and return the rest of its body.
 
-### Resource Dependance {#resource-dependance}
+### Resource Dependency {#resource-dependency}
 
 When you working with Mobingi ALM, there are a few resource depends on parent resource, eg:
 
  - stack depends on credentials and vendor
- - stack log depends stack or its parent
+ - instance logs depends on stack or its parent
+
+ _An example dependency:_
 
     ```
-    Example dependance:
-
     vendor > credentials > stack > log > others
     ```
 
-- Sample: Filter resource permissions by `credentials` role. Since stacks resource depends on credentials, the example below defines:
+- Sample: filter resource permissions by `credentials` role. Since stacks resource depends on credentials, the example below defines:
 
  - Deny when a user trying to describe stacks associated to credential _AAAAA_, or _BBBBB_
  - Allow when a user trying to describe stacks associated to any other credentials
