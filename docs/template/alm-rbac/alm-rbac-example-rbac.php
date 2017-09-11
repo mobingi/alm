@@ -28,7 +28,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/do
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1>Example rbac</h1>
+        <h1>Example RBAC Roles</h1>
     </header>
 
     <?php echo $parser->text($content); ?>

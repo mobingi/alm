@@ -1,92 +1,103 @@
 
-## 2. Usage
+### Permission Priority {#permission-priority}
 
-### Permission priority
+When a request is made, the RBAC service decides whether a given request should be allowed or denied. The evaluation logic follows these rules:
 
- - Deny pattern is first. and deny pattern can not be overwritten.
- - This case apply deny all.
-```
-{
-    Statement: [
-        {
-            Effect: "Deny",
-            Action: "template:updateAlmTemplate",
-            Resource: [
-                "*"
-            ]
-        },
-        {
-            Effect: "Deny",
-            Action: "template:updateAlmTemplate",
-            Resource: [
-                "mrn:alm:template:mo-AAAAAAAAAAA"
-            ]
-        },
-        {
-            Effect: "Allow",
-            Action: "template:updateAlmTemplate",
-            Resource: [
-                "mrn:alm:template:mo-BBBBBBBBBB"
-            ]
-        }
-    ]
-}
-```
+ - By default, all requests are denied (When you creating a user on Mobingi ALM, a default role is applied and allows certain default scopes)
+ - An explicit allow overrides this default
+ - Deny pattern always overrides allow pattern against same resources
+ - An explicit deny overrides any allows
 
- - no deny pattern is not allow all.
- - This case apply allow updateStack only.
- ```
- {
-     Statement: [
+ The order in which the policies are evaluated has no effect on the outcome of the evaluation. All policies are evaluated, and the result is always that the request is either allowed or denied. Below is an example to result in a __deny__ on action `template:updateAlmTemplate` over any resources:
+
+    ```json
+    {
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Action": "template:updateAlmTemplate",
+                "Resource": [
+                    "*"
+                ]
+            },
+            {
+                "Effect": "Deny",
+                "Action": "template:updateAlmTemplate",
+                "Resource": [
+                    "mrn:alm:template:mo-AAAAAAAAAAA"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": "template:updateAlmTemplate",
+                "Resource": [
+                    "mrn:alm:template:mo-BBBBBBBBBB"
+                ]
+            }
+        ]
+    }
+    ```
+
+ - If there is no _deny_ pattern but has _allow_ pattern defined, the request is allowed on defined resources only
+
+ The example below allows the action of `template:updateAlmTemplate` over resource _mrn:alm:template:mo-5447820c870e1-ZgNTSRM8K-tk_ only.
+
+    ```json
+    {
+     "Statement": [
          {
-             Effect: "Allow",
-             Action: "template:updateAlmTemplate",
-             Resource: [
-                 "mrn:alm:template:mo-xxxxxxxxxxxxxxx"
+             "Effect": "Allow",
+             "Action": "template:updateAlmTemplate",
+             "Resource": [
+                 "mrn:alm:template:mo-5447820c870e1-ZgNTSRM8K-tk"
              ]
          }
      ]
- }
- ```
+    }
+    ```
 
-### Apply order
+### Apply Order {#apply-order}
 
- - firstly, deny pattern apply.
- - allow pattern is checked after not match deny.
- - exceptionally, response many data, then RBAC filter data by deny rules.
+ - Allow pattern always applies first
+ - Deny pattern overrides allows
+ - Additionally, when response body contains resources that denies by the role, RBAC will filter that resource and return the rest of its body.
 
-### Depends resource
+### Resource Dependance {#resource-dependance}
 
- - a few resource depends on parent Resource.
- - stack depend credentials and vendor.
- - stack log depend stack or that parent.
-```
- ex.) vendor > credentials > stack > log > others
-```
+When you working with Mobingi ALM, there are a few resource depends on parent resource, eg:
 
-### ex.1 Filter stack list with credentials
+ - stack depends on credentials and vendor
+ - stack log depends stack or its parent
 
- - For example, subUser limit stacklist with credential.
- - This case, add deny pattern below.
+    ```
+    Example dependance:
 
- ```
- {
-     Statement: [
-         {
-             Effect: "Deny",
-             Action: "cred:describeCredentials",
-             Resource: [
-                 "mrn:vendor:aws:cred:XXXXXXXXXXXXXX",
-                 "mrn:vendor:aws:cred:XXXXbbbbbbbbbb",
-             ]
-         },
-         {
-             Effect: "Allow",
-             Action: "cred:describeCredentials",
-             Resource: [
-                "*"
-             ]
-         },
-     ]
- }
- ```
+    vendor > credentials > stack > log > others
+    ```
+
+- Sample: Filter resource permissions by `credentials` role. Since stacks resource depends on credentials, the example below defines:
+
+ - Deny when a user trying to describe stacks associated to credential _AAAAA_, or _BBBBB_
+ - Allow when a user trying to describe stacks associated to any other credentials
+
+    ```json
+    {
+        "Statement": [
+            {
+                "Effect": "Deny",
+                "Action": "cred:describeCredentials",
+                "Resource": [
+                    "mrn:vendor:aws:cred:AAAAA",
+                    "mrn:vendor:aws:cred:BBBBB",
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": "cred:describeCredentials",
+                "Resource": [
+                    "*"
+                ]
+            }
+        ]
+    }
+    ```

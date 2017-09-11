@@ -3,14 +3,14 @@
 <ul class="nav sidenav dropable sticky">
 
     <li>
-        <a href="<?php echo $siteUrl; ?>alm-rbac">ALM Rbac Home</a>
+        <a href="<?php echo $siteUrl; ?>what-is-alm-rbac">What is Role Based Access Control</a>
+        <ul>
+            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#concepts">RBAC Concepts</a></li>
+            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#how-does-it-work">How does RBAC Work?</a></li>
+        </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>what-is-alm-rbac">What is ALM Rbac</a>
-        <ul>
-            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#concepts">ALM rbac Concepts</a></li>
-            <li><a href="<?php echo $siteUrl; ?>what-is-alm-rbac#how-does-it-work">How does ALM Rbac Work?</a></li>
-        </ul>
+        <a href="<?php echo $siteUrl; ?>alm-rbac-getting-started">Getting Started</a>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-rbac-best-practices">Best Practices</a>
@@ -19,13 +19,15 @@
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>working-with-alm-rbac">Working with ALM Rbac</a>
+        <a href="<?php echo $siteUrl; ?>working-with-alm-rbac">Working with RBAC</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#permission-priority">Permission Priority</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#apply-order">Apply Order</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-rbac#resource-dependance">Resource Dependance</a></li>
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>alm-rbac-reference">ALM Rbac Reference</a>
+        <a href="<?php echo $siteUrl; ?>alm-rbac-reference">RBAC Reference</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-rbac-reference#">sub_item</a></li>
         </ul>
@@ -43,7 +45,7 @@
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac">Example ALM rbac</a>
+        <a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac">Example RBAC Roles</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-vendors">Deny vendors</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-rbac-example-rbac#deny-credentials-resource">Deny credentials by resource</a></li>

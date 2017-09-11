@@ -8,7 +8,7 @@ require __DIR__.'/../ParsedownExtraPlugin.php';
 // $Parsedown = new Parsedown();
 $parser = new ParsedownExtraPlugin();
 
-$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/doc-alm-rbac-home.md');
+$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/doc-alm-rbac-getting-started.md');
 
 
 ?>
@@ -28,7 +28,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/do
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1>ALM rbac Documentation</h1>
+        <h1>Getting Started</h1>
     </header>
 
     <?php echo $parser->text($content); ?>

@@ -35,7 +35,7 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 
 		<!-- Favicons -->
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<link rel="icon" href="<?php echo $domain; ?>assets/img/favicon.ico">
+		<link rel="icon" href="<?php echo $domain; ?>assets/img/favicon.ico?v1">
         <style>
         pre[class*="language-"] {
             padding-top: 8px;

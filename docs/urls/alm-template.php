@@ -9,7 +9,7 @@ $app->group('', function () {
 
     $this->get('/alm-template', function ($request, $response, $args) {
 
-        return $this->view->render($response, 'alm-template/page-alm-template-home.php', [
+        return $this->view->render($response, 'alm-template/alm-template-home.php', [
             'title' => 'ALM Template Documentation'
         ]);
 
