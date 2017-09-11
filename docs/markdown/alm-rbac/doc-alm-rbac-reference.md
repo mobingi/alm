@@ -32,6 +32,8 @@ Stack
 |-|deleteCredential::{vendor}|cred:deleteCredential::aws|-|filter, id|
 |stack|describeStacks|stack:describeStacks|/alm/stack|filter, stack_id|
 |-|deleteStack|stack:deleteStack|delete:/alm/stack/{stack_id}|filter, stack_id|
+|template|createAlmTemplate|template:createAlmTemplate|post:/alm/template|-|
+|-|updateAlmTemplate|template:updateAlmTemplate|put:/alm/template/{stack_id}|stack_id|
 
 
 
@@ -79,8 +81,8 @@ Stack
         {
             Effect: "Deny",
             Action: [
-                "stack:createStack",
-                "stack:updateStack",
+                "template:createAlmTemplate",
+                "template:updateAlmTemplate",
                 "github:createGithubLock"
             ]
             Resource: [

@@ -100,10 +100,10 @@
           "Effect" : "Deny",
           "Action" : [
               "stack:describeStacks",
-              "stack:createStack",
+              "template:updateAlmTemplate",
               "stack:deleteStack"
           ],
-          "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX"]
+          "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX","mrn:alm:template:mo-XXXXXXXXXXXXXX"]
 
       }
 

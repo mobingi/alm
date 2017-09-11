@@ -10,23 +10,23 @@
     Statement: [
         {
             Effect: "Deny",
-            Action: "stack:updateStack",
+            Action: "template:updateAlmTemplate",
             Resource: [
                 "*"
             ]
         },
         {
             Effect: "Deny",
-            Action: "stack:updateStack",
+            Action: "template:updateAlmTemplate",
             Resource: [
-                "mrn:stack:mo-AAAAAAAAAAA"
+                "mrn:alm:template:mo-AAAAAAAAAAA"
             ]
         },
         {
             Effect: "Allow",
-            Action: "stack:updateStack",
+            Action: "template:updateAlmTemplate",
             Resource: [
-                "mrn:stack:mo-BBBBBBBBBB"
+                "mrn:alm:template:mo-BBBBBBBBBB"
             ]
         }
     ]
@@ -40,9 +40,9 @@
      Statement: [
          {
              Effect: "Allow",
-             Action: "stack:updateStack",
+             Action: "template:updateAlmTemplate",
              Resource: [
-                 "mrn:stack:mo-xxxxxxxxxxxxxxx"
+                 "mrn:alm:template:mo-xxxxxxxxxxxxxxx"
              ]
          }
      ]
