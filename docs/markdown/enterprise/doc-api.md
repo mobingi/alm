@@ -445,7 +445,7 @@ POST <code>/v3/role</code>
 Request Header
 ```bash
 Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 ```
 
 Request body
@@ -486,7 +486,7 @@ PUT <code>/v3/role/{role_id}</code>
 Request Header
 ```bash
 Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 ```
 
 Request body
@@ -628,7 +628,7 @@ POST <code>/v3/user/role</code>
 Request Header
 ```bash
 Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 ```
 
 Request body
@@ -667,7 +667,7 @@ PUT <code>/v3/user/role/{role_id}</code>
 Request Header
 ```bash
 Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
+Content-Type: application/x-www-form-urlencoded
 ```
 
 Request body
@@ -873,6 +873,7 @@ HTTP/1.1 200
 
 ]
 ```
+
 
 
 
