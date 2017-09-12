@@ -10,7 +10,7 @@
     "Statement": [
         {
             "Effect" : "Deny",
-            "Action" : "vendor:describeVendors",
+            "Action" : ["vendor:describeVendors"],
             "Resource" : ["mrn:vendor:alicloud"]
         }
     ]
@@ -28,7 +28,7 @@
     "Statement": [
         {
             "Effect" : "Deny",
-            "Action" : "cred:describeCredentials::aws",
+            "Action" : ["cred:describeCredentials::aws"],
             "Resource" : ["mrn:vendor:aws:cred:XXXXXXXXXXXXXX"]
         }
     ]
@@ -44,7 +44,7 @@
   "Statement": [
       {
           "Effect" : "Deny",
-          "Action" : "stack:describeStacks",
+          "Action" : ["stack:describeStacks"],
           "Resource" : ["*"]
 
       }
@@ -61,7 +61,7 @@
   "Statement": [
       {
           "Effect" : "Deny",
-          "Action" : "stack:describeStacks",
+          "Action" : ["stack:describeStacks"],
           "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXXXXX"]
       }
     ]
@@ -76,7 +76,7 @@
   "Statement": [
       {
           "Effect" : "Deny",
-          "Action" : "stack:describeStack",
+          "Action" : ["stack:describeStack"],
           "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX"]
       }
     ]
