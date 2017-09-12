@@ -712,7 +712,7 @@ $ curl -H "Authorization: Bearer token" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
 ```
 
-### command reset {#reset}
+### command: reset {#reset}
 
 Reset all configuration values to default.
 
