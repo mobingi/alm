@@ -15,6 +15,7 @@ Available Commands:
   creds       manage your credentials
   help        help about any command
   login       login to Mobingi API
+  rbac        manage role based access control features
   registry    manage your Mobingi docker registry
   reset       reset config to defaults
   stack       manage your stack
