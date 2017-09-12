@@ -714,7 +714,7 @@ $ curl -H "Authorization: Bearer token" \
 
 ### command: reset {#reset}
 
-Reset all configuration values to default.
+Reset all configuration values to default. It will also delete all credential information stored in the platform's native store.
 
 Example:
 
