@@ -33,4 +33,12 @@ $app->group('/enterprise', function () {
 
     });
 
+    $this->get('/agent', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/page-agent.php', [
+            'title' => 'Use Mobingi ALM agent (EE)'
+        ]);
+
+    });
+
 });
