@@ -28,6 +28,7 @@
             <li><a href="#rbac-describe">describe</a></li>
             <li><a href="#rbac-sample">sample</a></li>
             <li><a href="#rbac-create">create</a></li>
+            <li><a href="#rbac-attach">attach</a></li>
             <li><a href="#rbac-delete">delete</a></li>
         </ul>
     </li>
