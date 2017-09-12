@@ -1,14 +1,14 @@
 <?php
-include_once __DIR__.'/../header.php';
+include_once __DIR__.'/../../header.php';
 
-require __DIR__.'/../Parsedown.php';
-require __DIR__.'/../ParsedownExtra.php';
-require __DIR__.'/../ParsedownExtraPlugin.php';
+require __DIR__.'/../../Parsedown.php';
+require __DIR__.'/../../ParsedownExtra.php';
+require __DIR__.'/../../ParsedownExtraPlugin.php';
 
 // $Parsedown = new Parsedown();
 $parser = new ParsedownExtraPlugin();
 
-$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/doc-what-is-alm-rbac.md');
+$content = file_get_contents(realpath(__DIR__ . '/../../..').'/markdown/enterprise/doc-what-is-rbac.md');
 
 
 ?>
@@ -18,7 +18,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/do
 
     <!-- Sidebar -->
     <aside class="col-sm-3 sidebar">
-        <?php include_once realpath(__DIR__ . '/../..').'/markdown/alm-rbac/doc-alm-rbac-sidebar.md.php'; ?>
+        <?php include_once realpath(__DIR__ . '/../../..').'/markdown/enterprise/doc-rbac-sidebar.md.php'; ?>
     </aside>
     <!-- END Sidebar -->
 
@@ -36,8 +36,8 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-rbac/do
 </article>
 
 
-<?php include_once __DIR__.'/../footer.php'; ?>
+<?php include_once __DIR__.'/../../footer.php'; ?>
 <script type="text/javascript">
 $("table").addClass("table table-bordered table-striped");
-$("a[href='<?php echo $siteUrl; ?>what-is-alm-rbac']").parent('li').addClass("active");
+$("a[href='<?php echo $siteUrl; ?>enterprise/what-is-rbac']").parent('li').addClass("active");
 </script>

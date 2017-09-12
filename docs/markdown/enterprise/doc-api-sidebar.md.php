@@ -24,11 +24,18 @@
         </ul>
     </li>
     <li>
-        <a href="#alm-rbac">Alm-Rbac</a>
+        <a href="#stacks">Stacks</a>
         <ul>
-            <li><a href="#rbac-create-role">Create Role Define</a></li>
-            <li><a href="#rbac-update-role">Update Role Define</a></li>
-            <li><a href="#rbac-delete-role">Delete Role Define</a></li>
+            <li><a href="#stack-list">List Stacks</a></li>
+            <li><a href="#stack-describe">Describe Stack</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#rbac">RBAC</a>
+        <ul>
+            <li><a href="#rbac-create-role">Create Role</a></li>
+            <li><a href="#rbac-update-role">Update Role</a></li>
+            <li><a href="#rbac-delete-role">Delete Role</a></li>
             <li><a href="#rbac-list-role">Describe Roles</a></li>
             <li><a href="#rbac-describe-userrole-by-username">Describe UserRole Detail</a></li>
             <li><a href="#rbac-create-userrole">Create User Role</a></li>
@@ -38,13 +45,6 @@
             <li><a href="#rbac-describe-role-template">Describe Role Templates</a></li>
             <li><a href="#rbac-role-format">Role Format Sample</a></li>
             <li><a href="#rbac-error-response">Error or Filtered Response</a></li>
-        </ul>
-    </li>
-    <li>
-        <a href="#stacks">Stacks</a>
-        <ul>
-            <li><a href="#stack-list">List Stacks</a></li>
-            <li><a href="#stack-describe">Describe Stack</a></li>
         </ul>
     </li>
     <li>

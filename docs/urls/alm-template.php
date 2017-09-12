@@ -1,7 +1,7 @@
 <?php
 
 /**
-* @path https://docs.mobingi.com/api/v3/...
+* @path https://learn.mobingi.com/alm-template/...
 *
 */
 
