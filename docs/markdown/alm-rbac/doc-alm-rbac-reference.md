@@ -76,37 +76,8 @@ When your master account is first set up, a default admin role is automatically 
         "Statement":[
             {
                 "Effect": "Deny",
-                "Action": "vendor:describeVendors",
-                "Resource": [
-                    "mrn:vendor:alicloud",
-                    "mrn:vendor:k5"
-                ]
-            },
-            {
-                "Effect": "Deny",
                 "Action": [
-                    "cred:describeCredentials::alicloud",
-                    "cred:describeCredentials::k5"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "userrole:describeUserRole"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "template:createAlmTemplate",
-                    "template:updateAlmTemplate",
-                    "github:createGithubLock"
+                    "template:createAlmTemplate"
                 ],
                 "Resource": [
                     "*"
@@ -122,7 +93,6 @@ When your master account is first set up, a default admin role is automatically 
                 ]
             },
         ]
-
     }
     ```
 
@@ -132,24 +102,6 @@ When your master account is first set up, a default admin role is automatically 
     {
         "version": "2017-05-05"
         "Statement":[
-            {
-                "Effect": "Deny",
-                "Action": "vendor:describeVendors",
-                "Resource": [
-                    "mrn:vendor:alicloud",
-                    "mrn:vendor:k5"
-                ]
-            },
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "cred:describeCredentials::alicloud",
-                    "cred:describeCredentials::k5"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
             {
                 "Effect": "Deny",
                 "Action": [
@@ -191,8 +143,7 @@ When your master account is first set up, a default admin role is automatically 
                 "Resource": [
                     "*"
                 ]
-            },
+            }
         ]
-
     }
     ```
