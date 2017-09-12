@@ -76,7 +76,7 @@ Use "mobingi-cli stack [command] --help" for more information about a command.
 
 ### Global flags {#global-flags}
 
-Global flags are all optional and can be applied to any subcommand. You can use <kbd>=</kbd> or whitespace when assigning a value to the flag. This applies to any command's local flags as well. For example, you can login using any of these commands:
+Global flags are all optional and can be applied to any subcommand. You can use '=' or whitespace when assigning a value to the flag. This applies to any command's local flags as well. For example, you can login using any of these commands:
 
 ```bash
 # using the '=' for assignment
