@@ -712,6 +712,25 @@ $ curl -H "Authorization: Bearer token" \
       https://registry.mobingi.com/v2/foo/container/manifests/latest
 ```
 
+### command reset {#reset}
+
+Reset all configuration values to default.
+
+Example:
+
+```bash
+$ mobingi-cli reset
+$ cat ~/.mobingi-cli/config.yml
+access_token: ""
+api_url: https://api.mobingi.com
+registry_url: https://registry.mobingi.com
+api_version: v3
+indent: 2
+timeout: 120
+verbose: false
+debug: false
+```
+
 ### command: version {#version}
 
 Prints the cli version.
