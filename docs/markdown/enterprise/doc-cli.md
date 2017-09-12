@@ -489,6 +489,26 @@ $ mobingi-cli rbac create --name testrole --scope /home/user/sample.json
 }
 ```
 
+### command: rbac attach {#rbac-attach}
+
+Attach a role to a user.
+
+**Flags**
+
+* `--user` - The subuser name to attach the role to.
+* `--role-id` - The role id to attach.
+
+Example:
+
+```bash
+$ mobingi-cli rbac attach --user subuser --role-id morole-58c2297d25645-BtXGMSRsI
+[mobingi-cli]: info: 200 OK
+{
+  "status": "success",
+  "user_role_id": "mour-subuser-icxUQ91SO"
+}
+```
+
 ### command: rbac delete {#rbac-delete}
 
 Delete a role.
