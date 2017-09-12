@@ -23,6 +23,12 @@
         </ul>
     </li>
     <li>
+        <a href="#rbac-describe">rbac</a>
+        <ul>
+            <li><a href="#rbac-describe">describe</a></li>
+        </ul>
+    </li>
+    <li>
         <a href="#svrconf-show">svrconf</a>
         <ul>
             <li><a href="#svrconf-show">show</a></li>
