@@ -106,24 +106,29 @@ Log in to Mobingi.
 
 * `--client-id, -i` - Your Mobingi client id.
 * `--client-secret, -s` - Your Mobingi client secret.
-* `--grant-type, -g` - Grant type. Always set to "client_credentials".
-* `--username, -u` - Username. Not supported as of now.
-* `--password, -p` - Password. Not supported as of now.
+* `--grant-type, -g` - Grant type. Default value is "password".
+* `--username, -u` - Username. You can use your main (master) account to login as root. Or you can use any subuser name.
+* `--password, -p` - Password.
 * `--endpoints` - Setup endpoints after login. If you have a Mobingi dev or qa account(s), you can set this to _dev_ or _qa_.
 
 This is the first command you need to run to use the other commands. To login, run
 
 ```bash
-$ mobingi-cli login --client-id=foo --client-secret=bar
+# login as root
+$ mobingi-cli login --client-id=foo --client-secret=bar --username=master@mobingi.com --password=1234
+[mobingi-cli]: info: Login successful.
+
+# login as subuser
+$ mobingi-cli login --client-id=foo --client-secret=bar --username=subuser01 --password=pass
 [mobingi-cli]: info: Login successful.
 ```
 
-This will create a file _config.yml_ under _$HOME/.mobingi-cli/_ folder that will contain the access token to be used for your subsequent commands, alongside other configuration values.
+If login is successful, cli will create a file _config.yml_ under _$HOME/.mobingi-cli/_ folder that will contain the configuration values set during login. Cli will also attempt to store your credentials in the platform's native store (i.e. Keychain for OSX), if available. If not successful, the retrieved token during login will be saved in the _config.yml_ file. This token has an expiration so you will probably need to relogin at some point when this happens.
 
 By default, all endpoints are set to Mobingi production during login. You can use the --endpoints flag to target alternative endpoints. For example, if you have a Mobingi dev account, you can use the following login command:
 
 ```bash
-$ mobingi-cli login --client-id foo --client-secret bar --endpoints dev
+$ mobingi-cli login --client-id foo --client-secret bar --username subuser01 --password 1234 --endpoints dev
 [mobingi-cli]: info: Login successful.
 ```
 
