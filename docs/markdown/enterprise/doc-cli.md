@@ -429,6 +429,73 @@ If --user is not provided, this command will list all defined roles.
 
 * `--user` - Subuser name. Optional.
 
+### command: rbac sample {#rbac-sample}
+
+Print a sample role.
+
+This is useful when creating roles and you want something to start with. You can use this command to write to a file (using the --out global flag), edit the contents and use the file for role creation.
+
+Example:
+
+```bash
+$ mobingi-cli rbac sample --out=/home/user/sample.json
+{
+  "Version": "2017-05-05",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": [
+        "stack:describeStacks"
+      ],
+      "Resource": [
+        "mrn:alm:stack:mo-xxxxxxx"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    }
+  ]
+}
+[mobingi-cli]: info: sample written to /home/user/sample.json
+```
+
+### command: rbac create {#rbac-create}
+
+Define a role.
+
+**Flags**
+
+* `--type` - Create type. Valid values are _role_ and _user_. Default is _role_.
+* `--name` - Role name when --type is _role_.
+* `--scope` - Path to role file.
+* `--allow-all` - When set to true, --scope is ignored, the resulting role will allow all actions to all resources.
+
+Example:
+
+```bash
+# use the sample generated in the previous command
+$ mobingi-cli rbac create --name testrole --scope /home/user/sample.json
+[mobingi-cli]: info: 200 OK
+{
+  "status":"success",
+  "role_id":"morole-58c2297d25645-F6HUEJG57"
+}
+```
+
+### command: rbac delete {#rbac-delete}
+
+Delete a role.
+
+**Flags**
+
+* `--role-id` - The role id to delete. You can get the role id from the _describe_ command.
+
 ### command: svrconf show {#svrconf-show}
 
 Show a stack's serverconfig (server configuration) contents. Starting from v3, server config options are replaced by ALM templates. The following commands are still valid for v2.
