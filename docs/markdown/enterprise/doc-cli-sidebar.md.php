@@ -55,5 +55,6 @@
             <li><a href="#registry-get-token">token</a></li>
         </ul>
     </li>
+    <li><a href="#reset">reset</a></li>
     <li><a href="#version">version</a></li>
 </ul>
