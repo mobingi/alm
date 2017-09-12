@@ -419,6 +419,16 @@ $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
 }
 ```
 
+### command: rbac describe {#rbac-describe}
+
+List all defined role(s) or per-user role(s).
+
+If --user is not provided, this command will list all defined roles.
+
+**Flags**
+
+* `--user` - Subuser name. Optional.
+
 ### command: svrconf show {#svrconf-show}
 
 Show a stack's serverconfig (server configuration) contents. Starting from v3, server config options are replaced by ALM templates. The following commands are still valid for v2.
