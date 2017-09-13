@@ -366,6 +366,10 @@ Connection to 54.238.234.202 closed.
 $ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --url-only
 ```
 
+**Known issues**
+
+* When an ssh connection is opened using a browser and the browser/tab is closed without typing <kbd>exit</kbd>, any succeeding attempt to open an ssh connection to the same instance will potentially fail. As a workaround, try waiting for a little bit before trying to reopen a new connection.
+
 ### command: stack pem {#stack-pem}
 
 Print the stack's pem file, if available. Useful if you want to connect to your instances using other tools.
