@@ -349,7 +349,7 @@ Try to establish an ssh connection to your instances. For now, this only works o
 * `--id` - The stack id the instance belongs to.
 * `--ip` - The IP address of the instance you want to connect.
 * `--user` - The ssh username. By default, this is set to _ec2-user_.
-* `--url-only` - Print the url only. Cli will attempt to open the url using the user's default browser.
+* `--browser` - Try to open the url using the user's default browser.
 
 Examples:
 
@@ -363,7 +363,7 @@ logout
 Connection to 54.238.234.202 closed.
 
 # open an ssh connection using default browser
-$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --url-only
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --browser
 ```
 
 **Known issues**
