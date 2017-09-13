@@ -27,9 +27,9 @@
         </ul>
     </li>
     <li>
-        <a href="<?php echo $siteUrl; ?>alm-agent/plugins">Plugins</a>
+        <a href="<?php echo $siteUrl; ?>alm-agent/addons">Add-ons</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-agent/plugins#aws">AWS</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/addons#aws">AWS</a></li>
         </ul>
     </li>
     <li>

@@ -8,7 +8,7 @@ require __DIR__.'/../ParsedownExtraPlugin.php';
 // $Parsedown = new Parsedown();
 $parser = new ParsedownExtraPlugin();
 
-$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-agent/plugins.md');
+$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-agent/addons.md');
 
 
 ?>
@@ -28,7 +28,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-agent/p
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1>Plugins</h1>
+        <h1>Add-ons</h1>
     </header>
 
     <?php echo $parser->text($content); ?>
@@ -39,5 +39,5 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-agent/p
 <?php include_once __DIR__.'/../footer.php'; ?>
 <script type="text/javascript">
 $("table").addClass("table table-bordered table-striped");
-$("a[href='<?php echo $siteUrl; ?>alm-agent/plugins']").parent('li').addClass("active");
+$("a[href='<?php echo $siteUrl; ?>alm-agent/addons']").parent('li').addClass("active");
 </script>

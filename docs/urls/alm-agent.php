@@ -39,10 +39,10 @@ $app->group('/alm-agent', function () {
 
     });
 
-    $this->get('/plugins', function ($request, $response, $args) {
+    $this->get('/addons', function ($request, $response, $args) {
 
-        return $this->view->render($response, 'alm-agent/plugins.php', [
-            'title' => 'Plugins - ALM agent'
+        return $this->view->render($response, 'alm-agent/addons.php', [
+            'title' => 'Add-ons - ALM agent'
         ]);
 
     });
