@@ -340,9 +340,35 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 }
 ```
 
+### command: stack ssh {#stack-ssh}
+
+Try to establish an ssh connection to your instances. For now, this only works on stacks created using API version 2.
+
+**Flags**
+
+* `--id` - The stack id the instance belongs to.
+* `--ip` - The IP address of the instance you want to connect.
+* `--user` - The ssh username. By default, this is set to _ec2-user_.
+* `--url-only` - Print the url only. Cli will attempt to open the url using the user's default browser.
+
+Examples:
+
+```bash
+# open an ssh connection via cli
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202
+[ec2-user@ip-10-0-1-96 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-10-0-1-96 ~]$ exit
+logout
+Connection to 54.238.234.202 closed.
+
+# open an ssh connection using default browser
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --url-only
+```
+
 ### command: stack pem {#stack-pem}
 
-Print the stack's pem file, if available.
+Print the stack's pem file, if available. Useful if you want to connect to your instances using other tools.
 
 **Flags**
 
