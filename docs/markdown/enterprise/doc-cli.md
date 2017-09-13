@@ -121,6 +121,11 @@ $ mobingi-cli login --client-id=foo --client-secret=bar --username=master@mobing
 # login as subuser
 $ mobingi-cli login --client-id=foo --client-secret=bar --username=subuser01 --password=pass
 [mobingi-cli]: info: Login successful.
+
+# if you don't want to show your password, remove the --password flag
+$ mobingi-cli login --client-id=foo --client-secret=bar --username=subuser01
+Password: xxxx
+[mobingi-cli]: info: Login successful.
 ```
 
 If login is successful, cli will create a file _config.yml_ under _$HOME/.mobingi-cli/_ folder that will contain the configuration values set during login. Cli will also attempt to store your credentials in the platform's native store (i.e. Keychain for OSX), if available. If not successful, the retrieved token during login will be saved in the _config.yml_ file. This token has an expiration so you will probably need to relogin at some point when this happens.
