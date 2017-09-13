@@ -28,4 +28,12 @@
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent/plugins">Plugins</a>
+        <ul>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/plugins#aws">AWS</a></li>
+        </ul>
     </li>
+    <li>
+        <a href="<?php echo $siteUrl; ?>alm-agent/contributing">Contributing</a>
+    </li>
+
+</ul>

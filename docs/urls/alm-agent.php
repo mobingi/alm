@@ -42,7 +42,15 @@ $app->group('/alm-agent', function () {
     $this->get('/plugins', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/plugins.php', [
-            'title' => 'plugins - ALM agent'
+            'title' => 'Plugins - ALM agent'
+        ]);
+
+    });
+
+    $this->get('/contributing', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'alm-agent/contributing.php', [
+            'title' => 'Contributing - ALM agent'
         ]);
 
     });
