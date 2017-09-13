@@ -364,6 +364,7 @@ Connection to 54.238.234.202 closed.
 
 # open an ssh connection using default browser
 $ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --browser
+[mobingi-cli]: info: open link with a browser (if not opened automatically): https://sesha3.mobingi.com:port/somelink/
 ```
 
 **Known issues**
