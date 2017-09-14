@@ -12,8 +12,9 @@
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent/getting-started">Getting Started</a>
         <ul>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#prerequisites">Prerequisites</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#install-alm-agent">Install Alm-agent</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#run-the-alm-agent">Run the Alm-agent</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#verifying-the-installation">Verifying the Installation</a></li>
         </ul>
     </li>
     <li>

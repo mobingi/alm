@@ -16,5 +16,5 @@ The Alm-agent is a tool for managing container and continuious deployment for yo
 - Health Checking
   - Alm-agent checks not only the instance status but also the container status.
 - Multi Cloud
-  - Alm-agent can run at any Cloud Service. Amazon Web Services, Alibaba Cloud, Fujitsu K5 etc...
+  - Alm-agent can run at any Cloud Service. Amazon Web Services, Alibaba Cloud, Fujitsu K5, and More!
 
