@@ -19,6 +19,14 @@
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent/commands">Commands</a>
+        <ul>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#global-options">Global Options</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#register">Register</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#ensure">Ensure</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#stop">Stop</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#noop">Noop</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/agent#help">Help</a></li>
+        </ul>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent/agent">Agent</a>
