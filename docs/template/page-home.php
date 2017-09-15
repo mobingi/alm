@@ -75,6 +75,17 @@ include_once 'header.php';
         </li>
 
         <li>
+          <h5>Mobingi Cli Reference</h5>
+          <a href="<?php echo $siteUrl; ?>cli#overview">Overview</a>
+          <a href="<?php echo $siteUrl; ?>cli#global-flags">Global flags</a>
+          <a href="<?php echo $siteUrl; ?>cli#stack-list">Stack</a>
+          <a href="<?php echo $siteUrl; ?>cli#template-versions">ALM-template</a>
+          <a href="<?php echo $siteUrl; ?>cli#rbac-describe">RBAC</a>
+          <a href="<?php echo $siteUrl; ?>cli#registry-list-catalog">Registry</a>
+          <a href="<?php echo $siteUrl; ?>cli#version">Versions</a>
+        </li>
+
+        <li>
           <h5>Mobingi ALM-agent</h5>
           <a href="<?php echo $siteUrl; ?>alm-agent">Overview</a>
           <a href="<?php echo $siteUrl; ?>alm-agent/getting-started">Getting Started</a>

@@ -419,6 +419,8 @@ jbyW_PxMAauQmOS31dUhij4KIqHAtqW2     true       Wed, 30 Aug 2017 02:32:43 UTC   
 ### command: template compare {#template-compare}
 
 Compare two template versions.
+# EE {.label .label-primary}
+
 
 You can compare template versions from the same stack, versions from different stacks, or a local template file to a specific template version.
 

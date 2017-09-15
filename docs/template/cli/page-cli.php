@@ -8,7 +8,7 @@ require __DIR__.'/../ParsedownExtraPlugin.php';
 // $Parsedown = new Parsedown();
 $parser = new ParsedownExtraPlugin();
 
-$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/doc-cli.md');
+$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/cli/doc-cli.md');
 
 
 ?>
@@ -18,7 +18,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/
 
     <!-- Sidebar -->
     <aside class="col-sm-2 sidebar">
-        <?php include_once realpath(__DIR__ . '/../..').'/markdown/enterprise/doc-cli-sidebar.md.php'; ?>
+        <?php include_once realpath(__DIR__ . '/../..').'/markdown/cli/doc-cli-sidebar.md.php'; ?>
     </aside>
     <!-- END Sidebar -->
 
