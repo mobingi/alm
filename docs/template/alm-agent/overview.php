@@ -28,10 +28,10 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-agent/o
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1>Overview - Mobingi Alm-agent</h1>
+        <h1>Overview - Mobingi ALM-agent</h1>
     </header>
     <div class="alert alert-success">
-        Mobingi Alm-agent is an open source software, you can find the source code at <i><a href="https://github.com/mobingi/alm-agent">https://github.com/mobingi/alm-agent</a></i>
+        Mobingi ALM-agent is an open source software, you can find the source code at <i><a href="https://github.com/mobingi/alm-agent">https://github.com/mobingi/alm-agent</a></i>
     </div>
 
     <?php echo $parser->text($content); ?>

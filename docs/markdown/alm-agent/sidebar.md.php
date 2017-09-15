@@ -5,15 +5,15 @@
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent">Overview</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-agent#what-is-alm-agent">What is Alm-agent?</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-agent#characteristics-of-alm-agent">Characteristics of Alm-agent</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent#what-is-alm-agent">What is ALM-agent?</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent#characteristics-of-alm-agent">Characteristics of ALM-agent</a></li>
         </ul>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-agent/getting-started">Getting Started</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#prerequisites">Prerequisites</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#install-alm-agent">Install Alm-agent</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#install-alm-agent">Install ALM-agent</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-agent/getting-started#verifying-the-installation">Verifying the Installation</a></li>
         </ul>
     </li>

@@ -1,5 +1,5 @@
 ### Prerequisites {#prerequisites}
-Alm-agent includes the following prerequisites.
+ALM-agent includes the following prerequisites.
 
 |Requirement|Description|
 | --------- | --------- |
@@ -10,7 +10,7 @@ Alm-agent includes the following prerequisites.
 
 
 ### Install ALM agent {#install-alm-agent}
-There are two ways to installing Alm-agent:
+There are two ways to installing ALM-agent:
 
 1. Using a precompiled binary
 2. Installing from source
@@ -19,9 +19,9 @@ Downloading a precompiled binary is easist.
 
 
 #### _**Using a precompiled binarys**_
-Alm-agent is distributed as a binary package. To install Alm-agent, you can download it from this [link](https://download.labs.mobingi.com/alm-agent/master/current/alm-agent.tgz).
+ALM-agent is distributed as a binary package. To install ALM-agent, you can download it from this [link](https://download.labs.mobingi.com/alm-agent/master/current/alm-agent.tgz).
 
-Alm-agent is packages as a tgz archive. After downloading Alm-agent, untgz the package. Alm-agent runs as a single binary named `alm-agent`.
+ALM-agent is packages as a tgz archive. After downloading ALM-agent, untgz the package. ALM-agent runs as a single binary named `alm-agent`.
 
 ```bash
 $ mkdir -p /opt/mobingi/alm-agent /opt/mobingi/etc
@@ -44,7 +44,7 @@ vagrant $ make build
 ```
 
 ### Verifying the Installation {#verifying-the-installation}
-After installing Alm-agent, verify the installation worked and checking that `almagent` is available.
+After installing ALM-agent, verify the installation worked and checking that `almagent` is available.
 
 By executing `alm-agent` you should see the help output similar to this:
 

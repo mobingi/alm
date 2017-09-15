@@ -10,7 +10,7 @@ $app->group('/alm-agent', function () {
     $this->get('', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/overview.php', [
-            'title' => 'Overview - Alm-agent'
+            'title' => 'Overview - ALM-agent'
         ]);
 
     });
@@ -18,7 +18,7 @@ $app->group('/alm-agent', function () {
     $this->get('/getting-started', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/getting-started.php', [
-            'title' => 'Getting Started - Alm-agent'
+            'title' => 'Getting Started - ALM-agent'
         ]);
 
     });
@@ -26,7 +26,7 @@ $app->group('/alm-agent', function () {
     $this->get('/commands', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/commands.php', [
-            'title' => 'Commands - Alm-agent'
+            'title' => 'Commands - ALM-agent'
         ]);
 
     });
@@ -34,7 +34,7 @@ $app->group('/alm-agent', function () {
     $this->get('/agent', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/agent.php', [
-            'title' => 'Agent - Alm-agent'
+            'title' => 'Agent - ALM-agent'
         ]);
 
     });
@@ -42,7 +42,7 @@ $app->group('/alm-agent', function () {
     $this->get('/addons', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/addons.php', [
-            'title' => 'Add-ons - Alm-agent'
+            'title' => 'Add-ons - ALM-agent'
         ]);
 
     });
@@ -50,7 +50,7 @@ $app->group('/alm-agent', function () {
     $this->get('/contributing', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-agent/contributing.php', [
-            'title' => 'Contributing - Alm-agent'
+            'title' => 'Contributing - ALM-agent'
         ]);
 
     });
