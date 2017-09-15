@@ -92,7 +92,7 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 
 				<!-- Top navbar -->
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
-					<ul class="nav navbar-nav navbar-left">
+					<ul class="nav navbar-nav navbar-left" id="entdoc" style="display:none;">
                         <li><a href="<?php $siteUrl; ?>/enterprise"><button type="button" class="btn btn-xs btn-dark">Enterprise Version</button></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

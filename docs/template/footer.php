@@ -29,7 +29,7 @@
 
     <!-- Scripts -->
     <script src="<?php echo $domain; ?>assets/js/theDocs.all.min.js"></script>
-    <script src="<?php echo $domain; ?>assets/js/custom.js"></script>
+    <script src="<?php echo $domain; ?>assets/js/custom.js?vs"></script>
 
   </body>
 </html>
