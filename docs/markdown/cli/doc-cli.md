@@ -616,7 +616,7 @@ aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 
 ### command: registry catalog {#registry-list-catalog}
 
-List images under supplied username.
+List images under logged in username.
 
 This command is inherently slow.
 
