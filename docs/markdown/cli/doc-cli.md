@@ -618,6 +618,10 @@ aws        xxxxxxxxxxxxxxxxxxxx     user        Wed, 05 Jul 2017 07:52:14 UTC
 
 List images under supplied username.
 
+This command is inherently slow.
+
+Registry related commands will use the login user/password credentials, if native store is supported. Otherwise, you will have to provide the user/password credentials using the --username and --password flags.
+
 **Flags**
 
 * `--username` - Username (Mobingi account subuser)
@@ -625,12 +629,18 @@ List images under supplied username.
 * `--service` - Authentication service. By default, this is set to "Mobingi Docker Registry".
 * `--scope` - Authentication scope. See https://docs.docker.com/registry/spec/auth/scope/ for more information on scopes.
 
-Example:
+Examples:
 
 ```bash
-# this command is inherently slow
-$ mobingi-cli registry catalog --username=subuser1 --password=xxxxxx --apiver=v2
-subuser1/foo
+# user/password credentials are stored in native store
+$ mobingi-cli registry catalog
+[mobingi-cli]: info: Catalog list for user: subuser01
+subuser01/foo
+
+# no native store support
+$ mobingi-cli registry catalog --username=subuser01 --password=xxxxxx
+[mobingi-cli]: info: Catalog list for user: subuser01
+subuser01/foo
 ```
 
 ### command: registry tags {#registry-list-tags}
@@ -648,10 +658,10 @@ List image tags.
 Example:
 
 ```bash
-$ mobingi-cli registry tags --username=subuser1 --password=xxxxxx --image foo --apiver=v2
-IMAGE                  TAG
-subuser1/foo           latest
-subuser1/foo           2.1
+$ mobingi-cli registry tags --image foo
+IMAGE                   TAG
+subuser01/foo           latest
+subuser01/foo           2.1
 ```
 
 ### command: registry manifest {#registry-tag-manifest}
