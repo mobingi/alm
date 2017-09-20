@@ -679,11 +679,10 @@ Display a tag's manifest.
 Example:
 
 ```bash
-$ mobingi-cli registry manifest --username subuser1 --password xxxxxx \
-      --image foo:latest --apiver v2
+$ mobingi-cli registry manifest --image foo:latest
 {
    "schemaVersion": 1,
-   "name": "subuser1/foo",
+   "name": "subuser01/foo",
    "tag": "latest",
    "architecture": "amd64",
    "fsLayers": [
