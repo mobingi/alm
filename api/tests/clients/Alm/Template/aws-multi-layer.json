@@ -1,0 +1,127 @@
+{
+  "version": "2017-03-03",
+  "label": "version label",
+  "description": "This template creates a Stack on AWS. It deploys a single web server layer, an auto-scaling group of servers with ELB web servers layer, and a bastion server for ssh access.",
+  "vendor": {
+    "aws": {
+      "cred": "AKIAJ2*********2DZLA",
+      "secret": "yoWS****************DTo5",
+      "region": "ap-northeast-2"
+    }
+  },
+  "configurations": [
+    {
+      "role": "web",
+      "flag": "Web01",
+      "provision": {
+        "image": "${computed}",
+        "instance_type": "t2.small",
+        "instance_count": 1,
+        "keypair": false,
+        "volume_type": "${computed}",
+        "volume_size": 30,
+        "vpc_id": "${computed}",
+        "availability_zone": "ap-northeast-2a",
+        "subnet": {
+          "cidr": "10.0.1.0/24",
+          "public": true,
+          "auto_assign_public_ip": true
+        },
+        "network_acl": [
+          {
+            "RuleNumber": 100,
+            "Protocol": "-1",
+            "RuleAction": "allow",
+            "Egress": true,
+            "CidrBlock": "0.0.0.0/0"
+          },
+          {
+            "RuleNumber": 100,
+            "Protocol": "-1",
+            "RuleAction": "allow",
+            "Egress": false,
+            "CidrBlock": "0.0.0.0/0"
+          }
+        ],
+        "security_group": {
+          "ingress": [
+            {
+              "CidrIp": "0.0.0.0/0",
+              "FromPort": 80,
+              "IpProtocol": "tcp",
+              "ToPort": 80
+            },
+            {
+              "CidrIp": "0.0.0.0/0",
+              "FromPort": 443,
+              "IpProtocol": "tcp",
+              "ToPort": 443
+            },
+            {
+              "CidrIp": "0.0.0.0/0",
+              "FromPort": 4243,
+              "IpProtocol": "tcp",
+              "ToPort": 4243
+            },
+            {
+              "CidrIp": "0.0.0.0/0",
+              "FromPort": 22,
+              "IpProtocol": "tcp",
+              "ToPort": 22
+            }
+          ],
+          "egress": [
+            {
+              "CidrIp": "0.0.0.0/0",
+              "FromPort": 0,
+              "IpProtocol": "-1",
+              "ToPort": 65535
+            }
+          ]
+        }
+      },
+      "container": {
+        "updated": "${computed}",
+        "image": "registry.mobingi.com/mobingi/ubuntu-apache2-php5",
+        "codeDir": "/var/www/html",
+        "gitRepo": "https://github.com/sample/Web01.git",
+        "gitReference": "master",
+        "gitPrivateKey": "-----BEGIN PRIVATE ...\n-----END PRIVATE KEY-----\n",
+        "environmentVariables": {
+          "DB_USERNAME": "thompson",
+          "DB_PSSSWORD": "7zk3FBP37",
+          "Stage": "_development",
+          "my_hash": "D3nz!lwA$h1ngt0n"
+        },
+        "users": [
+          {
+            "name": "Hashimoto",
+            "publicKey": "ssh-rsa .... "
+          },
+          {
+            "name": "Wayland",
+            "publicKey": "ssh-rsa .... "
+          },
+          {
+            "name": "Peter-iMac",
+            "publicKey": "ssh-rsa .... "
+          }
+        ],
+        "addon": [
+          {
+            "name": "mackerel",
+            "apiKey": "dddd"
+          },
+          {
+            "name": "datadog",
+            "apiKey": "dddd"
+          },
+          {
+            "name": "newrelic",
+            "apiKey": "dddd"
+          }
+        ]
+      }
+    },
+  ]
+}

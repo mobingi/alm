@@ -1,2 +1,4 @@
 .DS_Store
 composer.lock
+api/tests/phpunit.xml
+api/vendor
