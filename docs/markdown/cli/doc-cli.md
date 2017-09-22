@@ -43,23 +43,25 @@ To get help for any command, pass the -h flag to the command. For example, to se
 
 ```bash
 $ mobingi-cli stack -h
-Manage your infrastructure/application stack.
+Manage your infrastructure/application stack.                    
 
-Usage:
-  mobingi-cli stack [flags]
-  mobingi-cli stack [command]
+Usage:                                                           
+  mobingi-cli stack [flags]                                      
+  mobingi-cli stack [command]                                    
 
-Available Commands:
-  create      create a stack
-  delete      delete a stack
-  describe    display stack details
-  list        list all stacks
-  update      update a stack
+Available Commands:                                              
+  create      create a stack                                     
+  delete      delete a stack                                     
+  describe    display stack details                              
+  list        list all stacks                                    
+  pem         print stack pem file                               
+  ssh         ssh to your instance                               
+  update      update a stack                                     
 
-Flags:
-  -h, --help   help for stack
+Flags:                                                           
+  -h, --help   help for stack                                    
 
-Global Flags:
+Global Flags:                                                    
       --apiver string   API version (default "v3")
       --debug           debug mode when error occurs
   -f, --fmt string      output format (values depends on command)
@@ -82,6 +84,7 @@ Global flags are all optional and can be applied to any subcommand. You can use 
 # using the '=' for assignment
 $ mobingi-cli login --client-id=foo --client-secret=bar
 [mobingi-cli]: info: Login successful.
+
 # using whitespace for assignment
 $ mobingi-cli login --client-id foo --client-secret bar
 [mobingi-cli]: info: Login successful.
