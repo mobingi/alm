@@ -1,0 +1,14 @@
+Options -MultiViews
+RewriteEngine on
+
+# exceptions for localhost
+RewriteCond %{HTTP_HOST}  \.
+RewriteCond  %{HTTP_HOST} !\.com$ [OR]
+
+# works with Elastic Load Balancer
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule !/status https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
