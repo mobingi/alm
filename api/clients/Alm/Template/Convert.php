@@ -95,21 +95,6 @@ class Convert extends ClientBase {
                             "ASELB"
                         ], $configuration, $configuration->flag, $template_id, $cred, $extra);
 
-                        if(isset($configuration->provision->auto_scaling->spot_range)){
-                            //add Spot Optimizer support
-                            //@todo: change min,max,spotMin,spotMax and add to CFTemplateParameters
-                            // $configuration->provision->auto_scaling->spotMin = "1";
-                            // $configuration->provision->auto_scaling->spotMax = "2";
-                            $this->appendCFTemplateParameters($format, [
-                                "SpotPrice",
-                                "SpotInstanceMinSize",
-                                "SpotInstanceMaxSize"
-                            ], $configuration->flag);
-                            $this->appendCFTemplateResources($format, [
-                                "ASSpotAutoScalingGroup",
-                                "ASSpotLaunchConfiguration"
-                            ], $configuration, $configuration->flag, $template_id, $cred, $extra);
-                        }
                     }else{
                         //add EC2 Single Instance(s) CF Resources section
                         $this->appendCFTemplateResources($format, [
