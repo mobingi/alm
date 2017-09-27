@@ -378,7 +378,7 @@ Try to establish an ssh connection to your instances. For now, this only works o
 * `--id` - The stack id the instance belongs to.
 * `--ip` - The IP address of the instance you want to connect.
 * `--flag` - The configuration flag.
-* `--user` - The ssh username. By default, this is set to _ec2-user_.
+* `--user` - The ssh username. By default, this is set to _ec2-user_. Set to _root_ when vendor is Alibaba Cloud.
 * `--browser` - Try to open the url using the user's default browser.
 
 Examples:
