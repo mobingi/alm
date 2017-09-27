@@ -377,6 +377,7 @@ Try to establish an ssh connection to your instances. For now, this only works o
 
 * `--id` - The stack id the instance belongs to.
 * `--ip` - The IP address of the instance you want to connect.
+* `--flag` - The configuration flag.
 * `--user` - The ssh username. By default, this is set to _ec2-user_.
 * `--browser` - Try to open the url using the user's default browser.
 
@@ -384,7 +385,7 @@ Examples:
 
 ```bash
 # open an ssh connection via cli
-$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --flag web01
 [ec2-user@ip-10-0-1-96 ~]$ pwd
 /home/ec2-user
 [ec2-user@ip-10-0-1-96 ~]$ exit
@@ -392,7 +393,7 @@ logout
 Connection to 54.238.234.202 closed.
 
 # open an ssh connection using default browser
-$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --browser
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --flag web01 --browser
 [mobingi-cli]: info: open link with a browser (if not opened automatically): \
 https://sesha3.mobingi.com:port/some-random-link/
 ```
@@ -408,11 +409,12 @@ Print the stack's pem file, if available. Useful if you want to connect to your 
 **Flags**
 
 * `--id` - The stack id to query.
+* `--flag` - The configuration flag.
 
 Example:
 
 ```bash
-$ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk
+$ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk --flag web01
 [mobingi-cli]: info: payload:
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAiy5kdqROYbjke0BE8rcT7qUtSKyaaIgqiJLYxlduov2wvnRHSo5O8m67v8UD
