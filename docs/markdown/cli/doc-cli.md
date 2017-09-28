@@ -635,7 +635,7 @@ List vendor credentials.
 
 **Flags**
 
-* `--vendor` - The vendor to list credentials. For now, the only supported vendor is "aws".
+* `--vendor` - The vendor to list credentials. Valid values: _aws_, _alicloud_. Default value is _aws_.
 
 Examples:
 
