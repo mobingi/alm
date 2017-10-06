@@ -4,11 +4,11 @@ use Mobingi\Alm\Template\Traits\TemplateTrait;
 use Mobingi\Alm\Stack\Traits\StackTrait;
 use Mobingi\Alm\Template\Traits\WebHookTrait;
 use Mobingi\Core\ClientBase;
-use Mobingi\Core\Utility\Common;
 use Mobingi\Core\Dao\Table;
+use Mobingi\Core\Enum\Vendor;
+use Mobingi\Core\Utility\Common;
 use Mobingi\Exception\FailtureStackException;
 use Mobingi\Exception\TemplateException;
-use \DateTime;
 use \Exception;
 /**
  * Template Client
@@ -76,11 +76,10 @@ class Template extends ClientBase {
 
     /**
      * Save the saved ALM template, and create new stack
-     * @param int $options Json encode option
      * @throw Mobingi\Exception\FailtureStackException
      * @return array Status of template stack creation
      */
-    public function saveAlmTemplate($options = JSON_UNESCAPED_SLASHES ) {
+    public function saveAlmTemplate() {
         // Validate ALM Tempalte
         $template = $this->getRequestObject();
         $this->validator->validateAlmTemplate($template);
@@ -88,10 +87,9 @@ class Template extends ClientBase {
         // Save ALM Template
         $stack_id = $this->generateAlmTemplateId();
         if (!empty($this->getStackByStackID($stack_id))) {
-            throw new TemplateException(MobingiApiException::DUPLICATE_ALM_TEMPLATE_ID,"Creating stack failed due to duplicate of stack_id value.");
+            throw new TemplateException(TemplateException::DUPLICATE_ALM_TEMPLATE_ID, "Creating stack failed due to duplicate of stack_id value.");
         }
-        $time = new DateTime;
-        $create_time = $time->format(DateTime::ATOM);
+        $create_time = Common::getDateTime();
         extract(Common::getInfoByToken());
         $item = ['nickname' => Common::generateNickname(), 'configuration' => $template] + compact('stack_id', 'user_id', 'create_time');
         Table::STACK()->getDao()->createItem($item);
@@ -113,26 +111,23 @@ class Template extends ClientBase {
      * Update the saved ALM template to storage or rollback old version as latest
      * @note vendor section will be ignored when performing this call
      * @param string $stack_id  targetId in url parameter
-     * @param int $options Json encode option
      * @return result and created versionId
      */
-    public function updateAlmTemplate($stack_id, $options = JSON_UNESCAPED_SLASHES ) {
-        // Validate ALM Tempalte
+    public function updateAlmTemplate($stack_id) {
         $template = $this->getRequestObject();
         $this->validator->validateAlmTemplate($template);
-
-        // Update ALM Template
-        $time = new DateTime;
-        $update_time = $time->format(DateTime::ATOM);
-        $configuration = $template;
-        Table::STACK()->getDao()->updateItem($stack_id, compact('configuration', 'update_time'));
-
-        // Apply ALM Template
         $templateBody = $this->applyAlmTemplate($template, $stack_id);
         $vendor = $this->getVendor($template);
         $this->stack->changeStack($stack_id, $vendor, (array)($template->vendor->$vendor), $templateBody);
+        Table::STACK()->getDao()->updateItem($stack_id, ['configuration' => $template, 'update_time' => Common::getDateTime()]);
         return ['status' => 'success'] + compact('stack_id');
     }
+
+
+    const CONVERT_METHOD = [
+        Vendor::AWS => "convertToCFTemplate",
+        Vendor::ALICLOUD => "convertToAlicloud",
+    ];
 
     /**
      * Applys the ALM template and thus trigger the stack create/update
@@ -142,20 +137,10 @@ class Template extends ClientBase {
      * @return object Converted template body for each vendor
      */
     public function applyAlmTemplate($template = null, $stack_id = null, $extra = []) {
-        if (!$template) {
-            $template = $this->getRequestObject();
-            $stack_id = $this->generateAlmTemplateId();
-        }
-        $configurations = $this->getConfiguration($template);
-        $vendor = $this->getVendor($template);
-        switch ($vendor) {
-            case 'aws':
-                return $this->converter->convertToCFTemplate($template, $stack_id, $vendor, $extra);
-            case 'aliyun':
-                break;
-            default:
-                //throw exception "vendor value not supported or empty"
-                break;
-        }
+        if (!$template) $template = $this->getRequestObject();
+        if (!$stack_id) $stack_id = $this->generateAlmTemplateId();
+        $vendor = new Vendor($this->getVendor($template));
+        $method = self::CONVERT_METHOD[(string)$vendor];
+        return $this->converter->$method($template, $stack_id, (string)$vendor, $extra);
     }
 }

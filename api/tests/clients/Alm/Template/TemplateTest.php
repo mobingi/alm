@@ -41,6 +41,18 @@ class TemplateTest extends MobingiApiTestBase {
     }
 
     /**
+     * Test for saveAlmTemplate(Error case of duplicate)
+     * @depends testSaveAlmTemplate
+     * @expectedException Mobingi\Exception\TemplateException
+     * @expectedExceptionCode 1005
+     */
+    function testSaveAlmTemplate_DuplicateError($stack_id) {
+        $this->target->setRequestObject($this->getTemplateObject());
+        $this->target->setStackId($stack_id);
+        $this->target->saveAlmTemplate();
+    }
+
+    /**
      * Test for saveAlmTemplate(Error case of failure createStack)
      * @expectedException Mobingi\Exception\FailtureStackException
      * @expectedExceptionCode 2000
@@ -116,26 +128,5 @@ class TemplateTest extends MobingiApiTestBase {
         $this->assertInternalType("array", $actual);
         $this->assertSame("success", $actual["status"]);
         $this->assertSame($stack_id, $actual['stack_id']);
-    }
-
-    /**
-     * Test case of Void Return for applyAlmTemplate
-     * @dataProvider getProviderApplyAlmTemplate_VoidReturn
-     * @param object $template Template body in Json format
-     */
-    function testApplyAlmTemplate_VoidReturn($template) {
-        $actual = $this->target->applyAlmTemplate($template);
-        $this->assertEmpty($actual);
-    }
-
-    /**
-     * Test case of Void Return provider for applyAlmTemplate
-     * @return array The list of Test Parameters
-     */
-    function getProviderApplyAlmTemplate_VoidReturn() {
-         $object = $this->getTemplateObject();
-         unset($object->vendor);
-         $object->vendor->aliyun = null;
-         return [[null], [$object]];
     }
 }

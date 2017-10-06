@@ -2,7 +2,6 @@
 namespace MobingiTest\Core\Dao;
 use Mobingi\Core\Dao\Table;
 use Mobingi\Core\Utility\Common;
-use \DateTime;
 use \MobingiApiTestBase;
 /**
  * Test Case for Mobingi\Core\Dao\FileDao
@@ -25,8 +24,7 @@ class FileDaoTest extends MobingiApiTestBase {
         $configuration = $this->getTemplateObject();
         $stack_id = 'mo-'. $user_id. '-'. Common::generateToken(9). '-'. Common::getRegionNickname($configuration->vendor->aws->region);
         $nickname = Common::generateNickname();
-        $time = new DateTime;
-        $create_time = $time->format(DateTime::ATOM);
+        $create_time = Common::getDateTime();
         $actual = Table::STACK()->getDao()->createItem(compact('stack_id', 'user_id', 'nickname', 'configuration', 'create_time'));
         $this->assertNull($actual);
         return $stack_id;
@@ -34,12 +32,13 @@ class FileDaoTest extends MobingiApiTestBase {
 
     /**
      * Test for listItems
-     * @depends testCreateItem
      */ 
     function testListItems() {
        $user_id = $this->getUserId();
        $actual = Table::STACK()->getDao()->listItems(compact('user_id'), 'userIdIndex', ['stack_id' => 'mo-']);
        $this->assertInternalType("array", $actual);
+       $this->assertInternalType("array", $actual[0]);
+       $this->assertArrayHasKey("stack_id",  $actual[0]);
     }
 
     /**

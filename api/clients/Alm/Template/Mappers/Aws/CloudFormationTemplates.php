@@ -13,78 +13,78 @@ class CloudFormationTemplates {
       "Mappings": {
         "Ami": {
           "ap-northeast-1": {
-            "HVM64": "ami-4af5022c"
+            "HVM64": "ami-2a69be4c"
           },
           "ap-northeast-2": {
-            "HVM64": "ami-8663bae8"
+            "HVM64": "ami-9bec36f5"
           },
           "ap-southeast-1": {
-            "HVM64": "ami-fdb8229e"
+            "HVM64": "ami-0797ea64"
           },
           "ap-southeast-2": {
-            "HVM64": "ami-30041c53"
+            "HVM64": "ami-8536d6e7"
           },
           "eu-central-1": {
-            "HVM64": "ami-657bd20a"
+            "HVM64": "ami-c7ee5ca8"
           },
           "eu-west-1": {
-            "HVM64": "ami-ebd02392"
+            "HVM64": "ami-acd005d5"
           },
           "sa-east-1": {
-            "HVM64": "ami-d27203be"
+            "HVM64": "ami-f1344b9d"
           },
           "us-east-1": {
-            "HVM64": "ami-4fffc834"
+            "HVM64": "ami-8c1be5f6"
           },
           "us-west-1": {
-            "HVM64": "ami-3a674d5a"
+            "HVM64": "ami-02eada62"
           },
           "us-west-2": {
-            "HVM64": "ami-aa5ebdd2"
+            "HVM64": "ami-e689729e"
           }
         },
         "AmiBastion": {
           "ap-northeast-1": {
-            "HVM64": "ami-4af5022c"
+            "HVM64": "ami-2a69be4c"
           },
           "ap-northeast-2": {
-            "HVM64": "ami-8663bae8"
+            "HVM64": "ami-9bec36f5"
           },
           "ap-south-1": {
-            "HVM64": "ami-d7abd1b8"
+            "HVM64": "ami-4fc58420"
           },
           "ap-southeast-1": {
-            "HVM64": "ami-fdb8229e"
+            "HVM64": "ami-0797ea64"
           },
           "ap-southeast-2": {
-            "HVM64": "ami-30041c53"
+            "HVM64": "ami-8536d6e7"
           },
           "ca-central-1": {
-            "HVM64": "ami-5ac17f3e"
+            "HVM64": "ami-fd55ec99"
           },
           "eu-central-1": {
-            "HVM64": "ami-657bd20a"
+            "HVM64": "ami-c7ee5ca8"
           },
           "eu-west-1": {
-            "HVM64": "ami-ebd02392"
+            "HVM64": "ami-acd005d5"
           },
           "eu-west-2": {
-            "HVM64": "ami-489f8e2c"
+            "HVM64": "ami-1a7f6d7e"
           },
           "sa-east-1": {
-            "HVM64": "ami-d27203be"
+            "HVM64": "ami-f1344b9d"
           },
           "us-east-1": {
-            "HVM64": "ami-4fffc834"
+            "HVM64": "ami-8c1be5f6"
           },
           "us-east-2": {
-            "HVM64": "ami-ea87a78f"
+            "HVM64": "ami-c5062ba0"
           },
           "us-west-1": {
-            "HVM64": "ami-3a674d5a"
+            "HVM64": "ami-02eada62"
           },
           "us-west-2": {
-            "HVM64": "ami-aa5ebdd2"
+            "HVM64": "ami-e689729e"
           }
         },
         "AmiTypeMapping": {

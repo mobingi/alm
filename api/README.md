@@ -8,10 +8,10 @@ __Attention: This installation is NOT SSL based, and since the request body may 
 
 In order to make this API to work, you'll need to do the followings on your server:
 
-1. Create a folder named `.mobingi` under your home directory (this is where all stack and template information are stored):
+1. Create a folder named `.mobingi` (this is where all stack and template information are stored):
 
 ```
-$ cd ~
+$ cd mobingi/api
 $ mkdir .mobingi
 ```
 

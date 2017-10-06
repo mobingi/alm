@@ -11,8 +11,6 @@ class CloudFormationStack extends ClientBase implements StackProviderInterface {
     /**
      * Consts
      */
-    const ARN_NAME_STACK = "ALM-STACK-V3";
-    const ARN_NAME_INSTANCE = "ALM-INSTANCE-V3";
     const DEFAULT_OPTIONS = ['DryRun' => false];
 
     /**
@@ -31,8 +29,14 @@ class CloudFormationStack extends ClientBase implements StackProviderInterface {
      */
     public function addDescribeItem($stack_id, array $item) {
         extract($this->awsSdkFactory->createClientByVendor(['ec2'], $this->getVendorByStackInfo($item, "aws")));
-        $result = $ec2->describeInstances(self::DEFAULT_OPTIONS + ['Filters' => [['Name' => 'tag:Stack_Name', 'Values' => [$value]]]])->toArray();
-        $item['instances'] = array_column(array_column($result['Reservations'], 'Instances'), 0);
+        $result = $ec2->describeInstances(self::DEFAULT_OPTIONS + ['Filters' => [['Name' => 'tag:Stack_Name', 'Values' => [$stack_id]]]])->toArray();
+        $count = 0;
+        foreach (array_column($result['Reservations'], 'Instances') as $v1) {
+            foreach ($v1 as $v2) {
+                $item['instances'][$count] = $v2;
+                $count++;
+            }
+        }
         return $item;
     }
 
@@ -48,7 +52,7 @@ class CloudFormationStack extends ClientBase implements StackProviderInterface {
         $cloudformation->createStack($options);
     }
 
-    const UPDATE_STACK_PARAMS = ['UsePreviousTemplate' => false];
+    const UPDATE_STACK_PARAMS = ['UsePreviousTemplate' => false, 'Capabilities' => ['CAPABILITY_IAM']];
     /**
      * @override
      * @see Mobingi\Alm\Stack\StackProviderInterface::updateProcess

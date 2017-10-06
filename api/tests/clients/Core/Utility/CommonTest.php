@@ -1,6 +1,7 @@
 <?php
 namespace MobingiTest\Core\Utility;
 use Mobingi\Core\Utility\Common;
+use \DateTime;
 use \MobingiApiTestBase;
 /**
  * Test Case for Mobingi\Core\Utility\Common
@@ -140,5 +141,13 @@ class CommonTest extends MobingiApiTestBase {
             $lines = file($expected[$key]);
             $this->assertTrue(in_array($value . "\n", $lines));
         }
+    }
+
+    /**
+     * Test for getDateTime
+     */
+    function testGetDateTime() {
+         $actual = Common::getDateTime();
+         $this->assertInternalType("string", $actual);
     }
 }

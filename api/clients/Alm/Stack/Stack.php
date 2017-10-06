@@ -3,6 +3,7 @@ namespace Mobingi\Alm\Stack;
 use Mobingi\Alm\Stack\Traits\StackTrait;
 use Mobingi\Core\ClientBase;
 use Mobingi\Core\Dao\Table;
+use Mobingi\Core\Enum\Vendor;
 use Mobingi\Core\Utility\Common;
 use \Exception;
 /**
@@ -19,7 +20,7 @@ class Stack extends ClientBase {
      * @var array(Provider Key => Client Key)
      */
     const PROVIDERS_BY_VENDER = [
-        "aws" => "cloudformation"
+        Vendor::AWS => "cloudformation"
     ];
 
     /**

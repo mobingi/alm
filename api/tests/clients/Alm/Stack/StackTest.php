@@ -6,7 +6,6 @@ use Mobingi\Alm\Template\Template;
 use Mobingi\Core\Dao\Table;
 use Mobingi\Core\Utility\Common;
 use Mobingi\Exception\FailtureStackException;
-use \DateTime;
 use \MobingiApiTestBase;
 /**
  * Test Case for Mobingi\Alm\Stack\Stack
@@ -29,8 +28,7 @@ class StackTest extends MobingiApiTestBase {
          extract(Common::getInfoByToken());
          $template = $this->getTemplateObject();
          $stack_id = 'mo-'. $user_id. '-'. Common::generateToken(9). '-'. Common::getRegionNickname($template->vendor->aws->region);
-         $time = new DateTime;
-         $create_time = $time->format(DateTime::ATOM);
+         $create_time = Common::getDateTime();
          $item = ['nickname' => Common::generateNickname(), 'configuration' => $template] + compact('stack_id', 'user_id', 'create_time');
          Table::STACK()->getDao()->createItem($item);
 

@@ -8,7 +8,6 @@ use Mobingi\Core\Dao\BaseDao;
  * @method string getPrimaryKey
  */
 class FileDao extends BaseDao {
-    const FILE_DIR = ".mobingi";
     const STACK_FILE_NAME = "alm-template";
     /**
      * @override
@@ -85,8 +84,7 @@ class FileDao extends BaseDao {
      * @return string Directory
      */
     private function getDir($key) {
-        $dir = $_SERVER['HOME']. "/". self::FILE_DIR.  "/". $key. "/";
-        return str_replace("//", "/", $dir);
+        return str_replace("//", "/", DIR_SAVED_FILES. "/". $key. "/");
     }
 
     /**

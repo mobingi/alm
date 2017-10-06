@@ -1,5 +1,6 @@
 <?php
 namespace Mobingi\Core\Utility;
+use \DateTime;
 /**
  * Common Utility
  * This class is the logic for no used AWS SDK Clients.
@@ -75,5 +76,15 @@ class Common {
             $nickNames[] = rtrim($lines[array_rand($lines)]);
         }
         return implode(' ', $nickNames);
+    }
+
+    /**
+     * Get DateTime
+     * @param $format int Default is DateTime::ATOM
+     * @return int Formatted DateTime
+     */
+    static function getDateTime($format = DateTime::ATOM) {
+        $time = new DateTime;
+        return $time->format($format);
     }
 }

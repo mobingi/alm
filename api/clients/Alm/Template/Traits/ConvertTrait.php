@@ -144,10 +144,8 @@ trait ConvertTrait {
             if($key === 'EC2Instance'){
 
                 //@to-do:
+                //replace CFParams InstanceType to $configuration->provision->instance_type
                 //replace CFParams MachineVolumeSize $configuration->provision->volume_size
-
-                //apply instance type
-                $this->replaceParameterValue($format,'InstanceType'.$flag,$configuration->provision->instance_type);
 
                 //removes the old Resource item by LogicalID
                 unset($format->Resources->$LogicalID);
@@ -270,9 +268,6 @@ trait ConvertTrait {
                 //@to-do:
                 //"AssociatePublicIpAddress" value to map subnet's settings
                 //replace ${use(flag.Web01.provision.security_group)} to LogicalID name
-
-                //apply instance type
-                $this->replaceParameterValue($format,'InstanceType'.$flag,$configuration->provision->instance_type);
 
                 //add ELB Security groups
                 if(!empty($configuration->provision->auto_scaling->security_groups)){
@@ -409,8 +404,8 @@ trait ConvertTrait {
             */
             if($key === 'BastionInstance'){
 
-                //apply instance type
-                $this->replaceParameterValue($format,'InstanceType'.$flag,$configuration->provision->instance_type);
+                //@to-do:
+                //replace CFParams InstanceType to $configuration->provision->instance_type
 
                 //removes the old Resource item by LogicalID
                 unset($format->Resources->$LogicalID);
@@ -448,7 +443,7 @@ trait ConvertTrait {
             if(in_array($key, ["EC2Instance","ASLaunchConfiguration","BastionInstance"])){
 
                 if($configuration->provision->keypair){
-                    extract($this->awsSdkFactory->createClientByVendor(['ec2'], (array)($configuration->vendor->aws))); // Initialize the cf & ec2 client on user's behalf
+                    extract($this->awsSdkFactory->createClientByVendor(['ec2'], (array)$cred)); // Initialize the cf & ec2 client on user's behalf
                     $keypairs = $ec2->describeKeyPairs(['DryRun' => false])->toArray()['KeyPairs'];
                     $allkeypairs = [];
                     foreach($keypairs as $keypair){
@@ -570,12 +565,6 @@ trait ConvertTrait {
             }
         }
         return $format->Resources->$k->Properties = $updated;
-    }
-
-    //helper function, add/replace $format parameter's default value
-    protected function replaceParameterValue($format,$key,$value){
-        $format->Parameters->$key['Default'] = $value;
-        return $format;
     }
 
 

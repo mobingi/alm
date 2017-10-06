@@ -26,3 +26,6 @@ const ENV_API_URL = 'API_URL'; // e.g: "//69.89.31.226/api"
 
 // Alm-Agent Version
 const ENV_ALM_AGENT_TAG = 'ALM_AGENT_TAG'; // e.g: set "master" for production Alm-agent, or "develop" for development Alm-agent version
+
+// Directory of Saved Files
+const DIR_SAVED_FILES = __DIR__. '/.mobingi';
