@@ -1,0 +1,29 @@
+{
+  "version": "2017-03-03",
+  "label": "template version label #1",
+  "description": "This template creates a sample stack with EC2 instance on AWS",
+  "vendor": {
+    "aws": {
+      "cred": "change this to your AWS Security Key ID",
+      "secret": "change this to your AWS Security Key Secret",
+      "region": "ap-northeast-1"
+    }
+  },
+  "configurations": [
+    {
+      "role": "web",
+      "flag": "Single1",
+      "provision": {
+        "instance_type": "t2.micro",
+        "instance_count": 1,
+        "keypair": false,
+        "subnet": {
+          "cidr": "10.0.1.0/24",
+          "public": true,
+          "auto_assign_public_ip": true
+        },
+        "availability_zone": "ap-northeast-1c"
+      }
+    }
+  ]
+}
