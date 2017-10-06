@@ -43,23 +43,25 @@ To get help for any command, pass the -h flag to the command. For example, to se
 
 ```bash
 $ mobingi-cli stack -h
-Manage your infrastructure/application stack.
+Manage your infrastructure/application stack.                    
 
-Usage:
-  mobingi-cli stack [flags]
-  mobingi-cli stack [command]
+Usage:                                                           
+  mobingi-cli stack [flags]                                      
+  mobingi-cli stack [command]                                    
 
-Available Commands:
-  create      create a stack
-  delete      delete a stack
-  describe    display stack details
-  list        list all stacks
-  update      update a stack
+Available Commands:                                              
+  create      create a stack                                     
+  delete      delete a stack                                     
+  describe    display stack details                              
+  list        list all stacks                                    
+  pem         print stack pem file                               
+  ssh         ssh to your instance                               
+  update      update a stack                                     
 
-Flags:
-  -h, --help   help for stack
+Flags:                                                           
+  -h, --help   help for stack                                    
 
-Global Flags:
+Global Flags:                                                    
       --apiver string   API version (default "v3")
       --debug           debug mode when error occurs
   -f, --fmt string      output format (values depends on command)
@@ -82,6 +84,7 @@ Global flags are all optional and can be applied to any subcommand. You can use 
 # using the '=' for assignment
 $ mobingi-cli login --client-id=foo --client-secret=bar
 [mobingi-cli]: info: Login successful.
+
 # using whitespace for assignment
 $ mobingi-cli login --client-id foo --client-secret bar
 [mobingi-cli]: info: Login successful.
@@ -129,6 +132,32 @@ Password: xxxx
 ```
 
 If login is successful, cli will create a file _config.yml_ under _$HOME/.mobingi-cli/_ folder that will contain the configuration values set during login. Cli will also attempt to store your credentials in the platform's native store (i.e. Keychain for OSX), if available. If not successful, the retrieved token during login will be saved in the _config.yml_ file. This token has an expiration so you will probably need to relogin at some point when this happens.
+
+For Windows and OSX, cli can use the native credential store directly; wincred for Windows, Keychain for OSX. For Linux, cli uses [pass](https://www.passwordstore.org/) as storage. The following is an example of how to setup pass in Ubuntu systems.
+
+```bash
+# install pass
+$ sudo apt-get install pass
+
+# generate your own key using gpg2, do not use a passphrase
+$ gpg2 --gen-key
+
+# if the cmd seems stuck due to lack of entropy, you can open another window and run the ff cmd:
+# dd if=/dev/sda of=/dev/zero
+
+# list your keys
+$ gpg2 --list-keys
+/home/user/.gnupg/pubring.kbx
+------------------------------
+pub   rsa2048/5486B0F6 2017-09-22 [SC]
+uid         [ultimate] IamGroot <iamgroot@mobingi.com>
+sub   rsa2048/CDC4C430 2017-09-22 [E]
+
+# initialize pass (use the pub key id)
+$ pass init 5486B0F6
+
+# you can now do a mobingi-cli login ...
+```
 
 By default, all endpoints are set to Mobingi production during login. You can use the --endpoints flag to target alternative endpoints. For example, if you have a Mobingi dev account, you can use the following login command:
 
@@ -348,14 +377,15 @@ Try to establish an ssh connection to your instances. For now, this only works o
 
 * `--id` - The stack id the instance belongs to.
 * `--ip` - The IP address of the instance you want to connect.
-* `--user` - The ssh username. By default, this is set to _ec2-user_.
+* `--flag` - The configuration flag.
+* `--user` - The ssh username. By default, this is set to _ec2-user_. Set to _root_ when vendor is Alibaba Cloud.
 * `--browser` - Try to open the url using the user's default browser.
 
 Examples:
 
 ```bash
 # open an ssh connection via cli
-$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --flag web01
 [ec2-user@ip-10-0-1-96 ~]$ pwd
 /home/ec2-user
 [ec2-user@ip-10-0-1-96 ~]$ exit
@@ -363,7 +393,7 @@ logout
 Connection to 54.238.234.202 closed.
 
 # open an ssh connection using default browser
-$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --browser
+$ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 --flag web01 --browser
 [mobingi-cli]: info: open link with a browser (if not opened automatically): \
 https://sesha3.mobingi.com:port/some-random-link/
 ```
@@ -379,11 +409,15 @@ Print the stack's pem file, if available. Useful if you want to connect to your 
 **Flags**
 
 * `--id` - The stack id to query.
+* `--flag` - The configuration flag.
+
 
 Example:
 
 ```bash
-$ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk
+
+$ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk --flag web01
+
 [mobingi-cli]: info: payload:
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAiy5kdqROYbjke0BE8rcT7qUtSKyaaIgqiJLYxlduov2wvnRHSo5O8m67v8UD
@@ -604,7 +638,8 @@ List vendor credentials.
 
 **Flags**
 
-* `--vendor` - The vendor to list credentials. For now, the only supported vendor is "aws".
+* `--vendor` - The vendor to list credentials. Valid values: _aws_, _alicloud_. Default value is _aws_.
+
 
 Examples:
 

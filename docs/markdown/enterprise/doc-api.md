@@ -423,7 +423,6 @@ HTTP/1.1 200 OK
 ```
 
 
-
 ## Stacks {#stacks}
 
 
@@ -568,6 +567,7 @@ POST <code>/v3/role</code>
 Request Header
 
 ```bash
+
 Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
 Content-Type: application/x-www-form-urlencoded
 ```
@@ -578,7 +578,6 @@ Request body
 {
   "name": "sample name",
   "scope": "{ _role scope body_ }"
-}
 ```
 
 Response Body
@@ -639,6 +638,7 @@ HTTP/1.1 200
 
 Deletes an existing Role.
 
+
 __Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
 
 <div class="callout callout-info">
@@ -665,6 +665,7 @@ HTTP/1.1 200
 ### List Roles {#rbac-list-roles}
 
 Lists all roles created under current account.
+
 
 __Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
 
@@ -700,6 +701,7 @@ HTTP/1.1 200
 
 
 ### Describe Roles {#rbac-describe-roles}
+
 
 
 1. ##### Describe roles attached to the user
@@ -749,6 +751,7 @@ HTTP/1.1 200
     <div class="callout callout-info">
     GET <code>/v3/user/role</code>
     </div>
+
 
 
     Request Header
@@ -823,6 +826,7 @@ HTTP/1.1 200
 
 Reattach a role to user.
 
+
 __Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
 
 <div class="callout callout-info">
@@ -864,6 +868,7 @@ HTTP/1.1 200
 
 Deatch a role from user.
 
+
 __Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
 
 <div class="callout callout-info">
@@ -901,6 +906,7 @@ HTTP/1.1 200
 ```
 
 ### Describe Role Scope {#rbac-describe-role-scope}
+
 
 Describes the role scope body.
 
@@ -944,7 +950,6 @@ HTTP/1.1 200
     }
 ]
 ```
-
 
 
 

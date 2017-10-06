@@ -1,14 +1,8 @@
-### Global Options {#global-options}
-- `--autoupdate, -U` - auto update before run
-- `--disablereport, -N` - Do not send crash report to rollbar.
-- `--provider Provider, -P Provider` - set Provider (default: "aws")
-- `--verbose, -V` - show debug logs
-- `--help, -h` - show help
-- `--version, -v` - print the version
-
-
 ### register {#register}
-initialize alm-agent and start containers
+Initialize ALM-agent and start containers.
+
+The necessary folder for ALM-agent is created, and if the provider is other than `localtest`, cron job is created. Then, ALM-agent starts containers.
+
 
 ```bash
 $ alm-agent register -h
@@ -24,7 +18,9 @@ OPTIONS:
 ```
 
 ### ensure {#ensure}
-start or update containers
+
+Start or update containers.
+
 
 ```bash
 $ alm-agent ensure -h
@@ -41,7 +37,8 @@ OPTIONS:
 
 
 ### stop {#stop}
-stop active container
+Stop active containers.
+
 
 ```bash
 $ alm-agent stop -h
@@ -58,7 +55,8 @@ OPTIONS:
 
 
 ### noop {#noop}
-run without container actions.
+
+Run without container actions.
 
 ```bash
 $ alm-agent noop -h
@@ -74,7 +72,8 @@ OPTIONS:
 ```
 
 ### help {#help}
-Shows a list of commands or help for one command
+
+Shows a list of commands or help for one command.
 
 ```bash
 $ alm-agent help

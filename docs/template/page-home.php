@@ -89,8 +89,8 @@ include_once 'header.php';
           <h5>Mobingi ALM-agent</h5>
           <a href="<?php echo $siteUrl; ?>alm-agent">Overview</a>
           <a href="<?php echo $siteUrl; ?>alm-agent/getting-started">Getting Started</a>
-          <a href="<?php echo $siteUrl; ?>alm-agent/commands">Commands</a>
           <a href="<?php echo $siteUrl; ?>alm-agent/agent">Agent</a>
+          <a href="<?php echo $siteUrl; ?>alm-agent/commands">Commands</a>
           <a href="<?php echo $siteUrl; ?>alm-agent/addons">Add-ons</a>
           <a href="<?php echo $siteUrl; ?>alm-agent/contributing">Contributing</a>
         </li>

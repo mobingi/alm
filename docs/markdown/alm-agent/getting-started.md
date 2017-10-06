@@ -3,8 +3,9 @@ ALM-agent includes the following prerequisites.
 
 |Requirement|Description|
 | --------- | --------- |
-| Supported Operating System | Instances must run a supported version of Linux. <br> Amazon Linux 2016.09 or later, Ubuntu Server 14.04 LTS or later, CentOS7 or later, Red Hat Enterprise Linux(RHEL) 7 or later. |
-| Internet Access | If you use something services on the Internet (e.g. GitHub, DockerHub, etc..), verify that your instances have outbound Internet access. |
+| Supported Operating System | Instances must run on a supported version of Linux. <br> Amazon Linux 2016.09 or later, Ubuntu Server 14.04 LTS or later, CentOS7 or later, Red Hat Enterprise Linux(RHEL) 7 or later. |
+| Internet Access | If your server configuration design requires services to access the public Internet (e.g. GitHub, DockerHub, etc..), verify that your instances have outbound Internet access first. |
+
 | Docker | Instances should have Docker installed. |
 | Git | Instances should have Git installed. |
 
@@ -15,13 +16,14 @@ There are two ways to installing ALM-agent:
 1. Using a precompiled binary
 2. Installing from source
 
-Downloading a precompiled binary is easist.
+Download and install from a precompiled binary is the recommended option.
 
 
 #### _**Using a precompiled binarys**_
 ALM-agent is distributed as a binary package. To install ALM-agent, you can download it from this [link](https://download.labs.mobingi.com/alm-agent/master/current/alm-agent.tgz).
 
-ALM-agent is packages as a tgz archive. After downloading ALM-agent, untgz the package. ALM-agent runs as a single binary named `alm-agent`.
+ALM-agent is packaged as a tgz archive. After downloading ALM-agent, untgz the package. ALM-agent runs as a single binary named `alm-agent`.
+
 
 ```bash
 $ mkdir -p /opt/mobingi/alm-agent /opt/mobingi/etc
@@ -44,7 +46,9 @@ vagrant $ make build
 ```
 
 ### Verifying the Installation {#verifying-the-installation}
-After installing ALM-agent, verify the installation worked and checking that `almagent` is available.
+
+After installing ALM-agent, verify the installation worked and checking that `alm-agent` is available.
+
 
 By executing `alm-agent` you should see the help output similar to this:
 
