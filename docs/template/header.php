@@ -86,13 +86,13 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 						<span class="icon-bar"></span>
 					</button>
 
-					<a class="navbar-brand" href="<?php echo $siteUrl; ?>" style="font-size:inherit;font-weight:bold"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="max-height:40px;">| &nbsp; Learn Center</a>
+					<a class="navbar-brand" href="<?php echo $siteUrl; ?>" style="font-size:inherit;font-weight:bold"><img src="<?php echo $domain; ?>assets/img/Mobingi_logo_horizontal_invert.png" style="min-height:40px;max-height:40px;" />| &nbsp; Learn Center</a>
 				</div>
 				<!-- END Toggle buttons and brand -->
 
 				<!-- Top navbar -->
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" role="banner">
-					<ul class="nav navbar-nav navbar-left">
+					<ul class="nav navbar-nav navbar-left" id="entdoc" style="display:none;">
                         <li><a href="<?php $siteUrl; ?>/enterprise"><button type="button" class="btn btn-xs btn-dark">Enterprise Version</button></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">

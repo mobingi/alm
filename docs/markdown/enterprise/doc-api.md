@@ -31,7 +31,7 @@ POST <code>/v3/access_token</code>
 | ------------- |:-------------:| ---------:| :------------|
 | client_id       | string        | Yes       |             |
 | client_secret       | string        | Yes       |              |
-| grant_type       | string        | Yes       | This value is always `client_credentials`             |
+| grant_type       | string        | Yes       | This value is either `client_credentials` or `password`. <br />If you grant with <var>password</var>, you are interacting the same as working around Mobingi UI; If you grant with <var>client_credentials</var>, you are acting as an Alm-Agent, and most resource related permissions are denied by [RBAC](https://learn.mobingi.com/enterprise/rbac).    |
 
 
 Example Request:
@@ -422,459 +422,6 @@ HTTP/1.1 200 OK
 }
 ```
 
-## RBAC {#rbac}
-
-
-
-### Create Role {#rbac-create-role}
-
-Create Mobingi Role define.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-POST <code>/v3/role</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-|   name  | string        | Yes       | Name of Mobingi Role            |
-|   scope  | string        | Yes       | Mobingi Role in json string format            |
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/x-www-form-urlencoded
-```
-
-Request body
-```bash
-{
-  "name": "sample name",
-  "scope": { _role define body_ }
-}
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-{
-  "status": "success",
-  "role_id": "morole-544****0e1-ZgNTSRM8K-tk"
-}
-```
-
-### Update Role {#rbac-update-role}
-
-Update Mobingi Role define.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-PUT <code>/v3/role/{role_id}</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-|   name  | string        | Yes       | Name of Mobingi Role            |
-|   scope  | string        | Yes       | Mobingi Role in json string format            |
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/x-www-form-urlencoded
-```
-
-Request body
-```bash
-{
-  "name": "sample name",
-  "scope": { _role define body_ }
-}
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-{
-  "status": "success",
-  "role_id": "morole-544****70e1-ZgNTSRM8K-tk"
-}
-```
-
-### Delete Role {#rbac-delete-role}
-
-
-Delete Mobingi Role define.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-DELETE <code>/v3/role/{role_id}</code>
-</div>
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-{
-  "status": "success",
-  "role_id": "morole-544****0e1-ZgN****M8K-tk"
-}
-```
-
-### Describe Roles {#rbac-list-role}
-
-list Mobingi Role define.
-
-<div class="callout callout-info">
-GET <code>/v3/role</code>
-</div>
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-[
-    {
-        "role_id": morole-544****0e1-ZgNT***M8K-tk,
-        "user_id": 544****0e1,
-        "name": sample name,
-        "scope": { _role define body_ },
-        "create_time": ,
-        "update_time":
-    },
-    {
-        ....
-    }
-
-]
-```
-
-
-### Describe UserRole By username {#rbac-describe-userrole-by-username}
-
-
-list user's Mobingi Role define.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-GET <code>/v3/user/{username}/role</code>
-</div>
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-[
-    {
-        role_id: morole-544****0e1-ZgNT***M8K-tk,
-        user_id: 544****0e1,
-        name: sample name,
-        scope: { _role define body_ },
-        create_time: ,
-        update_time:
-    },
-    {
-        ....
-    }
-
-]
-```
-
-### Create UserRole {#rbac-create-userrole}
-
-
-attach Mobingi Role to subuser.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-POST <code>/v3/user/role</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-|   username  | string        | Yes       | target subuser            |
-|   role_id  | string        | Yes       | Mobingi Role Id            |
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/x-www-form-urlencoded
-```
-
-Request body
-```bash
-{
-  "username": "testtest",
-  "role_id": "morole-544****0e1-ZgN****8K-tk"
-}
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-{
-  "status": "success",
-  "user_role_id": "mour-544****0e1-ZgN****M8K-tk"
-}
-```
-
-### Update UserRole {#rbac-update-userrole}
-
-re-attach Mobingi Role to subuser.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-PUT <code>/v3/user/role/{role_id}</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-|   username  | string        | Yes       | target subuser            |
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/x-www-form-urlencoded
-```
-
-Request body
-```bash
-{
-  "username": "testtest"
-}
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-{
-  "status": "success",
-  "role_id": "morole-5447****0e1-ZgN***M8K-tk"
-}
-```
-
-
-### Delete UserRole {#rbac-delete-userrole}
-
-delete Mobingi Role from subuser.
-This endpoint allow master user only.
-
-<div class="callout callout-info">
-DELETE <code>/v3/user/role/{role_id}</code>
-</div>
-
-
-| Parameters    | Type          | Required  | Detail       |
-| ------------- |:-------------:| ---------:| :------------|
-|   username  | string        | Yes       | target subuser            |
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Request body
-```bash
-{
-  "username": "testtest"
-}
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-{
-  "status": "success",
-  "role_id": "morole-5447****0e1-ZgN****M8K-tk"
-}
-```
-
-### Describe UserRole {#describe-userrole}
-
-
-list current user's Mobingi Role define.
-
-<div class="callout callout-info">
-GET <code>/v3/user/role</code>
-</div>
-
-
-Request Header
-```bash
-Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
-Content-Type: application/json
-```
-
-Response Body
-
-```bash
-HTTP/1.1 200
-[
-    {
-        "user_role_id": "mour-5447****0e1-TEW****dsIE-tk",
-        "role_id": "morole-5447****0e1-ZgN****RM8K-tk",
-        "user": { user_id: 5447****0e1, username: tes***est },
-        "scope": { _role define body_ },
-        "create_time": ,
-        "update_time":
-    },
-    {
-        ....
-    }
-
-]
-```
-
-### Describe Role Template {#rbac-describe-role-template}
-
-list role template.
-
-<div class="callout callout-info">
-GET <code>/v3/role/templates</code>
-</div>
-
-
-Request Header
-```bash
-Content-Type: application/json
-```
-
-
-Response Body
-
-```bash
-HTTP/1.1 200
-[
-    {
-        "id": "admin",
-        "name": "管理者権限",
-        "scope": {
-            "version": "2017-05-05",
-            "Statement": [
-                {
-                    "Effect": "Allow",
-                    "Action": [
-                        "*"
-                    ],
-                    "Resource": [
-                        "*"
-                    ]
-                }
-            ]
-        }
-    },
-    {
-        ....
-    }
-]
-```
-
-
-### Mobingi Role define Body {#rbac-role-format}
-
-- This is role define format sample.
-- About Action or Resource strings, Reference RBAC user's guide.
-
-```bash
-"Version": "2017-05-05",
-"Statement": [
-    {
-        "Effect": "Deny",
-        "Action": [
-            "stack:describeStacks"
-        ],
-        "Resource": [
-            "mrn:alm:stack:mo-xxxxxxxxxx"
-        ]
-    }
-    {
-        "Effect": "Allow",
-        "Action": [
-            "*"
-        ],
-        "Resource": [
-            "*"
-        ]
-    }
-]
-
-```
-
-### Filter or Reject Response {#rbac-error-response}
-
-- RBAC rejects endpoint access with error code.
-
-Response Body
-
-```bash
-HTTP/1.1 403
-
-{
-    code: 4000
-    message: RBAC response is limited.
-    description: {$message}
-}
-```
-
-- RBAC's some endpoint return filtered response.
-- Each endpoint has filter key.
-
-Response Body
-
-```bash
-HTTP/1.1 200
-
-[
-    {
-        stack_id : ......
-    }
-    {
-        .....
-    }
-
-]
-```
-
-
 
 
 ## Stacks {#stacks}
@@ -997,6 +544,416 @@ HTTP/1.1 200 OK
   "version_id": "1kk2HiGLxF1fThVLJvC0h6fd5z3QWOiM"
 }
 ```
+
+## RBAC {#rbac}
+
+
+
+### Create Role {#rbac-create-role}
+
+Creates a new role. (__Note: This endpoint can only be accessed by master account__)
+
+
+<div class="callout callout-info">
+POST <code>/v3/role</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+|   name  | string        | Yes       | Name of Mobingi Role            |
+|   scope  | string        | Yes       | Mobingi Role in json string format            |
+
+
+Request Header
+
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/x-www-form-urlencoded
+```
+
+Request body
+
+```bash
+{
+  "name": "sample name",
+  "scope": "{ _role scope body_ }"
+}
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+{
+  "status": "success",
+  "role_id": "morole-544****0e1-ZgNTSRM8K-tk"
+}
+```
+
+### Update Role {#rbac-update-role}
+
+Updates an existing role.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+PUT <code>/v3/role/{role_id}</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+|   name  | string        | Yes       | Name of Mobingi Role            |
+|   scope  | string        | Yes       | Mobingi Role in json string format            |
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/x-www-form-urlencoded
+```
+
+Request body
+```bash
+{
+  "name": "sample name",
+  "scope": "{ _role scope body_ }"
+}
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+{
+  "status": "success",
+  "role_id": "morole-544****70e1-ZgNTSRM8K-tk"
+}
+```
+
+### Delete Role {#rbac-delete-role}
+
+
+Deletes an existing Role.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+DELETE <code>/v3/role/{role_id}</code>
+</div>
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+{
+  "status": "success",
+  "role_id": "morole-544****0e1-ZgN****M8K-tk"
+}
+```
+
+### List Roles {#rbac-list-roles}
+
+Lists all roles created under current account.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+GET <code>/v3/role</code>
+</div>
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+[
+    {
+        "role_id": "morole-544****0e1-ZgNT***M8K-tk",
+        "user_id": "544****0e1",
+        "name": "sample name",
+        "scope": "{ _role scope body_ }",
+        "create_time": "",
+        "update_time": ""
+    },
+    {
+        ....
+    }
+]
+```
+
+
+### Describe Roles {#rbac-describe-roles}
+
+
+1. ##### Describe roles attached to the user
+
+    Lists all roles attached to a user specified by <var>username</var>.
+
+    __Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+    <div class="callout callout-info">
+    GET <code>/v3/user/{username}/role</code>
+    </div>
+
+
+    Request Header
+    ```bash
+    Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+    Content-Type: application/json
+    ```
+
+    Response Body
+
+    ```bash
+    HTTP/1.1 200
+    [
+        {
+            "role_id": "morole-544****0e1-ZgNT***M8K-tk",
+            "user_id": "544****0e1",
+            "name": "sample name",
+            "scope": "{ _role scope body_ }",
+            "create_time": "",
+            "update_time": ""
+        },
+        {
+            ....
+        }
+
+    ]
+    ```
+
+2. ##### Describe Current Logged In User Roles
+
+
+    Lists all roles attached to current user.
+
+    _This endpoint is requested by users instead of master account, and returns the roles that attached to them._
+
+    <div class="callout callout-info">
+    GET <code>/v3/user/role</code>
+    </div>
+
+
+    Request Header
+    ```bash
+    Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+    Content-Type: application/json
+    ```
+
+    Response Body
+
+    ```bash
+    HTTP/1.1 200
+    [
+        {
+            "user_role_id": "mour-5447****0e1-TEW****dsIE-tk",
+            "role_id": "morole-5447****0e1-ZgN****RM8K-tk",
+            "user": "{ user_id: 5447****0e1, username: tes***est }",
+            "scope": "{ _role scope body_ }",
+            "create_time": "",
+            "update_time": ""
+        },
+        {
+            ....
+        }
+
+    ]
+    ```
+
+### Attach Role to User {#rbac-attach-user-role}
+
+
+Attach an existing role to a user.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+POST <code>/v3/user/role</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+<<<<<<< HEAD
+|   username  | string        | Yes       | target subuser            |
+=======
+|   username  | string        | Yes       | target user            |
+>>>>>>> origin/docs
+|   role_id  | string        | Yes       | Mobingi Role Id            |
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/x-www-form-urlencoded
+```
+
+Request body
+```bash
+{
+  "username": "testtest",
+  "role_id": "morole-544****0e1-ZgN****8K-tk"
+}
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+{
+  "status": "success",
+  "user_role_id": "mour-544****0e1-ZgN****M8K-tk"
+}
+```
+
+### Reattach Role to User {#rbac-reattach-user-role}
+
+Reattach a role to user.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+PUT <code>/v3/user/role/{role_id}</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+|   username  | string        | Yes       | target user            |
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/x-www-form-urlencoded
+```
+
+Request body
+```bash
+{
+  "username": "testtest"
+}
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+{
+  "status": "success",
+  "role_id": "morole-5447****0e1-ZgN***M8K-tk"
+}
+```
+
+
+### Detach Role from User {#rbac-detach-user-role}
+
+Deatch a role from user.
+
+__Note:__ _This endpoint is denied to all users except master account, defined by [default RBAC scope](https://learn.mobingi.com/enterprise/rbac-reference#default-roles), and this scope cannot be overwritten._
+
+<div class="callout callout-info">
+DELETE <code>/v3/user/role/{role_id}</code>
+</div>
+
+
+| Parameters    | Type          | Required  | Detail       |
+| ------------- |:-------------:| ---------:| :------------|
+|   username  | string        | Yes       | target user            |
+
+
+Request Header
+```bash
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+Content-Type: application/json
+```
+
+Request body
+```bash
+{
+  "username": "testtest"
+}
+```
+
+Response Body
+
+```bash
+HTTP/1.1 200
+
+{
+  "status": "success",
+  "role_id": "morole-5447****0e1-ZgN****M8K-tk"
+}
+```
+
+### Describe Role Scope {#rbac-describe-role-scope}
+
+Describes the role scope body.
+
+<div class="callout callout-info">
+GET <code>/v3/role/templates</code>
+</div>
+
+
+Request Header
+```bash
+<<<<<<< HEAD
+=======
+Authorization: Bearer eyJ0eXAiOiJQiL...CJhbGciOMeXzQfME
+>>>>>>> origin/docs
+Content-Type: application/json
+```
+
+
+Response Body
+
+```bash
+HTTP/1.1 200
+[
+    {
+        "id": "admin",
+        "name": "Management Role",
+        "scope": {
+            "version": "2017-05-05",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Action": [
+                        "*"
+                    ],
+                    "Resource": [
+                        "*"
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        ....
+    }
+]
+```
+
+
+
 
 ## Alm-Agent {#alm-agent}
 

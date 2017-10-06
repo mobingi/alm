@@ -12,7 +12,7 @@ include_once __DIR__.'/../header.php';
       <div class="code-preview">
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="promo">
                 <a href="<?php echo $siteUrl; ?>enterprise/rbac"><i class="fa fa-eye-slash top-page"></i></a>
                 <h4>RBAC Documentation</a></h4>
@@ -21,19 +21,10 @@ include_once __DIR__.'/../header.php';
                 </p>
               </div>
             </div>
-            <div class="col-md-4">
-                <div class="promo">
-                  <a href="<?php echo $siteUrl; ?>enterprise/cli"><i class="fa fa-terminal top-page"></i></a>
-                  <h4>Mobingi-CLI Documentation</a></h4>
-                  <p>
-                    Using the Mobingi command line to interact with Mobingi ALM services. <br />
-                  </p>
-                </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="promo">
                   <a href="<?php echo $siteUrl; ?>enterprise/api"><i class="fa fa-code top-page"></i></a>
-                  <h4>Mobingi API Reference</a></h4>
+                  <h4>Enterprise Edition API Reference</a></h4>
                   <p>
                     API Reference on helping you to build your applications against our RESTful API service.<br />
                   </p>
@@ -50,7 +41,7 @@ include_once __DIR__.'/../header.php';
 
   <section class="col-md-12 col-sm-12 main-content" role="main">
 
-      <ul class="categorized-view view-col-3">
+      <ul class="categorized-view">
 
           <li>
             <h5>RBAC Documentation</h5>
@@ -63,18 +54,7 @@ include_once __DIR__.'/../header.php';
           </li>
 
           <li>
-            <h5>Cli Documentation</h5>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#overview">Overview</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#global-flags">Global flags</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#stack-list">Stacks</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#template-versions">Template</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#rbac-describe">RBAC</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#creds-view">Credentials</a>
-            <a href="<?php echo $siteUrl; ?>enterprise/cli#registry-list-catalog">Registry</a>
-          </li>
-
-          <li>
-            <h5>API Reference</h5>
+            <h5>API Reference (Enterprise Edition)</h5>
             <a href="<?php echo $siteUrl; ?>enterprise/api#end-point">API Endpoint</a>
             <a href="<?php echo $siteUrl; ?>enterprise/api#versioning">API Versioning</a>
             <a href="<?php echo $siteUrl; ?>enterprise/api#authentication">Authentication</a>

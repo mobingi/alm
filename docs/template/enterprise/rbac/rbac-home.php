@@ -36,7 +36,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../../..').'/markdown/enterpri
 </article>
 
 
-<?php include_once __DIR__.'/../footer.php'; ?>
+<?php include_once __DIR__.'/../../footer.php'; ?>
 <script type="text/javascript">
 $("table").addClass("table table-bordered table-striped");
 </script>

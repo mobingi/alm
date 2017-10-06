@@ -3,6 +3,9 @@
 <ul class="nav sidenav dropable sticky">
 
     <li>
+        <a href="<?php echo $siteUrl; ?>enterprise/rbac">Overview</a>
+    </li>
+    <li>
         <a href="<?php echo $siteUrl; ?>enterprise/what-is-rbac">What is Role Based Access Control</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>enterprise/what-is-rbac#concepts">RBAC Concepts</a></li>
