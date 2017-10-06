@@ -411,10 +411,13 @@ Print the stack's pem file, if available. Useful if you want to connect to your 
 * `--id` - The stack id to query.
 * `--flag` - The configuration flag.
 
+
 Example:
 
 ```bash
+
 $ mobingi-cli stack pem --id mo-58c2297d25645-Sd2aHRDq0-tk --flag web01
+
 [mobingi-cli]: info: payload:
 -----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEAiy5kdqROYbjke0BE8rcT7qUtSKyaaIgqiJLYxlduov2wvnRHSo5O8m67v8UD
@@ -636,6 +639,7 @@ List vendor credentials.
 **Flags**
 
 * `--vendor` - The vendor to list credentials. Valid values: _aws_, _alicloud_. Default value is _aws_.
+
 
 Examples:
 

@@ -1,0 +1,177 @@
+ROUTING:
+    # this format need to pass unit test
+    #
+    # routing default setting
+    #  middleware config
+    #    order to accept
+    #    each middleware default
+    #      header        : response header
+    default_config:
+        middleware:
+            header: true
+
+    # routing define format
+    # [routing pattern]
+    #   []
+    #    order to accept
+    #    each middleware default
+    #      header        : response header
+
+    # ---------------------------
+    # vendors
+    # ---------------------------
+    "get:/vendors":
+        action: describeVendors
+        class: Mobingi\Route\Vendors::describeVendors
+        client: null
+
+
+
+    # ---------------------------
+    # alm-agent
+    # ---------------------------
+    "get:/alm/agent/config":
+        action: describeContainerConfig
+        client: Mobingi\Alm\Template\Template
+        method: describeContainerConfig
+        params:
+            -
+                stack_id: params
+            -
+                flag: params
+        response:
+            returncode: 200
+            options:
+                - JSON_UNESCAPED_SLASHES
+
+    "post:/alm/agent/agent_status":
+        action: updateAgentStatus
+        client: Mobingi\Alm\Stack\Instance
+        method: updateAgentStatus
+        validate:
+            # validate($param,[hoge,hoge,hoge])
+            -
+                params: null
+                target:
+                    - stack_id
+                    - agent_id
+                    - status
+        params:
+            -
+                stack_id: params
+            -
+                agent_id: params
+            -
+                status: params
+            -
+                instance_id: params
+            -
+                message: params
+        response:
+            returncode: 202
+
+    "post:/alm/agent/container_status":
+        action: updateInstanceStatus
+        client: Mobingi\Alm\Stack\Instance
+        method: updateInstanceStatus
+        validate:
+            # validate($param,[hoge,hoge,hoge])
+            -
+                params: null
+                target:
+                    - container_id
+                    - agent_id
+                    - stack_id
+                    - status
+        params:
+            -
+                stack_id: params
+            -
+                agent_id: params
+            -
+                container_id: params
+            -
+                status: params
+            -
+                instance_id: params
+        response:
+            returncode: 202
+
+    # ---------------------------
+    # alm-template
+    # ---------------------------
+    "get:/alm/template/{stack_id}":
+        action: describeAlmTemplate
+        client: Mobingi\Alm\Template\Template
+        method: describeAlmTemplate
+        params:
+            -
+                stack_id: args
+            -
+                version_id: params
+        response:
+            returncode: 200
+            options:
+                - JSON_UNESCAPED_SLASHES
+
+    "put:/alm/template/{stack_id}":
+        action: updateAlmTemplate
+        client: Mobingi\Alm\Template\Template
+        method: updateAlmTemplate
+        params:
+            -
+                stack_id: args
+        response:
+            returncode: 202
+
+    "post:/alm/template":
+        action: createAlmTemplate
+        client: Mobingi\Alm\Template\Template
+        method: saveAlmTemplate
+        response:
+            returncode: 201
+
+    # ---------------------------
+    # stack
+    # ---------------------------
+    "get:/alm/stack":
+        action: describeStacks
+        client: Mobingi\Alm\Stack\Stack
+        method: listStacks
+        response:
+            format: json
+            returncode: 200
+            options:
+                - JSON_UNESCAPED_SLASHES
+    "get:/alm/stack/{stack_id}":
+        action: describeStack
+        client: Mobingi\Alm\Stack\Stack
+        method: describeStack
+        params:
+            -
+                stack_id: args
+        response:
+            format: json
+            returncode: 200
+            options:
+                - JSON_UNESCAPED_SLASHES
+    "delete:/alm/stack/{stack_id}":
+        action: deleteStack
+        client: Mobingi\Alm\Stack\Stack
+        method: terminateStack
+        # method call parameter
+        params:
+            -
+                stack_id: args
+
+    # ---------------------------
+    # sts / misc
+    # ---------------------------
+
+    "get:/misc/docker/search":
+        action: describeDockerHubSearch
+        client: Mobingi\Core\Docker\DockerHub
+        method: searchDocker
+        params:
+            -
+                repo: params

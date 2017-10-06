@@ -1,0 +1,12 @@
+<phpunit bootstrap="autoload.php">
+    <php>
+        <env name="TEST_USER_ID"              value="" />
+        <env name="TEST_CREDENTIAL_ID"        value="" />
+        <env name="TEST_CREDENTIAL_SECRET"    value="" />
+    </php>
+    <testsuites>
+        <testsuite name="mobingi-api">
+            <directory>./*</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

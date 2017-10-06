@@ -3,6 +3,7 @@ Initialize ALM-agent and start containers.
 
 The necessary folder for ALM-agent is created, and if the provider is other than `localtest`, cron job is created. Then, ALM-agent starts containers.
 
+
 ```bash
 $ alm-agent register -h
 NAME:
@@ -17,6 +18,7 @@ OPTIONS:
 ```
 
 ### ensure {#ensure}
+
 Start or update containers.
 
 
@@ -37,6 +39,7 @@ OPTIONS:
 ### stop {#stop}
 Stop active containers.
 
+
 ```bash
 $ alm-agent stop -h
 NAME:
@@ -52,6 +55,7 @@ OPTIONS:
 
 
 ### noop {#noop}
+
 Run without container actions.
 
 ```bash
@@ -68,6 +72,7 @@ OPTIONS:
 ```
 
 ### help {#help}
+
 Shows a list of commands or help for one command.
 
 ```bash
@@ -96,4 +101,5 @@ GLOBAL OPTIONS:
    --help, -h                        show help
    --version, -v                     print the version
 ```
+
 
