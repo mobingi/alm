@@ -500,7 +500,7 @@ $ mobingi-cli template compare --src-sid mo-58c2297d25645-PxviFSJQV-tk \
 
 ### command: rbac describe {#rbac-describe}
 
-List all defined role(s) or per-user role(s).
+List all defined role(s) or per-user role(s). Only your root account has the permissions to run this command.
 
 If --user is not provided, this command will list all defined roles.
 
