@@ -36,7 +36,7 @@
     <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-release-history#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-release-history#current-version">Current version</a></li>
         </ul>
     </li>
     <li>
