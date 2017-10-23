@@ -104,3 +104,46 @@
     ]
 }
 ```
+
+### Deny console Login {#deny-consolelogin-actions}
+
+```json
+{
+  "Version": "2017-05-05",
+  "Statement": [
+      {
+          "Effect" : "Deny",
+          "Action" : [
+              "user:consoleLoginUser"
+          ],
+          "Resource" : [
+              "*"
+          ]
+      }
+    ]
+}
+```
+
+### Limit listStack by allow condition {#limit-liststack-actions}
+
+```json
+{
+  "Version": "2017-05-05",
+  "Statement": [
+      {
+          "Effect" : "Allow",
+          "Action" : [
+              "stack:describeStacks"
+          ],
+          "Resource" : [
+              "*"
+          ],
+          "Condition" : {
+              "ownerFilter": {
+                  "username": [ "_SUBUSER_", "user1", "user2" ]
+              }
+          }
+      }
+    ]
+}
+```

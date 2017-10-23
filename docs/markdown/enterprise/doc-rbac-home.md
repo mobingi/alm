@@ -10,5 +10,9 @@ The RBAC works on All Edition exclude OpenSource Version.
   - Create Role pattern and attach it to user, that's very easy.
 - Additional Default Role  
   - RBAC has inernal default role rules. And attach force by Mobingi ALM.
+- Support Condition of Resource limitation.
+    - RBAC supports Condition Parameters. For example, user views own's stack only.
+    - This support change default rules.
+        - describeStacks, describeStack, updateAlmTemplate, deleteStack
 - Support limits of Resource.
   - RBAC supports limitation per Resource. For example, one user views 1 stack only.

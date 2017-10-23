@@ -101,3 +101,87 @@ When you working with Mobingi ALM, there are a few resource depends on parent re
         ]
     }
     ```
+
+
+## Condition Rules {#condition-rules}
+
+A part of actions supported Condition rules.
+
+```
+stack:describaStacks
+stack:describeStack
+template:updateAlmTemplate
+stack:deleteStack
+```
+
+Below actions limit own data by default rules.
+```
+stack:describeStack
+template:updateAlmTemplate
+stack:deleteStack
+```
+
+These action has default Condition and limit by condition rules.
+ - ```_SUBUSER_``` is defined by system for owner user.
+ - Condition rules of Allow effect is highest priority than normal.
+
+```json
+{
+ "Statement": [
+     {
+         "Effect": "Allow",
+         "Action": "*",
+         "Resource": [
+             "*"
+         ]
+     },
+     {
+         "Effect": "Allow",
+         "Action": [
+             "stack:describeStack",
+             "template:updateAlmTemplate",
+             "stack:deleteStack"
+         ],
+         "Resource": [
+             "*"
+         ],
+         "Condition": {
+             "ownerFilter": {
+                      "username":["_SUBUSER_"]
+                    }                
+            }
+     }
+ ]
+}
+```
+
+- Condition rules of Deny effect is lower than normal.
+- Below Condition for ```stack:describeStacks```  does not work. before apply condition rules, deny action works.
+
+```json
+{
+ "Statement": [
+     {
+         "Effect": "Deny",
+         "Action": "stack:describeStacks",
+         "Resource": [
+             "*"
+         ]
+     },
+     {
+         "Effect": "Deny",
+         "Action": [
+             "stack:describeStacks"
+         ],
+         "Resource": [
+             "*"
+         ],
+         "Condition": {
+             "ownerFilter": {
+                      "username":["testuser"]
+                    }                
+            }
+     }
+ ]
+}
+```
