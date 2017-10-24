@@ -1,4 +1,4 @@
-We welcome your Contributions and feedbacks!
+We welcome your contributions and feedbacks!
 
 Mobingi ALM-agent is an open source software, you can find the source code at https://github.com/mobingi/alm-agent.
 

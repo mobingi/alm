@@ -5,7 +5,6 @@ ALM-agent includes the following prerequisites.
 | --------- | --------- |
 | Supported Operating System | Instances must run on a supported version of Linux. <br> Amazon Linux 2016.09 or later, Ubuntu Server 14.04 LTS or later, CentOS7 or later, Red Hat Enterprise Linux(RHEL) 7 or later. |
 | Internet Access | If your server configuration design requires services to access the public Internet (e.g. GitHub, DockerHub, etc..), verify that your instances have outbound Internet access first. |
-
 | Docker | Instances should have Docker installed. |
 | Git | Instances should have Git installed. |
 
@@ -47,7 +46,7 @@ vagrant $ make build
 
 ### Verifying the Installation {#verifying-the-installation}
 
-After installing ALM-agent, verify the installation worked and checking that `alm-agent` is available.
+After installing ALM-agent, verify the installation works and check that `alm-agent` is available.
 
 
 By executing `alm-agent` you should see the help output similar to this:
@@ -78,4 +77,3 @@ GLOBAL OPTIONS:
    --help, -h                        show help
    --version, -v                     print the version
 ```
-

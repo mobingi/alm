@@ -1,7 +1,7 @@
-In order to support unique functions of any Cloud Services, we provide add-ons.
+In order to support various unique functions for different cloud providers, we provide add-ons.
 
 ### AWS {#aws}
-The ALM-agent enable you to perform special actions when Auto Scaling Instances or Spot Instances are terminated.
+The ALM-agent enables you to perform specific actions when Auto Scaling Instances or Spot Instances are terminated.
 
 <br>
 

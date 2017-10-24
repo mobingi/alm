@@ -1,7 +1,7 @@
 ### register {#register}
-Initialize ALM-agent and start containers.
+Initialize ALM-agent self register and start containers.
 
-The necessary folder for ALM-agent is created, and if the provider is other than `localtest`, cron job is created. Then, ALM-agent starts containers.
+The necessary folders for ALM-agent are created, and if the provider is any value other than `localtest`, cron job will be created. Then, ALM-agent starts the containers.
 
 
 ```bash
@@ -101,5 +101,3 @@ GLOBAL OPTIONS:
    --help, -h                        show help
    --version, -v                     print the version
 ```
-
-
