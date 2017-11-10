@@ -18,6 +18,30 @@ $app->group('/enterprise', function () {
 
     });
 
+    $this->get('/get-started/add-aws-account', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/get-started/add-aws-account.php', [
+            'title' => 'How to add AWS account to ALM console (EE)'
+        ]);
+
+    });
+
+    $this->get('/get-started/add-alicloud-account', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/get-started/add-alicloud-account.php', [
+            'title' => 'How to add Alibaba Cloud account to ALM console (EE)'
+        ]);
+
+    });
+
+    $this->get('/get-started/add-k5-account', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/get-started/add-k5-account.php', [
+            'title' => 'How to add Fujitsu K5 account to ALM console (EE)'
+        ]);
+
+    });
+
     $this->get('/api', function ($request, $response, $args) {
 
         return $this->view->render($response, 'enterprise/page-api.php', [

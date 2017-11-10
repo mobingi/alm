@@ -41,7 +41,14 @@ include_once __DIR__.'/../header.php';
 
   <section class="col-md-12 col-sm-12 main-content" role="main">
 
-      <ul class="categorized-view">
+      <ul class="categorized-view view-col-3">
+
+          <li>
+            <h5>Getting started</h5>
+            <a href="<?php echo $siteUrl; ?>enterprise/get-started/add-aws-account">How to add your AWS account to ALM</a>
+            <a href="<?php echo $siteUrl; ?>enterprise/get-started/add-alicloud-account">How to add your Alibaba Cloud account to ALM</a>
+            <a href="<?php echo $siteUrl; ?>enterprise/get-started/add-k5-account">How to add your Fujitsu K5 account to ALM</a>
+          </li>
 
           <li>
             <h5>RBAC Documentation</h5>
