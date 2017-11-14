@@ -576,7 +576,7 @@ HTTP/1.1 200 OK
     "container_id": "i-0c32760b85f60aca7",
     "agent_id": "e8b15d4f-f027-4c65-80f5-ded5858cd213",
     "update_time": "1510544332",
-    "stack_id": "mo-590fdb7bad55s-OPbQPNf0r-tk",
+    "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
     "instance_id": "i-0c32760b85f60aca7",
     "status": "complete"
 }
@@ -616,7 +616,7 @@ HTTP/1.1 200 OK
         "agent_id": "4e9a6b9a-2a1f-454e-be5e-847573b44f10",
         "container_id": "i-049a49d8881adf122",
         "update_time": "1510564361",
-        "stack_id": "mo-590fdb7bad55s-nUVhU4rJa-tk",
+        "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
         "instance_id": "i-049a49d8881adf122",
         "status": "complete"
     },
@@ -624,7 +624,7 @@ HTTP/1.1 200 OK
         "agent_id": "09afaa82-0a71-4680-a68a-91badaaaa134",
         "container_id": "i-0363778be4d1bc81f",
         "update_time": "1510564297",
-        "stack_id": "mo-590fdb7bad55s-nUVhU4rJa-tk",
+        "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
         "instance_id": "i-0363778be4d1bc81f",
         "status": "complete"
     },
@@ -632,7 +632,7 @@ HTTP/1.1 200 OK
         "agent_id": "9c075f08-81c9-4147-8974-f543640dccf6",
         "container_id": "i-02f27fcae984fc946",
         "update_time": "1510564348",
-        "stack_id": "mo-590fdb7bad55s-nUVhU4rJa-tk",
+        "stack_id": "mo-5447820c870e1-ZgNTSRM8K-tk",
         "instance_id": "i-02f27fcae984fc946",
         "status": "complete"
     }
