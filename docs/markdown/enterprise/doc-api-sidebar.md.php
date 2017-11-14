@@ -28,6 +28,8 @@
         <ul>
             <li><a href="#stack-list">List Stacks</a></li>
             <li><a href="#stack-describe">Describe Stack</a></li>
+            <li><a href="#describe-container">Describe Container</a></li>
+            <li><a href="#list-containers">List Containers</a></li>
         </ul>
     </li>
     <li>
