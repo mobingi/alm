@@ -18,6 +18,14 @@ $app->group('/enterprise', function () {
 
     });
 
+    $this->get('/get-started', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'enterprise/get-started/home.php', [
+            'title' => 'Get Started with ALM console (EE)'
+        ]);
+
+    });
+
     $this->get('/get-started/add-aws-account', function ($request, $response, $args) {
 
         return $this->view->render($response, 'enterprise/get-started/add-aws-account.php', [
