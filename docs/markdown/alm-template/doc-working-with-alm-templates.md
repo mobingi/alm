@@ -125,29 +125,19 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 <li class="is-folder">
                                     ingress<i>array of objects</i>
                                     <ul>
-                                        <li class="is-folder">
-                                            <i>object</i>
-                                            <ul>
-                                                <li class="is-file">CidrIp<i>string</i></li>
-                                                <li class="is-file">FromPort<i>number</i></li>
-                                                <li class="is-file">IpProtocol<i>string</i></li>
-                                                <li class="is-file">ToPort<i>number</i></li>
-                                            </ul>
-                                        </li>
+                                        <li class="is-file">cidr_ip<i>string</i></li>
+                                        <li class="is-file">port_from<i>number</i></li>
+                                        <li class="is-file">ip_protocol<i>string</i></li>
+                                        <li class="is-file">port_to<i>number</i></li>
                                     </ul>
                                 </li>
                                 <li class="is-folder">
                                     egress<i>array of objects</i>
                                     <ul>
-                                        <li class="is-folder">
-                                            <i>object</i>
-                                            <ul>
-                                                <li class="is-file">CidrIp<i>string</i></li>
-                                                <li class="is-file">FromPort<i>number</i></li>
-                                                <li class="is-file">IpProtocol<i>string</i></li>
-                                                <li class="is-file">ToPort<i>number</i></li>
-                                            </ul>
-                                        </li>
+                                        <li class="is-file">cidr_ip<i>string</i></li>
+                                        <li class="is-file">port_from<i>number</i></li>
+                                        <li class="is-file">ip_protocol<i>string</i></li>
+                                        <li class="is-file">port_to<i>number</i></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -156,16 +146,11 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                         <li class="is-folder">
                             network_acl<i>array of objects</i>
                             <ul>
-                                <li class="is-folder">
-                                    <i>object</i>
-                                    <ul>
-                                        <li class="is-file">RuleNumber<i>number</i></li>
-                                        <li class="is-file">Protocol<i>string</i></li>
-                                        <li class="is-file">RuleAction<i>string</i></li>
-                                        <li class="is-file">Egress<i>boolean</i></li>
-                                        <li class="is-file">CidrBlock<i>string</i></li>
-                                    </ul>
-                                </li>
+                                <li class="is-file">rule_number<i>number</i></li>
+                                <li class="is-file">protocol<i>string</i></li>
+                                <li class="is-file">rule_action<i>string</i></li>
+                                <li class="is-file">acl_egress<i>boolean</i></li>
+                                <li class="is-file">cidr<i>string</i></li>
                             </ul>
                         </li>
 
@@ -175,25 +160,20 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 <li class="is-folder">
                                     listeners<i>array of objects</i>
                                     <ul>
-                                        <li class="is-folder">
-                                            <i>object</i>
-                                            <ul>
-                                                <li class="is-file">LoadBalancerPort<i>string</i></li>
-                                                <li class="is-file">InstancePort<i>string</i></li>
-                                                <li class="is-file">Protocol<i>string</i></li>
-                                                <li class="is-file">cert_domain<i>string</i></li>
-                                            </ul>
-                                        </li>
+                                        <li class="is-file">load_balancer_port<i>string</i></li>
+                                        <li class="is-file">instance_port<i>string</i></li>
+                                        <li class="is-file">protocol<i>string</i></li>
+                                        <li class="is-file">cert_domain<i>string</i></li>
                                     </ul>
                                 </li>
                                 <li class="is-folder">
                                     health_check<i>object</i>
                                     <ul>
-                                        <li class="is-file">HealthyThreshold<i>string</i></li>
-                                        <li class="is-file">Interval<i>string</i></li>
-                                        <li class="is-file">Target<i>string</i></li>
-                                        <li class="is-file">Timeout<i>string</i></li>
-                                        <li class="is-file">UnhealthyThreshold<i>string</i></li>
+                                        <li class="is-file">healthy_threshold<i>string</i></li>
+                                        <li class="is-file">interval<i>string</i></li>
+                                        <li class="is-file">target<i>string</i></li>
+                                        <li class="is-file">timeout<i>string</i></li>
+                                        <li class="is-file">unhealthy_threshold<i>string</i></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -218,13 +198,18 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                 <li class="is-folder open">
                     container<i>runtime configuration</i>
                     <ul>
-                        <li class="is-file">updated<i>number</i></li>
-                        <li class="is-file">image<i>string</i></li>
-                        <li class="is-file">codeDir<i>string</i></li>
-                        <li class="is-file">gitRepo<i>string</i></li>
-                        <li class="is-file">gitReference<i>string</i></li>
-                        <li class="is-file">ports<i>array</i></li>
-                        <li class="is-file">environmentVariables<i>array</i></li>
+                        <li class="is-file">container_updated<i>number</i></li>
+                        <li class="is-file">container_image<i>string</i></li>
+                        <li class="is-file">container_registry_username<i>string</i></li>
+                        <li class="is-file">container_registry_password<i>string</i></li>
+                        <li class="is-file">container_code_dir<i>string</i></li>
+                        <li class="is-file">container_git_repo<i>string</i></li>
+                        <li class="is-file">container_git_reference<i>string</i></li>
+                        <li class="is-file">container_git_private_key<i>string</i></li>
+                        <li class="is-file">container_ports<i>number</i></li>
+                        <li class="is-file">container_users<i>array</i></li>
+                        <li class="is-file">container_env_vars<i>array</i></li>
+                        <li class="is-file">container_addons<i>array</i></li>
                     </ul>
                 </li>
             </ul>
