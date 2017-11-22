@@ -126,18 +126,18 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                     ingress<i>array of objects</i>
                                     <ul>
                                         <li class="is-file">cidr_ip<i>string</i></li>
-                                        <li class="is-file">port_from<i>number</i></li>
+                                        <li class="is-file">from_port<i>number</i></li>
                                         <li class="is-file">ip_protocol<i>string</i></li>
-                                        <li class="is-file">port_to<i>number</i></li>
+                                        <li class="is-file">to_port<i>number</i></li>
                                     </ul>
                                 </li>
                                 <li class="is-folder">
                                     egress<i>array of objects</i>
                                     <ul>
                                         <li class="is-file">cidr_ip<i>string</i></li>
-                                        <li class="is-file">port_from<i>number</i></li>
+                                        <li class="is-file">from_port<i>number</i></li>
                                         <li class="is-file">ip_protocol<i>string</i></li>
-                                        <li class="is-file">port_to<i>number</i></li>
+                                        <li class="is-file">to_port<i>number</i></li>
                                     </ul>
                                 </li>
                             </ul>

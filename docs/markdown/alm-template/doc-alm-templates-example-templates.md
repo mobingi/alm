@@ -57,11 +57,11 @@
         "availability_zone": "ap-northeast-1c"
       },
       "container": {
-          "image": "mobingi/ubuntu-apache2-php7:7.1",
-          "codeDir": "/var/www/html",
-          "gitRepo": "https://github.com/mobingilabs/default-site-php.git",
-          "gitReference": "master",
-          "ports": [80]
+          "container_image": "mobingi/ubuntu-apache2-php7:7.1",
+          "container_code_dir": "/var/www/html",
+          "container_git_repo": "https://github.com/mobingilabs/default-site-php.git",
+          "container_git_reference": "master",
+          "container_ports": [80]
       }
     }
   ]
@@ -127,18 +127,18 @@
         "keypair": false,
         "network_acl": [
           {
-            "RuleNumber": 100,
-            "Protocol": "-1",
-            "RuleAction": "allow",
-            "Egress": true,
-            "CidrBlock": "0.0.0.0/0"
+            "rule_number": 100,
+            "protocol": "-1",
+            "rule_action": "allow",
+            "acl_egress": true,
+            "cidr": "0.0.0.0/0"
           },
           {
-            "RuleNumber": 100,
-            "Protocol": "-1",
-            "RuleAction": "allow",
-            "Egress": false,
-            "CidrBlock": "0.0.0.0/0"
+            "rule_number": 100,
+            "protocol": "-1",
+            "rule_action": "allow",
+            "acl_egress": false,
+            "cidr": "0.0.0.0/0"
           }
         ]
       }
@@ -178,36 +178,36 @@
         "security_group": {
           "ingress": [
             {
-              "CidrIp": "0.0.0.0/0",
-              "FromPort": 80,
-              "IpProtocol": "tcp",
-              "ToPort": 80
+              "cidr_ip": "0.0.0.0/0",
+              "from_port": 80,
+              "ip_protocol": "tcp",
+              "to_port": 80
             },
             {
-              "CidrIp": "0.0.0.0/0",
-              "FromPort": 443,
-              "IpProtocol": "tcp",
-              "ToPort": 443
+              "cidr_ip": "0.0.0.0/0",
+              "from_port": 443,
+              "ip_protocol": "tcp",
+              "to_port": 443
             },
             {
-              "CidrIp": "0.0.0.0/0",
-              "FromPort": 4243,
-              "IpProtocol": "tcp",
-              "ToPort": 4243
+              "cidr_ip": "0.0.0.0/0",
+              "from_port": 4243,
+              "ip_protocol": "tcp",
+              "to_port": 4243
             },
             {
-              "CidrIp": "0.0.0.0/0",
-              "FromPort": 22,
-              "IpProtocol": "tcp",
-              "ToPort": 22
+              "cidr_ip": "0.0.0.0/0",
+              "from_port": 22,
+              "ip_protocol": "tcp",
+              "to_port": 22
             }
           ],
           "egress": [
             {
-              "CidrIp": "0.0.0.0/0",
-              "FromPort": 0,
-              "IpProtocol": "-1",
-              "ToPort": 65535
+              "cidr_ip": "0.0.0.0/0",
+              "from_port": 0,
+              "ip_protocol": "-1",
+              "to_port": 65535
             }
           ]
         }
@@ -289,26 +289,26 @@
           "scheme": "internet-facing",
           "listeners": [
             {
-              "LoadBalancerPort": "80",
-              "InstancePort": "80",
-              "Protocol": "HTTP"
+              "load_balancer_port": "80",
+              "instance_port": "80",
+              "protocol": "HTTP"
             }
           ],
           "health_check": {
-            "HealthyThreshold": "2",
-            "Interval": "10",
-            "Target": "TCP:80",
-            "Timeout": "5",
+            "healthy_threshold": "2",
+            "interval": "10",
+            "target": "TCP:80",
+            "timeout": "5",
             "UnhealthyThreshold": "10"
           }
         }
       },
       "container": {
-        "image": "mobingi/ubuntu-apache2-php7:7.1",
-        "codeDir": "/var/www/html",
-        "gitRepo": "https://github.com/mobingilabs/default-site-php.git",
-        "gitReference": "master",
-        "ports": [
+        "container_image": "mobingi/ubuntu-apache2-php7:7.1",
+        "container_code_dir": "/var/www/html",
+        "container_git_repo": "https://github.com/mobingilabs/default-site-php.git",
+        "container_git_reference": "master",
+        "container_ports": [
           80
         ]
       }
