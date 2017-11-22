@@ -1,9 +1,69 @@
-## alm-template structure
+## Alm-template Formats {#template-formats}
+
+Alm-template is designed in __Json__ format. You can also write your template in Yaml format and then convert it into json file when you deploy your stacks on ALM UI (or through CLI, API).
+
+_Official yaml format support is in-progress_
+
+## Alm-template Components {#template-components}
+
+Alm-template top-level components consist of `version`, `label`, `description`, `vendor`, `configurations`.
+
+### - version {#template-components-version}
+
+The version of Alm-template release.
+
+This value is always "2017-03-03".
+
+### - label {#template-components-label}
+
+The label of the Alm-template.
+
+You can use this section to mark the labels for each of your alm-template versions. This is useful when you update your template.
+
+### - description {#template-components-description}
+
+The description of the Alm-template.
+
+You can use this section to describe the purpose of the alm-template, _for example: production app stack_.
+
+### - vendor {#template-components-vendor}
+
+The cloud platform vendor of which the template will be deployed to.
+
+You need to specify the vendor in every alm-template you write, and can only specify one vendor at a time.
+
+### - configurations {#template-components-configurations}
+
+The configurations of the stack the Alm-template about to deploy.
+
+In the configurations section, you specify one or multiple configuration layers of your application's provision and container runtime settings.
+
+Inside each layer, there are four sections you need to specify:
+
+- role
+
+    The "role" of which the stack layer defines to. You deploy multiple layers within one Alm-template, for example _web layer_, _database layer_ or _bastion instance_ layer, etc. These values are pre-defined by Mobingi ALM and you cannot customize the names.
+
+- flag
+
+    The unique name identifier of each layer.
+
+- provision
+
+    The hardware provisioning configurations.
+
+- container
+
+    The software runtime configurations for each VM instance.
+
+
+## Alm-template Structure {#template-structure}
 
 Below is a tree view of all possible components within an alm-template.
 
 _The following structure is not a working demo template, but rather to explain all possible key names that may contain inside the template body._
 
+For Alm-template examples, please refer to [Example ALM Templates](https://learn.mobingi.com/alm-templates-example-templates).
 
 <div class="file-tree">
     <ul>
@@ -11,7 +71,7 @@ _The following structure is not a working demo template, but rather to explain a
         <li class="is-file">version<i>string</i></li>
         <li class="is-file">label<i>string</i></li>
         <li class="is-file">description<i>string</i></li>
-        <li class="is-folder">vendor<i>object</i>
+        <li class="is-folder open">vendor<i>object</i>
             <ul>
                 <li class="is-folder">
                     aws<i>object</i>
@@ -40,7 +100,7 @@ _The following structure is not a working demo template, but rather to explain a
         </li>
         <li class="is-folder open">configurations<i>array of objects</i>
             <ul>
-                <li class="is-folder">
+                <li class="is-folder open">
                     provision<i>provision configuration</i>
                     <ul>
                         <li class="is-file">availability_zone<i>string</i></li>
@@ -155,18 +215,18 @@ _The following structure is not a working demo template, but rather to explain a
                     </ul>
                 </li>
 
-                <li class="is-folder">
-                container<i>runtime configuration</i>
-                <ul>
-                    <li class="is-file">updated<i>number</i></li>
-                    <li class="is-file">image<i>string</i></li>
-                    <li class="is-file">codeDir<i>string</i></li>
-                    <li class="is-file">gitRepo<i>string</i></li>
-                    <li class="is-file">gitReference<i>string</i></li>
-                    <li class="is-file">ports<i>array</i></li>
-                    <li class="is-file">environmentVariables<i>array</i></li>
-                </ul>
-            </li>
+                <li class="is-folder open">
+                    container<i>runtime configuration</i>
+                    <ul>
+                        <li class="is-file">updated<i>number</i></li>
+                        <li class="is-file">image<i>string</i></li>
+                        <li class="is-file">codeDir<i>string</i></li>
+                        <li class="is-file">gitRepo<i>string</i></li>
+                        <li class="is-file">gitReference<i>string</i></li>
+                        <li class="is-file">ports<i>array</i></li>
+                        <li class="is-file">environmentVariables<i>array</i></li>
+                    </ul>
+                </li>
             </ul>
         </li>
     </ul>

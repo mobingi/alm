@@ -26,13 +26,8 @@
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-description">- description</a></li>
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-vendor">- vendor</a></li>
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations">- configurations</a></li>
-                <ul>
-                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-role">role</a></li>
-                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-flag">flag</a></li>
-                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-provision">provision</a></li>
-                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-container">container</a></li>
-                </ul>
             </ul>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-structure">ALM Template Structure</a></li>
         </ul>
     </li>
     <li>
