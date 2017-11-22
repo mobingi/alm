@@ -9,36 +9,61 @@
             <li><a href="<?php echo $siteUrl; ?>what-is-alm-template#how-does-it-work">How does ALM Template Work?</a></li>
         </ul>
     </li>
-    <li>
+    <!-- <li>
         <a href="<?php echo $siteUrl; ?>alm-template-best-practices">Best Practices</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-template-best-practices#">sub_item</a></li>
         </ul>
-    </li>
+    </li> -->
     <li>
         <a href="<?php echo $siteUrl; ?>working-with-alm-templates">Working with ALM Templates</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-formats">Template Formats</a></li>
+            <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components">Template Components</a></li>
+            <ul>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-version">- version</a></li>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-label">- label</a></li>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-description">- description</a></li>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-vendor">- vendor</a></li>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations">- configurations</a></li>
+                <ul>
+                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-role">role</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-flag">flag</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-provision">provision</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-container">container</a></li>
+                </ul>
+            </ul>
         </ul>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-reference">ALM Template Reference</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- vpc_id</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#availability_zone">- availability_zone</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- instance_type</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- instance_count</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- volume_type</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- volume_size</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#keypair">- keypair</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- subnet</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- network_acl</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- security_group</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- auto_scaling</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- load_balancer</a></li>
         </ul>
     </li>
-    <li>
+    <!-- <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting">Troubleshooting</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting#">sub_item</a></li>
         </ul>
-    </li>
-    <li>
+    </li> -->
+    <!-- <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a>
         <ul>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-release-history#current-version">Current version</a></li>
         </ul>
-    </li>
+    </li> -->
     <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-example-templates">Example ALM Templates</a>
         <ul>

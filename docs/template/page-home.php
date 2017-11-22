@@ -66,11 +66,11 @@ include_once 'header.php';
         <li>
           <h5>Mobingi ALM-template</h5>
           <a href="<?php echo $siteUrl; ?>what-is-alm-template">What is ALM-template</a>
-          <a href="<?php echo $siteUrl; ?>alm-template-best-practices">Best practices</a>
+          <!-- <a href="<?php echo $siteUrl; ?>alm-template-best-practices">Best practices</a> -->
           <a href="<?php echo $siteUrl; ?>working-with-alm-templates">Working with ALM-templates</a>
           <a href="<?php echo $siteUrl; ?>alm-templates-reference">ALM-template reference</a>
-          <a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting">Troubleshooting</a>
-          <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a>
+          <!-- <a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting">Troubleshooting</a>
+          <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a> -->
           <a href="<?php echo $siteUrl; ?>alm-templates-example-templates">Example ALM-templates</a>
         </li>
 

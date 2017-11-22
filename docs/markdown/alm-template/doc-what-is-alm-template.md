@@ -1,17 +1,18 @@
 ### Concepts {#concepts}
 
-- ALM-template is a json or yaml formatted configuration file which defines your cloud-native application's infrastructure design and runtime configuration.
+- ALM-template is a json formatted configuration file which defines your cloud-native application's architecture design and runtime configuration.
 
-- ALM-template is cloud vendor stateless, which means you write your template once and it works with any cloud platforms such as AWS, AliCloud, OpenStack, etc.
+- ALM-template is cloud platform stateless. You write your template once and it works on any cloud platforms such as AWS, AliCloud, OpenStack, etc.
 
-    _(We're still in the process on releasing more vendor integrations, so it may possible that you see the vendor support documented here but hasn't covered in the released open source code.)_
+    _(We're still in the process of releasing more platform integrations, it might be the case that certain cloud platform support documented here but hasn't covered in the released open source code yet.)_
 
 - You can save and reuse ALM-template at anytime.
 
 
 ### How does it work {#how-does-it-work}
 
-- ALM-template is part of Mobingi ALM. You write your ALM-template and paste it on console UI (or through CLI, API), Mobingi ALM will analyze and convert them into each cloud vendor's native configuration standard and provision all necessary resources on your behalf.
+- ALM-template is a component of ALM.
+You write your ALM-template in code blocks and paste it on ALM console (or through CLI, API), it will be converted into each cloud platform's native configuration standards, then ALM will provision all resources on your behalf.
 
 - If you specify the runtime configurations of your application in the `container` section of the ALM-template, then Mobingi ALM will also deploy an ALM-agent on each provisioned node to perform application runtime setup and code deployment.
 
