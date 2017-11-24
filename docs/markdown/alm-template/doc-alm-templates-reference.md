@@ -4,29 +4,80 @@ Reserved key name.
 
 ## availability_zone {#availability_zone}
 
+The availability zone of which the stack is deployed to.
+
 | Type | Example Value | Supported Platforms |
 |:-----------|:-----|:----------------|
 | string | us-east-1 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
-- ### Available Values
+- ### Valid Values
 
     #### AWS
     ```
-    us-east-1
-    us-east-2
-    us-west-1
-    us-west-2
-    ca-central-1
-    eu-west-1
-    eu-central-1
-    eu-west-2
-    ap-northeast-1 [default]
-    ap-northeast-2
-    ap-southeast-1
-    ap-southeast-2
-    ap-south-1
-    sa-east-1
+    (North Virginia)
+    us-east-1a
+    us-east-1b
+    us-east-1c
+    us-east-1d
+    us-east-1e
+
+    (Ohio)
+    us-east-2a
+    us-east-2b
+    us-east-2c
+
+    (North Carolina)
+    us-west-1b
+    us-west-1c
+
+    (Oregon)
+    us-west-2a
+    us-west-2b
+    us-west-2c
+
+    (Canada)
+    ca-central-1a
+    ca-central-1b
+
+    (Ireland)
+    eu-west-1a
+    eu-west-1b
+    eu-west-1c
+
+    (Frankfurt)
+    eu-central-1a
+    eu-central-1b
+
+    (London)
+    eu-west-2a
+    eu-west-2b
+
+    (Singapore)
+    ap-southeast-1a
+    ap-southeast-1b
+
+    (Sydney)
+    ap-southeast-2a
+    ap-southeast-2b
+    ap-southeast-2c
+
+    (Seoul)
+    ap-northeast-2a
+    ap-northeast-2c
+
+    (Tokyo)
+    ap-northeast-1a
+    ap-northeast-1c
+
+    (Mumbai)
+    ap-south-1a
+    ap-south-1b
+
+    (Sao Paulo)
+    sa-east-1a
+    sa-east-1b
+    sa-east-1c
     ```
     #### AliCloud
     ```
@@ -39,12 +90,14 @@ Reserved key name.
 
 ## instance_type {#instance_type}
 
+The type of instances (VMs).
+
 | Type | Example Value | Supported Platforms |
 |:-----------|:-----|:----------------|
 | string | t2.micro | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
-- ### Available Values
+- ### Valid Values
 
     #### AWS
     ```
@@ -134,11 +187,72 @@ Reserved key name.
 
 ## instance_count {#instance_count}
 
+Number of instances (VMs) to provision.
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| int | 1 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+
+- ### Valid Values
+
+    ```
+    Integer greater or equal to 1.
+    ```
+
 ## volume_type {#volume_type}
+
+The volume type of instance.
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| string | standard | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+
+- ### Valid Values
+
+    #### AWS
+    ```
+    standard [default] - Magnetic volumes
+    gp2 - General Purpose SSD
+    io1 - Provisioned IOPS SSD
+    st1 - Throughput Optimized HDD
+    sc1 - Cold HDD
+    ```
 
 ## volume_size {#volume_size}
 
+The size of the volume, in gibibytes (GiBs).
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| string | 50 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+
+- ### Valid Values
+
+    #### AWS
+    ```
+    Constraints: 1-16384 for gp2, 4-16384 for io1, 500-16384 for st1, 500-16384 for sc1, and 1-1024 for standard.
+    ```
+
+
 ## keypair {#keypair}
+
+The size of the volume, in gibibytes (GiBs).
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| boolean | true | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+
+- ### Valid Values
+
+    #### AWS
+    ```
+    true [default]
+    false
+    ```
 
 ## subnet {#subnet}
 
