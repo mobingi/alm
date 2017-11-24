@@ -103,6 +103,7 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                 <li class="is-folder open">
                     provision<i>provision configuration</i>
                     <ul>
+                        <li class="is-file">vpc_id<i>string</i></li>
                         <li class="is-file">availability_zone<i>string</i></li>
                         <li class="is-file">instance_type<i>string</i></li>
                         <li class="is-file">image<i>string</i></li>
