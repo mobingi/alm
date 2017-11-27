@@ -438,6 +438,60 @@ SSH_CONNECTION=54.238.178.1 45328 10.1.0.106 22
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 XDG_RUNTIME_DIR=/run/user/0
 _=/usr/bin/env
+
+# run the same script to an aws ec2 instance and an alibabacloud vm
+$ mobingi-cli stack exec \
+    --target "mo-58c2297d25645-rkIEPmust-tk|root@47.74.5.170:Single" \
+    --target "mo-58c2297d25645-M5EIHEaOC-tk|ec2-user@13.230.9.8:web0" \
+    --script ~/test.sh
+[mobingi-cli]: info: [0]output: mo-58c2297d25645-rkIEPmust-tk, instance: root@47.74.5.170, flag: Single                                                                                                                                                             
+/root                                                                                                                                                                                                                                                               
+Linux iZ6weeq9e4ktok8f9o2910Z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux                                                                                                                                          
+XDG_SESSION_ID=43631                                                                                                                                                                                                                                                
+SHELL=/bin/bash                                                                                                                                                                                                                                                     
+SSH_CLIENT=54.238.178.1 45386 22                                                                                                                                                                                                                                    
+USER=root                                                                                                                                                                                                                                                           
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin                                                                                                                                                                                                              
+MAIL=/var/mail/root                                                                                                                                                                                                                                                 
+PWD=/root                                                                                                                                                                                                                                                           
+LANG=en_US.UTF-8                                                                                                                                                                                                                                                    
+HOME=/root                                                                                                                                                                                                                                                          
+SHLVL=2                                                                                                                                                                                                                                                             
+LOGNAME=root
+SSH_CONNECTION=54.238.178.1 45386 10.1.0.106 22
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+XDG_RUNTIME_DIR=/run/user/0
+_=/usr/bin/env
+
+[mobingi-cli]: info: [1]output: mo-58c2297d25645-M5EIHEaOC-tk, instance: ec2-user@13.230.9.8, flag: web0
+/home/ec2-user
+Linux ip-10-0-1-63 4.9.51-10.52.amzn1.x86_64 #1 SMP Fri Sep 29 01:16:19 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+LESS_TERMCAP_mb=
+LESS_TERMCAP_md=
+LESS_TERMCAP_me=
+SHELL=/bin/bash
+SSH_CLIENT=54.238.178.1 37174 22
+EC2_AMITOOL_HOME=/opt/aws/amitools/ec2
+LESS_TERMCAP_ue=
+USER=ec2-user
+EC2_HOME=/opt/aws/apitools/ec2
+LESS_TERMCAP_us=
+PATH=/usr/local/bin:/bin:/usr/bin:/opt/aws/bin
+MAIL=/var/mail/ec2-user
+PWD=/home/ec2-user
+JAVA_HOME=/usr/lib/jvm/jre
+LANG=en_US.UTF-8
+AWS_CLOUDWATCH_HOME=/opt/aws/apitools/mon
+HOME=/home/ec2-user
+SHLVL=2
+AWS_PATH=/opt/aws
+AWS_AUTO_SCALING_HOME=/opt/aws/apitools/as
+LOGNAME=ec2-user
+SSH_CONNECTION=54.238.178.1 37174 10.0.1.63 22
+AWS_ELB_HOME=/opt/aws/apitools/elb
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LESS_TERMCAP_se=
+_=/bin/env
 ```
 
 ### command: stack pem {#stack-pem}
