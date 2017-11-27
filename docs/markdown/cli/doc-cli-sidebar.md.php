@@ -13,6 +13,7 @@
             <li><a href="#stack-update">update</a></li>
             <li><a href="#stack-delete">delete</a></li>
             <li><a href="#stack-ssh">ssh</a></li>
+            <li><a href="#stack-exec">exec</a></li>
             <li><a href="#stack-pem">pem</a></li>
         </ul>
     </li>
