@@ -526,6 +526,9 @@ Pkxz4fR/gQXYcpV4/T/3zqTVaGcVNK8ZCE1jRfKt/5QFQkPOJRkDWZZzQqSwUMhnMiK1iE+33fmp
 ITvktdL9OMT0RXjZ4qKq+aifaY9D0XzbR3HWLFcWZ+0tmzUTJDM8F6LivsPUjR8uitiic7KXvlDV
 ...
 -----END RSA PRIVATE KEY-----
+
+# you can now use ssh tool to connect your instance
+$ ssh -i ~/test.pem user@ipaddr
 ```
 
 ### command: template versions {#template-versions}
