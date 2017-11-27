@@ -444,19 +444,19 @@ $ mobingi-cli stack exec \
     --target "mo-58c2297d25645-rkIEPmust-tk|root@47.74.5.170:Single" \
     --target "mo-58c2297d25645-M5EIHEaOC-tk|ec2-user@13.230.9.8:web0" \
     --script ~/test.sh
-[mobingi-cli]: info: [0]output: mo-58c2297d25645-rkIEPmust-tk, instance: root@47.74.5.170, flag: Single                                                                                                                                                             
-/root                                                                                                                                                                                                                                                               
-Linux iZ6weeq9e4ktok8f9o2910Z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux                                                                                                                                          
-XDG_SESSION_ID=43631                                                                                                                                                                                                                                                
-SHELL=/bin/bash                                                                                                                                                                                                                                                     
-SSH_CLIENT=54.238.178.1 45386 22                                                                                                                                                                                                                                    
-USER=root                                                                                                                                                                                                                                                           
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin                                                                                                                                                                                                              
-MAIL=/var/mail/root                                                                                                                                                                                                                                                 
-PWD=/root                                                                                                                                                                                                                                                           
-LANG=en_US.UTF-8                                                                                                                                                                                                                                                    
-HOME=/root                                                                                                                                                                                                                                                          
-SHLVL=2                                                                                                                                                                                                                                                             
+[mobingi-cli]: info: [0]output: mo-58c2297d25645-rkIEPmust-tk, instance: root@47.74.5.170, flag: Single
+/root
+Linux iZ6weeq9e4ktok8f9o2910Z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+XDG_SESSION_ID=43631
+SHELL=/bin/bash
+SSH_CLIENT=54.238.178.1 45386 22
+USER=root
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+MAIL=/var/mail/root
+PWD=/root
+LANG=en_US.UTF-8
+HOME=/root
+SHLVL=2
 LOGNAME=root
 SSH_CONNECTION=54.238.178.1 45386 10.1.0.106 22
 LESSOPEN=||/usr/bin/lesspipe.sh %s
