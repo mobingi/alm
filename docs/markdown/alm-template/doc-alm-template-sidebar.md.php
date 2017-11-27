@@ -37,7 +37,7 @@
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#availability_zone">- availability_zone</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- instance_type</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_count">- instance_count</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- volume_type</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_type">- volume_type</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_size">- volume_size</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#keypair">- keypair</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- subnet</a></li>

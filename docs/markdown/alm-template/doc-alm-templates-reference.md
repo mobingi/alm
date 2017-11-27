@@ -6,9 +6,9 @@ Reserved key name.
 
 The availability zone of which the stack is deployed to.
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| string | us-east-1 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | us-east-1 | Yes  | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
@@ -92,9 +92,9 @@ The availability zone of which the stack is deployed to.
 
 The type of instances (VMs).
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| string | t2.micro | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | t2.micro | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
@@ -189,9 +189,9 @@ The type of instances (VMs).
 
 Number of instances (VMs) to provision.
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| int | 1 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| int | 1 | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
@@ -204,46 +204,54 @@ Number of instances (VMs) to provision.
 
 The volume type of instance.
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| string | standard | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value| Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | standard | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
 
     #### AWS
     ```
-    standard [default] - Magnetic volumes
-    gp2 - General Purpose SSD
+    gp2 - General Purpose SSD [default]
     io1 - Provisioned IOPS SSD
     st1 - Throughput Optimized HDD
     sc1 - Cold HDD
+    standard - Magnetic volumes
     ```
 
 ## volume_size {#volume_size}
 
 The size of the volume, in gibibytes (GiBs).
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| string | 50 | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value| Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | 50 | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
 
     #### AWS
     ```
-    Constraints: 1-16384 for gp2, 4-16384 for io1, 500-16384 for st1, 500-16384 for sc1, and 1-1024 for standard.
+    Constraints: 1-16384 for gp2, 4-16384 for io1, 500-16384 for st1, 500-16384 for sc1, and 1-1024 for standard (magnetic disk).
+
+    Default volume size in GB for each volume types:
+
+    - gp2: 50 [default]
+    - io1: 50
+    - st1: 500
+    - sc1: 500
+    - standard: 50
     ```
 
 
 ## keypair {#keypair}
 
-The size of the volume, in gibibytes (GiBs).
+The ssh key pair used to access instances.
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| boolean | true | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| boolean | true | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
@@ -258,36 +266,46 @@ The size of the volume, in gibibytes (GiBs).
 
 The subnet settings.
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| object | { "cidr": "10.0.0.0/24", "public": true, "auto_assign_public_ip":true } | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | { "cidr": "10.0.0.0/24", "public": true, "auto_assign_public_ip":true } | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
-    `cidr`: The IPv4 CIDR block that you want the subnet to cover (for example, "10.0.0.0/24").
+A `subnet` section contains 3 key names.
 
-    `public`: Defines whether this subnet is public subnet or private.
+- `cidr` (string)
+    ```
+    The IPv4 CIDR block that you want the subnet to cover (for example, "10.0.0.0/24").
 
-    `auto_assign_public_ip`: Defines whether automatically assigns a public IP when instance launched into the subnet.
+    numbers, dot, back-slash only. The default value is "10.0.0.0/24".
+    ```
+- `public` (boolean)
+    ```
+    Defines whether this subnet is public or private.
 
+    true [default]
+    false
+    ```
+- `auto_assign_public_ip` (boolean)
+    ```
+    Defines whether automatically assigns a public IP when instance launched into the subnet.
+
+    true [default]
+    false
+    ```
 
 - ### Valid Values
 
     #### AWS
+    Below is also the default `subnet` settings.
+    ```
+    "subnet": {
+        "cidr": "10.0.0.0/24",
+        "public": true,
+        "auto_assign_public_ip": true
+    }
+    ```
 
-    - cidr
-    ```
-    numbers, dot, back-slash only.
-    10.0.0.0/24 [default]
-    ```
-    - public
-    ```
-    true [default]
-    false
-    ```
-    - auto_assign_public_ip
-    ```
-    true [default]
-    false
-    ```
+
 
 ## network_acl {#network_acl}
 
@@ -295,40 +313,132 @@ The network action control list for a virtual private cloud.
 
 __This section supports AWS only__
 
-| Type | Example Value | Supported Platforms |
-|:-----------|:-----|:----------------|
-| array | see blow | <span class="label label-default">AWS</span> |
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| array | see blow | No | <span class="label label-default">AWS</span> |
 
 A `network_acl` section contains a list of network_acl entry items. Each item contains the following declaratives:
 
-- `rule_number` (number)
+- `rule_number` (int)
+```
+Rule number to assign to the entry, such as 100.
+ACL entries are processed in ascending order by rule number. Entries can't use the same rule number unless one is an egress rule and the other is an ingress rule.
+```
+For more on valid values, please refer to [this guide](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkAclEntry.html) on aws documentation site.
 - `protocol` (string)
+```
+The IP protocol that the rule applies to.
+You must specify -1 or a protocol number. You can specify -1 for all protocols.
+```
+For more on protocol numbers, please refer to [this guide](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 - `rule_action` (string)
+```
+Whether to allow or deny traffic that matches the rule; valid values are "allow" or "deny".
+```
 - `acl_egress` (boolean)
+```
+Whether this rule applies to egress traffic from the subnet (true) or ingress traffic to the subnet (false).
+```
 - `cidr_block` (string)
-
-The default network_acl value is:
-
 ```
-{
-    "rule_number": 100,
-    "protocol": "-1",
-    "rule_action": "allow",
-    "acl_egress": true,
-    "cidr_block": "0.0.0.0/0"
-},
-{
-    "rule_number": 100,
-    "protocol": "-1",
-    "rule_action": "allow",
-    "acl_egress": false,
-    "cidr_block": "0.0.0.0/0"
-}
+The IPv4 CIDR range to allow or deny, in CIDR notation (e.g., 172.16.0.0/24).
 ```
+
+
+- ### Valid Values
+
+    #### AWS
+    Below is also the default `network_acl` settings.
+    ```
+    "network_acl": [
+        {
+            "rule_number": 100,
+            "protocol": "-1",
+            "rule_action": "allow",
+            "acl_egress": true,
+            "cidr_block": "0.0.0.0/0"
+        },
+        {
+            "rule_number": 100,
+            "protocol": "-1",
+            "rule_action": "allow",
+            "acl_egress": false,
+            "cidr_block": "0.0.0.0/0"
+        }
+    ]
+    ```
 
 For more information about network acl please refer to [AWS Documentation](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 
 ## security_group {#security_group}
+
+The security groups for your virtual private cloud. Security groups are associated with network interfaces and acts as a virtual firewall that controls the traffic for one or more instances.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | { "ingress": [ ], "egress": [ ] } | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+- ingress (array)
+    - `cidr_ip` (string)
+    - `from_port` (int)
+    - `ip_protocol` (boolean)
+    - `to_port` (int)
+
+- egress (array)
+    - `cidr_ip` (string)
+    ```
+    An IPv4 CIDR range.
+    ```
+    - `from_port` (int)
+    ```
+    Start of port range for the TCP and UDP protocols, or an ICMP type number. If you specify icmp for the IpProtocol property, you can specify -1 as a wildcard (i.e., any ICMP type number).
+    ```
+    - `ip_protocol` (string)
+    ```
+    IP protocol name or number.
+    ```
+    - `to_port` (int)
+    ```
+    End of port range for the TCP and UDP protocols, or an ICMP code. If you specify icmp for the IpProtocol property, you can specify -1 as a wildcard (i.e., any ICMP code).
+    ```
+
+
+- ### Valid Values
+
+    #### AWS, AliCloud, K5
+    Below is also the default `security_group` settings.
+    ```
+    "security_group": {
+        "ingress": [
+            {
+                "cidr_ip": "0.0.0.0/0",
+                "from_port": 80,
+                "ip_protocol": "tcp",
+                "to_port": 80
+            },
+            {
+                "cidr_ip": "0.0.0.0/0",
+                "from_port": 443,
+                "ip_protocol": "tcp",
+                "to_port": 443
+            },
+            {
+                "cidr_ip": "0.0.0.0/0",
+                "from_port": 22,
+                "ip_protocol": "tcp",
+                "to_port": 22
+            }
+        ],
+        "egress": [
+            {
+                "cidr_ip": "0.0.0.0/0",
+                "from_port": 0,
+                "ip_protocol": "-1",
+                "to_port": 65535
+            }
+        ]
+    }
+    ```
 
 ## auto_scaling {#auto_scaling}
 
