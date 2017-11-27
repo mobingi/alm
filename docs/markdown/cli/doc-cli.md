@@ -371,7 +371,7 @@ $ mobingi-cli stack delete --id mo-58c2297d25645-GbdINZdY-tk
 
 ### command: stack ssh {#stack-ssh}
 
-Try to establish an ssh connection to your instances. For now, this only works on stacks created using API version 2.
+Try to establish an ssh connection to your instances.
 
 **Flags**
 
@@ -397,10 +397,6 @@ $ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 -
 [mobingi-cli]: info: open link with a browser (if not opened automatically): \
 https://sesha3.mobingi.com:port/some-random-link/
 ```
-
-**Known issues**
-
-* When an ssh connection is opened using a browser and the browser/tab is closed without typing <kbd>exit</kbd>, any succeeding attempts to open an ssh connection to the same instance will potentially fail. As a workaround, try waiting for a little bit before trying to reopen a new connection.
 
 ### command: stack pem {#stack-pem}
 
