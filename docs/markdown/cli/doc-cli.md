@@ -400,7 +400,45 @@ https://sesha3.mobingi.com:port/some-random-link/
 
 ### command: stack exec {#stack-exec}
 
-tbd
+Try to execute a bash script to one or more instances.
+
+**Flags**
+
+* `--target` - The target instance to execute the script. The format is stack-id|ip:flag. This flag can be specified more than once.
+* `--script` - The script file to execute.
+
+Examples:
+
+```bash
+# for example, we have a script with the following contents (stored in home folder as test.sh):
+#!/bin/bash
+pwd
+uname -a
+env
+
+# run the script on a single instance
+$ mobingi-cli stack exec \
+    --target "mo-58c2297d25645-rkIEPmust-tk|root@47.74.5.170:Single" \
+    --script ~/test.sh
+[mobingi-cli]: info: [0]output: mo-58c2297d25645-rkIEPmust-tk, instance: root@47.74.5.170, flag: Single
+/root
+Linux iZ6weeq9e4ktok8f9o2910Z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+XDG_SESSION_ID=43623
+SHELL=/bin/bash
+SSH_CLIENT=54.238.178.1 45328 22
+USER=root
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+MAIL=/var/mail/root
+PWD=/root
+LANG=en_US.UTF-8
+HOME=/root
+SHLVL=2
+LOGNAME=root
+SSH_CONNECTION=54.238.178.1 45328 10.1.0.106 22
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+XDG_RUNTIME_DIR=/run/user/0
+_=/usr/bin/env
+```
 
 ### command: stack pem {#stack-pem}
 
