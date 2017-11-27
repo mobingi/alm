@@ -398,6 +398,10 @@ $ mobingi-cli stack ssh --id mo-58c2297d25645-Sd2aHRDq0-tk --ip 54.238.234.202 -
 https://sesha3.mobingi.com:port/some-random-link/
 ```
 
+### command: stack exec {#stack-exec}
+
+tbd
+
 ### command: stack pem {#stack-pem}
 
 Print the stack's pem file, if available. Useful if you want to connect to your instances using other tools.
