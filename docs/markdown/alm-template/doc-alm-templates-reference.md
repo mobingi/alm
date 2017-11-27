@@ -256,7 +256,77 @@ The size of the volume, in gibibytes (GiBs).
 
 ## subnet {#subnet}
 
+The subnet settings.
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| object | { "cidr": "10.0.0.0/24", "public": true, "auto_assign_public_ip":true } | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+    `cidr`: The IPv4 CIDR block that you want the subnet to cover (for example, "10.0.0.0/24").
+
+    `public`: Defines whether this subnet is public subnet or private.
+
+    `auto_assign_public_ip`: Defines whether automatically assigns a public IP when instance launched into the subnet.
+
+
+- ### Valid Values
+
+    #### AWS
+
+    - cidr
+    ```
+    numbers, dot, back-slash only.
+    10.0.0.0/24 [default]
+    ```
+    - public
+    ```
+    true [default]
+    false
+    ```
+    - auto_assign_public_ip
+    ```
+    true [default]
+    false
+    ```
+
 ## network_acl {#network_acl}
+
+The network action control list for a virtual private cloud.
+
+__This section supports AWS only__
+
+| Type | Example Value | Supported Platforms |
+|:-----------|:-----|:----------------|
+| array | see blow | <span class="label label-default">AWS</span> |
+
+A `network_acl` section contains a list of network_acl entry items. Each item contains the following declaratives:
+
+- `rule_number` (number)
+- `protocol` (string)
+- `rule_action` (string)
+- `acl_egress` (boolean)
+- `cidr_block` (string)
+
+The default network_acl value is:
+
+```
+{
+    "rule_number": 100,
+    "protocol": "-1",
+    "rule_action": "allow",
+    "acl_egress": true,
+    "cidr_block": "0.0.0.0/0"
+},
+{
+    "rule_number": 100,
+    "protocol": "-1",
+    "rule_action": "allow",
+    "acl_egress": false,
+    "cidr_block": "0.0.0.0/0"
+}
+```
+
+For more information about network acl please refer to [AWS Documentation](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_ACLs.html)
 
 ## security_group {#security_group}
 
