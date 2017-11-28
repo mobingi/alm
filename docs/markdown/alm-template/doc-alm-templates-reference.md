@@ -270,28 +270,28 @@ The subnet settings.
 |:-----------|:-----|:-----|:----------------|
 | object | { "cidr": "10.0.0.0/24", "public": true, "auto_assign_public_ip":true } | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
-A `subnet` section contains 3 key names.
+A _subnet_ section contains 3 key names.
 
 - `cidr` (string)
-    ```
+  
     The IPv4 CIDR block that you want the subnet to cover (for example, "10.0.0.0/24").
 
     numbers, dot, back-slash only. The default value is "10.0.0.0/24".
-    ```
+
 - `public` (boolean)
-    ```
+  
     Defines whether this subnet is public or private.
 
     true [default]
     false
-    ```
+
 - `auto_assign_public_ip` (boolean)
-    ```
+  
     Defines whether automatically assigns a public IP when instance launched into the subnet.
 
     true [default]
     false
-    ```
+
 
 - ### Valid Values
 
@@ -317,32 +317,32 @@ __This section supports AWS only__
 |:-----------|:-----|:-----|:----------------|
 | array | see blow | No | <span class="label label-default">AWS</span> |
 
-A `network_acl` section contains a list of network_acl entry items. Each item contains the following declaratives:
+A _network acl_ section contains a list of network_acl entry items. Each item contains the following declaratives:
 
 - `rule_number` (int)
-```
-Rule number to assign to the entry, such as 100.
-ACL entries are processed in ascending order by rule number. Entries can't use the same rule number unless one is an egress rule and the other is an ingress rule.
-```
-For more on valid values, please refer to [this guide](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkAclEntry.html) on aws documentation site.
+
+    Rule number to assign to the entry, such as 100.
+    ACL entries are processed in ascending order by rule number. Entries can't use the same rule number unless one is an egress rule and the other is an ingress rule.
+
+    For more on valid values, please refer to [this guide](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkAclEntry.html) on aws documentation site.
 - `protocol` (string)
-```
-The IP protocol that the rule applies to.
-You must specify -1 or a protocol number. You can specify -1 for all protocols.
-```
-For more on protocol numbers, please refer to [this guide](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
+
+    The IP protocol that the rule applies to.
+    You must specify -1 or a protocol number. You can specify -1 for all protocols.
+
+    For more on protocol numbers, please refer to [this guide](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml).
 - `rule_action` (string)
-```
-Whether to allow or deny traffic that matches the rule; valid values are "allow" or "deny".
-```
+
+    Whether to allow or deny traffic that matches the rule; valid values are "allow" or "deny".
+
 - `acl_egress` (boolean)
-```
-Whether this rule applies to egress traffic from the subnet (true) or ingress traffic to the subnet (false).
-```
+
+    Whether this rule applies to egress traffic from the subnet (true) or ingress traffic to the subnet (false).
+
 - `cidr_block` (string)
-```
-The IPv4 CIDR range to allow or deny, in CIDR notation (e.g., 172.16.0.0/24).
-```
+
+    The IPv4 CIDR range to allow or deny, in CIDR notation (e.g., 172.16.0.0/24).
+
 
 
 - ### Valid Values
@@ -376,31 +376,33 @@ The security groups for your virtual private cloud. Security groups are associat
 
 | Type | Example Value | Required | Supported Platforms |
 |:-----------|:-----|:-----|:----------------|
-| object | { "ingress": [ ], "egress": [ ] } | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| object | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+A _security group_ section contains two entry items, `ingress` and `egress`. 
 
 - ingress (array)
-    - `cidr_ip` (string)
-    - `from_port` (int)
-    - `ip_protocol` (boolean)
-    - `to_port` (int)
-
 - egress (array)
-    - `cidr_ip` (string)
-    ```
-    An IPv4 CIDR range.
-    ```
-    - `from_port` (int)
-    ```
+
+Each _ingress_ or _egress_ contains the following 4 declarative:
+
+- `cidr_ip` (string)
+
+    An IPv4 CIDR range. 
+    
+    (For more information on cidr calculations, there are tools like [this](http://www.subnet-calculator.com/cidr.php) to helping you get started.)
+
+- `from_port` (int)
+
     Start of port range for the TCP and UDP protocols, or an ICMP type number. If you specify icmp for the IpProtocol property, you can specify -1 as a wildcard (i.e., any ICMP type number).
-    ```
-    - `ip_protocol` (string)
-    ```
+
+- `ip_protocol` (string)
+
     IP protocol name or number.
-    ```
-    - `to_port` (int)
-    ```
+
+- `to_port` (int)
+
     End of port range for the TCP and UDP protocols, or an ICMP code. If you specify icmp for the IpProtocol property, you can specify -1 as a wildcard (i.e., any ICMP code).
-    ```
+
 
 
 - ### Valid Values
@@ -441,5 +443,108 @@ The security groups for your virtual private cloud. Security groups are associat
     ```
 
 ## auto_scaling {#auto_scaling}
+
+The auto-scaling group defines the configuration to automatically scale up or down the number of compute resources that are being allocated to your application based on its needs at any given time.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+The _auto scaling_ section contains the following declarative:
+
+
+- `min` (int)
+    
+    The minimum size of the Auto Scaling group.
+    
+- `max` (int)
+    
+    The maximum size of the Auto Scaling group.
+    
+- `spot_min` (int)
+    
+    The minimum size of the spot instances in Auto Scaling group.
+    
+    _Required_: No
+    
+    _This declarative supports AWS only, if you specify this value when deploying to other cloud platforms it will be ignored._
+    
+- `spot_max` (int)
+  
+    The maximum size of the spot instances in Auto Scaling group.
+  
+- `availability_zones` (string)
+  
+    The maximum size of the Auto Scaling group.
+  
+- `security_groups` (string)
+  
+    The maximum size of the Auto Scaling group.
+
+- `subnets` (string)
+  
+    The subnets in which the instances in the Auto Scaling group launches to.
+  
+- `cooldown` (string)
+  
+    The number of seconds after a scaling activity is completed before any further scaling activities can start.
+  
+- `healthcheck_grace_period` (string)
+  
+    The length of time in seconds after a new EC2 instance comes into service that Auto Scaling starts checking its health.
+
+
+
+
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+    <a href="#aws" aria-controls="home" role="tab" data-toggle="tab">AWS</a>
+    </li>
+    <li role="presentation">
+    <a href="#alicloud" aria-controls="profile" role="tab" data-toggle="tab">Alibaba Cloud</a>
+    </li>
+    <li role="presentation">
+    <a href="#k5" aria-controls="messages" role="tab" data-toggle="tab">K5</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="aws">
+    Below is also the default settings for AWS.
+    <pre><code class="language-json">
+    "auto_scaling": {
+        "min": 1,
+        "max": 1,
+        "availability_zones": "${use(flag.Web01.provision.availability_zone)},${use(flag.Web02.provision.availability_zone)}",
+        "security_groups": "${use(flag.Web01.provision.security_group)}",
+        "subnets": "${ref(flag.Web01,flag.Web02)}",
+        "cooldown": "360",
+        "healthcheck_grace_period": "360"
+    }
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="alicloud">
+    This section hasn't been covered by documentation.
+    <pre><code class="language-json">
+    "auto_scaling": {
+
+    }
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="k5">
+    This section hasn't been covered by documentation.
+    <pre><code class="language-json">
+    "auto_scaling": {
+
+    }
+    </code></pre>
+    </div>
+    </div>
+    </div>
+
 
 ## load_balancer {#load_balancer}
