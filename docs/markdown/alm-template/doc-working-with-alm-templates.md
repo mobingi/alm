@@ -105,6 +105,12 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
         </li>
         <li class="is-folder open">configurations<i>array of objects</i>
             <ul>
+                <li class="is-file open">
+                    role<i>role name</i>
+                </li>
+                <li class="is-file open">
+                    flag<i>flag name</i>
+                </li>
                 <li class="is-folder open">
                     provision<i>provision configuration</i>
                     <ul>
