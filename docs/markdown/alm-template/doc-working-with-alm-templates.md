@@ -12,7 +12,7 @@ Alm-template top-level components consist of `version`, `label`, `description`, 
 
 The version of Alm-template release.
 
-This value is always "2017-03-03".
+This value is always _2017-03-03_.
 
 ### - label {#template-components-label}
 
@@ -20,11 +20,15 @@ The label of the Alm-template.
 
 You can use this section to mark the labels for each of your alm-template versions. This is useful when you update your template.
 
+This value can be empty, and you can write up to 64 characters in length.
+
 ### - description {#template-components-description}
 
 The description of the Alm-template.
 
 You can use this section to describe the purpose of the alm-template, _for example: production app stack_.
+
+This value can be empty, and you can write up to 255 characters in length.
 
 ### - vendor {#template-components-vendor}
 
@@ -44,7 +48,7 @@ Inside each layer, there are four sections you need to specify:
 
     The "role" of which the stack layer defines to. 
     
-    You deploy multiple layers within one Alm-template, for example two _web_ layers, one _database_ layer. The available role names are:
+    You deploy multiple layers within one Alm-template, for example two _web_ layers, one _bastion_ layer and one _database_ layer. The current available role names:
     
     - `web`
     - `bastion`
@@ -52,6 +56,8 @@ Inside each layer, there are four sections you need to specify:
 - flag
 
     The unique name identifier of each layer.
+    
+    _flag_ name must between 4 to 10 characters in length and contains only alphanumeric characters.
 
 - provision
 

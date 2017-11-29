@@ -33,18 +33,24 @@
     <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-reference">ALM Template Reference</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#vpc_id">- vpc_id</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#availability_zone">- availability_zone</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- instance_type</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_count">- instance_count</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_type">- volume_type</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_size">- volume_size</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#keypair">- keypair</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- subnet</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#network_acl">- network_acl</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#security_group">- security_group</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#auto_scaling">- auto_scaling</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#load_balancer">- load_balancer</a></li>
+            <li>
+                <a href="<?php echo $siteUrl; ?>alm-templates-reference#provision">- provision</a></li>
+                <ul>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#vpc_id">- vpc_id</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#availability_zone">- availability_zone</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_type">- instance_type</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#image">- image</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#instance_count">- instance_count</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_type">- volume_type</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#volume_size">- volume_size</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#keypair">- keypair</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#subnet">- subnet</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#network_acl">- network_acl</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#security_group">- security_group</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#auto_scaling">- auto_scaling</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#load_balancer">- load_balancer</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
     <!-- <li>

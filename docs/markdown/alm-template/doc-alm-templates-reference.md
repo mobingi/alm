@@ -1,3 +1,5 @@
+# provision {#provision}
+
 ## vpc_id {#vpc_id}
 
 Reserved key name.
@@ -235,6 +237,60 @@ See below for default values.
     Default: <i>1101</i>.
     <pre><code class="language-json">
     "instance_type": "1101"
+    </code></pre>
+    </div>
+    </div>
+
+
+
+
+
+## image {#image}
+
+The machine image (id) used to launch the instance.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | ami-2a69be4c | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+Default values will be applied for each cloud platform (see below for default values). However, you can also specify this value for launching with a customized image.
+
+_Note:_ When you specifies this value and also specifies the _container_ section in the Alm-template to take the advantage of application lifecycle management, you need to make sure the base image operating system supports Alm-agent installation. For supported operating systems by Alm-agent, please refer to [this guide](https://learn.mobingi.com/alm-agent/getting-started#prerequisites). 
+
+
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+    <a href="#aws_image" aria-controls="home" role="tab" data-toggle="tab">AWS</a>
+    </li>
+    <li role="presentation">
+    <a href="#alicloud_image" aria-controls="profile" role="tab" data-toggle="tab">Alibaba Cloud</a>
+    </li>
+    <li role="presentation">
+    <a href="#k5_image" aria-controls="messages" role="tab" data-toggle="tab">K5</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="aws_image">
+    Below is also the default value for AWS.
+    <pre><code class="language-json">
+    "image": "ami-2a69be4c"
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="alicloud_image">
+    Below is also the default value for Alibaba Cloud.
+    <pre><code class="language-json">
+    "image": "centos_7_03_64_40G_alibase_20170710.vhd"
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="k5_image">
+    Below is also the default value for K5.
+    <pre><code class="language-json">
+    "image": "58fd966f-b055-4cd0-9012-cf6af7a4c32b"
     </code></pre>
     </div>
     </div>
