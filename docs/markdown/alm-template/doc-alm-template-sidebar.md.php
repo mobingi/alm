@@ -25,7 +25,15 @@
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-label">- label</a></li>
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-description">- description</a></li>
                 <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-vendor">- vendor</a></li>
-                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations">- configurations</a></li>
+                <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations">- configurations</a>
+                    <ul>
+                        <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations-role">- role</a></li>
+                        <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations-flag">- flag</a></li>
+                        <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations-provision">- provision</a></li>
+                        <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-components-configurations-container">- container</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <li><a href="<?php echo $siteUrl; ?>working-with-alm-templates#template-structure">ALM Template Structure</a></li>
         </ul>
@@ -34,7 +42,7 @@
         <a href="<?php echo $siteUrl; ?>alm-templates-reference">ALM Template Reference</a>
         <ul>
             <li>
-                <a href="<?php echo $siteUrl; ?>alm-templates-reference#provision">- provision</a></li>
+                <a href="<?php echo $siteUrl; ?>alm-templates-reference#provision">- provision</a>
                 <ul>
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#vpc_id">- vpc_id</a></li>
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#availability_zone">- availability_zone</a></li>
@@ -50,6 +58,9 @@
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#auto_scaling">- auto_scaling</a></li>
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#load_balancer">- load_balancer</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="<?php echo $siteUrl; ?>alm-templates-reference#container">- container</a>
             </li>
         </ul>
     </li>

@@ -44,6 +44,7 @@ In the configurations section, you specify one or multiple configuration layers 
 
 Inside each layer, there are four sections you need to specify:
 
+#####{#template-components-configurations-role}
 - role
 
     The "role" of which the stack layer defines to. 
@@ -52,20 +53,27 @@ Inside each layer, there are four sections you need to specify:
     
     - `web`
     - `bastion`
-
+    
+#####{#template-components-configurations-flag}
 - flag
 
     The unique name identifier of each layer.
     
-    _flag_ name must between 4 to 10 characters in length and contains only alphanumeric characters.
+    You must specify the _flag_ name for each configuration layer. The value must between 4 to 10 characters in length and contains only alphanumeric characters.
 
+#####{#template-components-configurations-provision}
 - provision
 
-    The infrastructure provisioning configurations.
+    The infrastructure provisioning configurations. 
+    
+    For more information on _provision_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#provision). 
 
+#####{#template-components-configurations-container}
 - container
 
     The software runtime configurations for each instance node.
+    
+    For more information on _container_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#container). 
 
 
 ## Alm-template Structure {#template-structure}
@@ -78,7 +86,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
 
 <div class="file-tree">
     <ul>
-
         <li class="is-file">version<i>string</i></li>
         <li class="is-file">label<i>string</i></li>
         <li class="is-file">description<i>string</i></li>
@@ -136,7 +143,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 <li class="is-file">auto_assign_public_ip<i>boolean</i></li>
                             </ul>
                         </li>
-
                         <li class="is-folder">
                             security_group<i>object</i>
                             <ul>
@@ -160,7 +166,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 </li>
                             </ul>
                         </li>
-
                         <li class="is-folder">
                             network_acl<i>array of objects</i>
                             <ul>
@@ -171,7 +176,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 <li class="is-file">cidr<i>string</i></li>
                             </ul>
                         </li>
-
                         <li class="is-folder">
                             load_balancer<i>object</i>
                             <ul>
@@ -196,7 +200,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 </li>
                             </ul>
                         </li>
-
                         <li class="is-folder">
                             auto_scaling<i>object</i>
                             <ul>
@@ -209,10 +212,8 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                                 <li class="is-file">availability_zones<i>string</i></li>
                             </ul>
                         </li>
-
                     </ul>
                 </li>
-
                 <li class="is-folder open">
                     container<i>runtime configuration</i>
                     <ul>
@@ -234,3 +235,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
         </li>
     </ul>
 </div>
+
+
+
