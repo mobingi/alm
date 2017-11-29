@@ -42,7 +42,12 @@ Inside each layer, there are four sections you need to specify:
 
 - role
 
-    The "role" of which the stack layer defines to. You deploy multiple layers within one Alm-template, for example _web layer_, _database layer_ or _bastion instance_ layer, etc. These values are pre-defined by Mobingi ALM and you cannot customize the names.
+    The "role" of which the stack layer defines to. 
+    
+    You deploy multiple layers within one Alm-template, for example two _web_ layers, one _database_ layer. The available role names are:
+    
+    - `web`
+    - `bastion`
 
 - flag
 
@@ -50,11 +55,11 @@ Inside each layer, there are four sections you need to specify:
 
 - provision
 
-    The hardware provisioning configurations.
+    The infrastructure provisioning configurations.
 
 - container
 
-    The software runtime configurations for each VM instance.
+    The software runtime configurations for each instance node.
 
 
 ## Alm-template Structure {#template-structure}

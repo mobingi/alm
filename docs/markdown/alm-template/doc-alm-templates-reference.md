@@ -4,7 +4,7 @@ Reserved key name.
 
 ## availability_zone {#availability_zone}
 
-The availability zone of which the stack is deployed to.
+The availability zone of which the stack deploys to.
 
 | Type | Example Value | Required | Supported Platforms |
 |:-----------|:-----|:-----|:----------------|
@@ -123,6 +123,9 @@ The type of instances (VMs).
 |:-----------|:-----|:-----|:----------------|
 | string | t2.micro | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
+If you don't specify this declarative, the default values will be applied for each cloud platform. 
+
+See below for default values.
 
 - ### Valid Values
 
@@ -141,7 +144,7 @@ The type of instances (VMs).
     </ul>
     <div class="tab-content">
     <div role="tabpanel" class="tab-pane active fade in" id="aws_instance_type">
-    If you don't specify this declarative, the default value of <i>t2.micro</i> will be applied.
+    Default: <i>t2.micro</i>
     <pre><code class="language-json">
     "instance_type": "t2.micro"
     </code></pre>
@@ -223,15 +226,13 @@ The type of instances (VMs).
     </code></pre>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="alicloud_instance_type">
-    If you don't specify this declarative, the default value of <i>xn4.small</i> will be applied.
-    This section hasn't been fully covered by documentation.
+    Default: <i>xn4.small</i>.
     <pre><code class="language-json">
     "instance_type": "xn4.small"
     </code></pre>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="k5_instance_type">
-    If you don't specify this declarative, the default value of <i>1101</i> will be applied.
-    This section hasn't been fully covered by documentation.
+    Default: <i>1101</i>.
     <pre><code class="language-json">
     "instance_type": "1101"
     </code></pre>
@@ -251,6 +252,40 @@ Number of instances (VMs) to provision.
 
 If you don't specify this declarative, the default value of _1_ will be applied.
 
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+    <a href="#aws_instance_count" aria-controls="home" role="tab" data-toggle="tab">AWS</a>
+    </li>
+    <li role="presentation">
+    <a href="#alicloud_instance_count" aria-controls="profile" role="tab" data-toggle="tab">Alibaba Cloud</a>
+    </li>
+    <li role="presentation">
+    <a href="#k5_instance_count" aria-controls="messages" role="tab" data-toggle="tab">K5</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="aws_instance_count">
+    <pre><code class="language-json">
+    "instance_count": 1
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="alicloud_instance_count">
+    <pre><code class="language-json">
+    "instance_count": 1
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="k5_instance_count">
+    <pre><code class="language-json">
+    "instance_count": 1
+    </code></pre>
+    </div>
+    </div>
+    </div>
 
 ## volume_type {#volume_type}
 
@@ -354,7 +389,7 @@ The ssh key pair used to access instances.
 
 | Type | Example Value | Required | Supported Platforms |
 |:-----------|:-----|:-----|:----------------|
-| boolean | true, or false | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| boolean | true, false | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
 
 - ### Valid Values
@@ -429,7 +464,7 @@ A _subnet_ section contains 3 key names.
     
     If you don't specify this declarative, the default value of _true_ will be applied.
     
-    If you set `public` value as _false_, then this declarative will be ignored.
+    If you set `public` as _false_, then this declarative will be ignored.
 
 
 - ### Valid Values
@@ -795,3 +830,150 @@ The _auto scaling_ section contains the following declarative:
 
 
 ## load_balancer {#load_balancer}
+
+The load-balancer for the auto-scaling group.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+The _load balancer_ section contains the following declarative:
+
+
+- `scheme` (string)
+    
+    Either _internal_ or _internet-facing_. 
+    
+    If it's an _internet-facing_ load balancer, a publicly resolvable DNS name will be generated at output section after deployment, whereas a DNS name that resolves to private IP addresses will be generated to _internal_ load balancer. 
+    
+    _Required:_ No
+    
+    If you don't specify this declarative, the default value of _internet-facing_ will be applied.
+    
+- `listeners` (array)
+    
+    One or more listeners for this load balancer. Each listener must be registered for a specific port, and you cannot have more than one listener for a given port.
+    
+    _Required:_ Yes. _You must specify at least one entry item for this section._
+    
+    A _listeners_ section contains a list of entry items with each item contains the following declarative:
+    
+    - `load_balancer_port` (string)
+    
+        Specifies the external load balancer port number.
+        
+        _Required:_ Yes
+        
+    - `instance_port` (string)
+    
+        Specifies the TCP port on which the instance server listens.
+        
+        _Required:_ Yes
+        
+    - `protocol` (string)
+    
+        Specifies the load balancer transport protocol to use for routing: _HTTP_, _HTTPS_, _TCP_ or _SSL_.
+        
+        _Required:_ Yes
+        
+    - `cert_domain` (string)
+    
+        __(AWS Only)__
+    
+        Specifies the domain name to be used for issuing SSL certificate via AWS ACM service.
+        
+        _Required:_ No
+        
+        When you provide the domain name here, a verification email will be sent to the domain owner (sent by AWS), and you have to click link found in email to approve the issuance of the SSL certificate before the stack provision can be finished.
+        
+        Once the provision deployment is successfully done, the SSL certificate will be attached to your load-balancer automatically.
+        
+- `health_check` (object)
+    
+    __(AWS Only)__
+    
+    Application health check for the instances.
+    
+    _Required:_ No
+    
+    A _health check_ section contains the following declarative:
+    
+    - `healthy_threshold` (string)
+    
+        Specifies the number of consecutive health probe successes required before moving the instance to the Healthy state.
+        
+        _Required:_ Yes
+    
+    - `interval` (string)
+    
+        Specifies the approximate interval, in seconds, between health checks of an individual instance. Valid values are 5 to 300.
+        
+        _Required:_ Yes
+    
+    - `target` (string)
+    
+        Specifies the instance's protocol and port to check. The protocol can be TCP, HTTP, HTTPS, or SSL. The range of valid ports is 1 through 65535.
+        
+        _Required:_ Yes
+    
+    - `timeout` (string)
+    
+        Specifies the amount of time, in seconds, during which no response means a failed health probe. This value must be less than the value for _interval_.
+        
+        _Required:_ No
+    
+    - `unhealthy_threshold` (string)
+    
+        Specifies the number of consecutive health probe failures required before moving the instance to the Unhealthy state.
+        
+        _Required:_ No
+
+
+
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+    <a href="#aws_load_balancer" aria-controls="home" role="tab" data-toggle="tab">AWS</a>
+    </li>
+    <li role="presentation">
+    <a href="#alicloud_load_balancer" aria-controls="profile" role="tab" data-toggle="tab">Alibaba Cloud</a>
+    </li>
+    <li role="presentation">
+    <a href="#k5_load_balancer" aria-controls="messages" role="tab" data-toggle="tab">K5</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="aws_load_balancer">
+    <pre><code class="language-json">
+    "load_balancer": {
+        "scheme": "internet-facing",
+        "listeners": [
+            {
+                "load_balancer_port": "443",
+                "instance_port": "80",
+                "protocol": "HTTPS",
+                "cert_domain": "*.mobingi.com"
+            }
+        ],
+        "health_check": {
+            "healthy_threshold": "2",
+            "interval": "10",
+            "target": "TCP:80",
+            "timeout": "5",
+            "unhealthy_threshold": "10"
+        }
+    }
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="alicloud_load_balancer">
+    This section hasn't been covered by documentation.
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="k5_load_balancer">
+    This section hasn't been covered by documentation.
+    </div>
+    </div>
+    </div>
