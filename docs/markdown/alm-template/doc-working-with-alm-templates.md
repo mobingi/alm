@@ -59,7 +59,7 @@ Inside each layer, there are four sections you need to specify:
 
     The unique name identifier of each layer.
     
-    You must specify the _flag_ name for each configuration layer. The value must between 4 to 10 characters in length and contains only alphanumeric characters.
+    You must specify the _flag_ name for each configuration layer. The value must between 4 to 18 characters in length and contains only alphanumeric characters.
 
 #####{#template-components-configurations-provision}
 - provision
