@@ -47,33 +47,33 @@ Inside each layer, there are four sections you need to specify:
 #####{#template-components-configurations-role}
 - role
 
-    The "role" of which the stack layer defines to. 
-    
+    The "role" of which the stack layer defines to.
+
     You deploy multiple layers within one Alm-template, for example two _web_ layers, one _bastion_ layer and one _database_ layer. The current available role names:
-    
+
     - `web`
     - `bastion`
-    
+
 #####{#template-components-configurations-flag}
 - flag
 
     The unique name identifier of each layer.
-    
+
     You must specify the _flag_ name for each configuration layer. The value must between 4 to 18 characters in length and contains only alphanumeric characters.
 
 #####{#template-components-configurations-provision}
 - provision
 
-    The infrastructure provisioning configurations. 
-    
-    For more information on _provision_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#provision). 
+    The infrastructure provisioning configurations.
+
+    For more information on _provision_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#provision).
 
 #####{#template-components-configurations-container}
 - container
 
     The software runtime configurations for each instance node.
-    
-    For more information on _container_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#container). 
+
+    For more information on _container_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#container).
 
 
 ## Alm-template Structure {#template-structure}
@@ -179,6 +179,8 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                         <li class="is-folder">
                             load_balancer<i>object</i>
                             <ul>
+                                <li class="is-file">lb_type<i>string</i></li>
+                                <li class="is-file">scheme<i>string</i></li>
                                 <li class="is-folder">
                                     listeners<i>array of objects</i>
                                     <ul>
@@ -235,6 +237,3 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
         </li>
     </ul>
 </div>
-
-
-
