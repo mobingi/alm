@@ -61,6 +61,18 @@
             </li>
             <li>
                 <a href="<?php echo $siteUrl; ?>alm-templates-reference#container">- container</a>
+                <ul>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_image">- container_image</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_registry_username">- container_registry_username</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_registry_password">- container_registry_password</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_code_dir">- container_code_dir</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_git_repo">- container_git_repo</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_git_reference">- container_git_reference</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_git_private_key">- container_git_private_key</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_ports">- container_ports</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_users">- container_users</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#container_env_vars">- container_env_vars</a></li>
+                </ul>
             </li>
         </ul>
     </li>

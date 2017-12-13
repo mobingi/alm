@@ -221,7 +221,6 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                 <li class="is-folder open">
                     container<i>runtime configuration</i>
                     <ul>
-                        <li class="is-file">container_updated<i>number</i></li>
                         <li class="is-file">container_image<i>string</i></li>
                         <li class="is-file">container_registry_username<i>string</i></li>
                         <li class="is-file">container_registry_password<i>string</i></li>
@@ -229,10 +228,9 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                         <li class="is-file">container_git_repo<i>string</i></li>
                         <li class="is-file">container_git_reference<i>string</i></li>
                         <li class="is-file">container_git_private_key<i>string</i></li>
-                        <li class="is-file">container_ports<i>number</i></li>
-                        <li class="is-file">container_users<i>array</i></li>
-                        <li class="is-file">container_env_vars<i>array</i></li>
-                        <li class="is-file">container_addons<i>array</i></li>
+                        <li class="is-file">container_ports<i>array of numbers</i></li>
+                        <li class="is-file">container_users<i>object</i></li>
+                        <li class="is-file">container_env_vars<i>object</i></li>
                     </ul>
                 </li>
             </ul>

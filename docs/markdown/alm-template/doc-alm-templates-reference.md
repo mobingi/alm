@@ -1076,3 +1076,124 @@ The _load balancer_ section contains the following declarative:
 
 
 # container {#container}
+
+
+
+### container_image {#container_image}
+
+The docker image to be used to launch base container.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | `registry.mobingi.com/tompson/ubuntu-nginx-php:latest` | No | Platform Stateless |
+
+
+
+### container_registry_username {#container_registry_username}
+
+The docker image registry's username if this is a private image repository.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | N/A | No | Platform Stateless |
+
+
+
+### container_registry_password {#container_registry_password}
+
+The docker image registry's password if this is a private image repository.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | N/A | No | Platform Stateless |
+
+
+
+### container_code_dir {#container_code_dir}
+
+The directory of the instance where application code will be deployed to.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | `/var/www/html` | No | Platform Stateless |
+
+
+
+### container_git_repo {#container_git_repo}
+
+The git repository url of where application code is hosted.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | `https://github.com/mobingilabs/default-site-php.git` | No | Platform Stateless |
+
+
+
+### container_git_reference {#container_git_reference}
+
+The git repository branch of where application code is hosted.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | `master` | No | Platform Stateless |
+
+### container_git_private_key {#container_git_private_key}
+
+The private key of the git repository if it is a private repository.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| string | See below | No | Platform Stateless |
+
+
+
+### container_ports {#container_ports}
+
+The ports for connection to be used by containers.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| array | `[ 80 ]` | No | Platform Stateless |
+
+
+
+### container_users {#container_users}
+
+This parameter is not supported.
+
+
+
+### container_env_vars {#container_env_vars}
+
+The environment variables to be defined for the container operating system.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | See below | No | Platform Stateless |
+
+
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#container_demo" aria-controls="home" role="tab" data-toggle="tab">Platform Stateless</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="container_demo">
+    The container section is identical to all platforms. Below is an example container configuration.
+    <pre><code class="language-json">
+    "container": {
+        "container_image": "mobingi/ubuntu-apache2-php7",
+        "container_code_dir": "/var/www/html",
+        "container_git_repo": "https://github.com/mobingilabs/default-site-php.git",
+        "container_git_reference": "master",
+        "container_ports": [80]
+    }
+    </code></pre>
+    </div>
+    </div>
+    </div>
