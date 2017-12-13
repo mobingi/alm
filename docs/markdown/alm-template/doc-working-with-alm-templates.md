@@ -181,12 +181,14 @@ For Alm-template examples, please refer to [Example ALM Templates](https://learn
                             <ul>
                                 <li class="is-file">lb_type<i>string</i></li>
                                 <li class="is-file">scheme<i>string</i></li>
+                                <li class="is-file">security_groups<i>string</i></li>
                                 <li class="is-folder">
                                     listeners<i>array of objects</i>
                                     <ul>
                                         <li class="is-file">load_balancer_port<i>string</i></li>
-                                        <li class="is-file">instance_port<i>string</i></li>
                                         <li class="is-file">protocol<i>string</i></li>
+                                        <li class="is-file">instance_port<i>string</i></li>
+                                        <li class="is-file">instance_protocol<i>string</i></li>
                                         <li class="is-file">cert_domain<i>string</i></li>
                                     </ul>
                                 </li>

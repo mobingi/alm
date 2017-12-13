@@ -918,6 +918,18 @@ The _load balancer_ section contains the following declarative:
     _Required:_ No
 
     If you don't specify this declarative, the default value of _internet-facing_ will be applied.
+        
+- `security_groups` (string)
+
+    Specifies a list of security groups assigned to this load balancer.
+    
+    _Required:_ No
+    
+    __Note:__ This value is in string type and can only be the reference to [`security_group`](https://learn.mobingi.com/alm-templates-reference#security_group) section you defined in same or other layers. For example if you have two layers of configuration named "Layer1" and "Layer2", you can reference the _security group_ defined in Layer2 to Layer1 by writing:
+    
+    ```
+    { "security_groups": "#ref(Layer2.provision.security_group)"}
+    ```
 
 
 - `listeners` (array)
@@ -934,17 +946,28 @@ The _load balancer_ section contains the following declarative:
 
         _Required:_ Yes
 
+    - `protocol` (string)
+
+        Specifies the load balancer transport protocol to use for routing: _HTTP_, _HTTPS_, _TCP_ or _SSL_.
+
+        _Required:_ Yes
+
     - `instance_port` (string)
 
         Specifies the TCP port on which the instance server listens.
 
         _Required:_ Yes
 
-    - `protocol` (string)
+    - `instance_protocol` (string)
 
-        Specifies the load balancer transport protocol to use for routing: _HTTP_, _HTTPS_, _TCP_ or _SSL_.
+        Specifies the protocol to use for routing traffic to back-end instances: _HTTP_, _HTTPS_, _TCP_ or _SSL_. You can't modify this property during the life of the load balancer.
 
-        _Required:_ Yes
+        _Required:_ No
+        
+        __Note:__
+            
+        - If the front-end protocol is HTTP or HTTPS, _instance protocol_ must be on the same protocol layer (HTTP or HTTPS). Likewise, if the front-end protocol is TCP or SSL, _instance protocol_ must be TCP or SSL.
+        - If there is another Listener with the same _instance port_ whose _instance protocol_ is secure, (using HTTPS or SSL), the _instance protocol_ of the Listener must be secure (using HTTPS or SSL). If there is another Listener with the same _instance port_ whose _instance protocol_ is HTTP or TCP, the _instance protocol_ of the Listener must be either HTTP or TCP.
 
     - `cert_domain` (string)
 
