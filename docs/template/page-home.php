@@ -53,8 +53,8 @@ include_once 'header.php';
                 <!-- <a href="<?php echo $siteUrl; ?>alm-template-best-practices">Best practices</a> -->
                 <a href="<?php echo $siteUrl; ?>working-with-alm-templates">Working with ALM-templates</a>
                 <a href="<?php echo $siteUrl; ?>alm-templates-reference">ALM-template reference</a>
-                <!-- <a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting">Troubleshooting</a>
-                <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a> -->
+                <!-- <a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting">Troubleshooting</a> -->
+                <a href="<?php echo $siteUrl; ?>alm-template-language">ALM-template Language</a>
                 <a href="<?php echo $siteUrl; ?>alm-templates-example-templates">Example ALM-templates</a>
             </li>
 

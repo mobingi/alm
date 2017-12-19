@@ -8,7 +8,7 @@ require __DIR__.'/../ParsedownExtraPlugin.php';
 // $Parsedown = new Parsedown();
 $parser = new ParsedownExtraPlugin();
 
-$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-template/doc-alm-templates-release-history.md');
+$content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-template/doc-alm-template-language.md');
 
 
 ?>
@@ -28,7 +28,7 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-templat
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
     <header>
-        <h1>Release History</h1>
+        <h1>ALM Template Language (ATL)</h1>
     </header>
 
     <?php echo $parser->text($content); ?>
@@ -39,5 +39,5 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/alm-templat
 <?php include_once __DIR__.'/../footer.php'; ?>
 <script type="text/javascript">
 $("table").addClass("table table-bordered table-striped");
-$("a[href='<?php echo $siteUrl; ?>alm-templates-release-history']").parent('li').addClass("active");
+$("a[href='<?php echo $siteUrl; ?>alm-template-language']").parent('li').addClass("active");
 </script>

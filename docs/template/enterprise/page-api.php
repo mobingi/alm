@@ -27,9 +27,9 @@ $content = file_get_contents(realpath(__DIR__ . '/../..').'/markdown/enterprise/
 
 <!-- Main content -->
 <article class="col-sm-9 main-content" role="main">
-    <div class="alert alert-info">
-        <i>You're viewing Mobingi Enterprise Edition API Reference site, click <b><a href="<?php echo $siteUrl; ?>api/v3">here</a></b> to visit Community Edition API Reference.</i>
-    </div>
+<!--    <div class="alert alert-info">-->
+<!--        <i>You're viewing Mobingi Enterprise Edition API Reference site, click <b><a href="--><?php //echo $siteUrl; ?><!--api/v3">here</a></b> to visit Community Edition API Reference.</i>-->
+<!--    </div>-->
     <header>
         <h1 id="api-reference">API Reference (Enterprise Edition)</h1>
     </header>

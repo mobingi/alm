@@ -82,12 +82,16 @@
             <li><a href="<?php echo $siteUrl; ?>alm-templates-troubleshooting#">sub_item</a></li>
         </ul>
     </li> -->
-    <!-- <li>
-        <a href="<?php echo $siteUrl; ?>alm-templates-release-history">Release History</a>
+    <li>
+        <a href="<?php echo $siteUrl; ?>alm-template-language">ALM Template Language</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-release-history#current-version">Current version</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-template-language#computed">- ${computed}</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-template-language#use">- ${use()}</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-template-language#copy">- ${copy()}</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-template-language#ref">- #ref</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-template-language#share">- #share</a></li>
         </ul>
-    </li> -->
+    </li>
     <li>
         <a href="<?php echo $siteUrl; ?>alm-templates-example-templates">Example ALM Templates</a>
         <ul>

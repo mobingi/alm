@@ -2,7 +2,9 @@
 
 ## vpc_id {#vpc_id}
 
-Reserved key name.
+__Reserved key name, not supported yet.__
+
+_If you don't specify this value, a new VPC will be created._
 
 ## availability_zone {#availability_zone}
 
@@ -253,10 +255,11 @@ The machine image (id) used to launch the instance.
 |:-----------|:-----|:-----|:----------------|
 | string | ami-2a69be4c | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
 
-Default values will be applied for each cloud platform (see below for default values). However, you can also specify this value for launching with a customized image.
+Default values will be applied for each cloud platform (see below for default values). However, you can also specify this value for launching with a customized machine image.
 
-_Note:_ When you specifies this value and also specifies the _container_ section in the Alm-template to take the advantage of application lifecycle management, you need to make sure the base image operating system supports Alm-agent installation. For supported operating systems by Alm-agent, please refer to [this guide](https://learn.mobingi.com/alm-agent/getting-started#prerequisites).
-
+<div class="alert alert-warning">
+Note: If you specify this value and also specify the <a href="https://learn.mobingi.com/alm-templates-reference#container">container</a> section in the Alm-template to take the advantage of application lifecycle management, you need to make sure the base machine image operating system supports Alm-agent installation. For supported operating systems by Alm-agent, please refer to <a href="https://learn.mobingi.com/alm-agent/getting-started#prerequisites">this guide</a>.
+</div>
 
 
 - ### Valid Values
@@ -927,7 +930,7 @@ The _load balancer_ section contains the following declarative:
     
     __Note:__ This value is in string type and can only be the reference to [`security_group`](https://learn.mobingi.com/alm-templates-reference#security_group) section you defined in same or other layers. For example if you have two layers of configuration named "Layer1" and "Layer2", you can reference the _security group_ defined in Layer2 to Layer1 by writing:
     
-    ```
+    ```json
     { "security_groups": "#ref(Layer2.provision.security_group)"}
     ```
 
@@ -1159,7 +1162,7 @@ The ports for connection to be used by containers.
 
 ### container_users {#container_users}
 
-This parameter is not supported.
+This parameter is not yet supported.
 
 
 
@@ -1191,7 +1194,11 @@ The environment variables to be defined for the container operating system.
         "container_code_dir": "/var/www/html",
         "container_git_repo": "https://github.com/mobingilabs/default-site-php.git",
         "container_git_reference": "master",
-        "container_ports": [80]
+        "container_ports": [80],
+        "container_env_vars": {
+            "display_errors": "Off",
+            "my_variable": "Some value"
+        }
     }
     </code></pre>
     </div>

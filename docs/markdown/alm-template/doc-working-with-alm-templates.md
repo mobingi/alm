@@ -38,14 +38,14 @@ You need to specify the vendor in every alm-template you write, and can only spe
 
 ### - configurations {#template-components-configurations}
 
-The configurations of the stack the Alm-template about to deploy.
+The configurations of the stack which Alm-template about to deploy.
 
 In the configurations section, you specify one or multiple configuration layers of your application's provision and container runtime settings.
 
 Inside each layer, there are four sections you need to specify:
 
 #####{#template-components-configurations-role}
-- role
+- __role__
 
     The "role" of which the stack layer defines to.
 
@@ -55,23 +55,23 @@ Inside each layer, there are four sections you need to specify:
     - `bastion`
 
 #####{#template-components-configurations-flag}
-- flag
+- __flag__
 
-    The unique name identifier of each layer.
+    The unique identifier of each layer.
 
     You must specify the _flag_ name for each configuration layer. The value must between 4 to 18 characters in length and contains only alphanumeric characters.
 
 #####{#template-components-configurations-provision}
-- provision
+- __provision__
 
     The infrastructure provisioning configurations.
 
     For more information on _provision_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#provision).
 
 #####{#template-components-configurations-container}
-- container
+- __container__
 
-    The software runtime configurations for each instance node.
+    The software runtime configurations _(defined as docker images)_ and code deployment requirement for each instance node.
 
     For more information on _container_ section, please refer to [ALM Template Reference guide](https://learn.mobingi.com/alm-templates-reference#container).
 
@@ -80,7 +80,7 @@ Inside each layer, there are four sections you need to specify:
 
 Below is a tree view of all possible components within an alm-template.
 
-_The following structure is not a working demo template, but rather to explain all possible key names that may contain inside the template body._
+<div class="alert alert-warning">The following structure is not a working demo template, but rather to explain all possible key names that may contain in the template body.</div>
 
 For Alm-template examples, please refer to [Example ALM Templates](https://learn.mobingi.com/alm-templates-example-templates).
 

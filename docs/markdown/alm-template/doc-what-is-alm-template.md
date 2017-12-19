@@ -11,10 +11,10 @@
 
 ### How does it work {#how-does-it-work}
 
-- ALM-template is a component of ALM.
+- ALM-template is a component of [ALM](https://mobingi.com/how-mobingi-alm-works).
 You write your ALM-template in code blocks and paste it on ALM console (or through CLI, API), it will be converted into each cloud platform's native configuration standards, then ALM will provision all resources on your behalf.
 
-- If you specify the runtime configurations of your application in the `container` section of the ALM-template, then Mobingi ALM will also deploy an ALM-agent on each provisioned node to perform application runtime setup and code deployment.
+- If you specify the runtime configurations of your application in the `container` section of the ALM-template, then Mobingi ALM will also deploy an ALM-agent on each provisioned node to perform application runtime setup and continuous code deployment.
 
 ### Read more
 

@@ -47,6 +47,14 @@ $app->group('', function () {
 
     });
 
+    $this->get('/alm-template-language', function ($request, $response, $args) {
+
+        return $this->view->render($response, 'alm-template/alm-template-language.php', [
+            'title' => 'ALM Template Language (ATL)'
+        ]);
+
+    });
+
     $this->get('/alm-templates-troubleshooting', function ($request, $response, $args) {
 
         return $this->view->render($response, 'alm-template/alm-templates-troubleshooting.php', [
@@ -57,7 +65,7 @@ $app->group('', function () {
 
     $this->get('/alm-templates-release-history', function ($request, $response, $args) {
 
-        return $this->view->render($response, 'alm-template/alm-templates-release-history.php', [
+        return $this->view->render($response, 'alm-template/alm-template-language.php', [
             'title' => 'Release History - ALM Template'
         ]);
 
