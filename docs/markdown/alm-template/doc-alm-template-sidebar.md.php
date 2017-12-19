@@ -94,9 +94,10 @@
             <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server">Single server</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-hello-world">Single server with "Hello World"</a></li>
             <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-custom-subnet">Single server with custom Subnet</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-custom-network-acl">Single server with custom Network ACL</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-custom-security-group">Single server with custom Security Group</a></li>
-            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#load-balanced">Load-balanced server stack</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-custom-network-acl">Single server with custom NetworkACL</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#single-server-with-custom-security-group">Single server with custom SecurityGroup</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#load-balanced">Load-balanced stack</a></li>
+            <li><a href="<?php echo $siteUrl; ?>alm-templates-example-templates#load-balanced2">Load-balanced multi-layer stack</a></li>
         </ul>
     </li>
 
