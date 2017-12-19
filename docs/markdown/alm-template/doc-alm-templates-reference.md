@@ -4,7 +4,7 @@
 
 __Reserved key name, not supported yet.__
 
-_If you don't specify this value, a new VPC will be created._
+__Note:__ Currently, a new VPC will be created with every Alm-template execution and the default VPC has a fixed cidr range of __10.0.0.0/16__ and you cannot customize it at the moment, so when you specifying your subnets please make sure the cidr setting for your subnets are sitting within the VPC cidr range. 
 
 ## availability_zone {#availability_zone}
 
