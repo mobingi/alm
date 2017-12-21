@@ -788,7 +788,10 @@ The auto-scaling group defines the configuration to automatically scale up or do
 
 | Type | Example Value | Required | Supported Platforms |
 |:-----------|:-----|:-----|:----------------|
-| object | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+| object, or string | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+
+__Note:__ If you are deploying an _application_ type of load balancer (you define in [`load_balancer`](https://learn.mobingi.com/alm-templates-reference#load_balancer) declarative), you can omit the required parameters below and use the ATL function `#share` to share the same auto scaling group which you defined in another layer. [Click here](https://learn.mobingi.com/alm-template-language) for more on ATL functions.
 
 The _auto scaling_ section contains the following declarative:
 
@@ -905,7 +908,7 @@ The _load balancer_ section contains the following declarative:
 
     In usual case, ALM creates the classic (standard) load balancer.
 
-    On AWS specifically, you can also create the _application load balancer_ and a _networking load balancer_. For more on these two AWS load balancer types, please refer to [this guide](https://aws.amazon.com/elasticloadbalancing).
+    On AWS specifically, you can also create the _application_ load balancer and a _networking_ load balancer. For more on these two AWS load balancer types, please refer to [this guide](https://aws.amazon.com/elasticloadbalancing).
 
     _Required:_ No
 
@@ -928,10 +931,25 @@ The _load balancer_ section contains the following declarative:
     
     _Required:_ No
     
-    __Note:__ This value is in string type and can only be the reference to [`security_group`](https://learn.mobingi.com/alm-templates-reference#security_group) section you defined in same or other layers. For example if you have two layers of configuration named "Layer1" and "Layer2", you can reference the _security group_ defined in Layer2 to Layer1 by writing:
+    __Note:__ This value is in string type and can only be the reference to [`security_group`](https://learn.mobingi.com/alm-templates-reference#security_group) section you defined in same or other layers. For example if you have two layers of configurations named "Layer1" and "Layer2", you can reference the _security group_ defined in Layer2 to Layer1 by writing:
     
     ```json
     { "security_groups": "#ref(Layer2.provision.security_group)"}
+    ```
+
+        
+- `subnets` (string)
+
+    Specifies a list of subnets assigned to this load balancer defined in `lb_type` parameter above.
+    
+    _Required:_ No
+    
+    __Note:__ Only specify this value if you are deploying an ALB type of load-balancer.
+    
+    __Note:__ This value is in string type and can only be the reference to [`subnet`](https://learn.mobingi.com/alm-templates-reference#subnet) section you defined in same or other layers. For example if you have two layers of configurations named "Layer1" and "Layer2", you can reference the _subnets_ to use both of them by:
+    
+    ```json
+    { "subnets": "#ref(Layer2.provision.subnet,Layer1.provision.subnet)"}
     ```
 
 
