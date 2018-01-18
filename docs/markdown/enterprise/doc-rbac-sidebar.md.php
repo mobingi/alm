@@ -52,12 +52,12 @@
     <li>
         <a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles">Example RBAC Roles</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-vendors">Deny vendors</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-credentials-resource">Deny credentials by resource</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-list-stack">Deny list Stacks</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-list-stack-resource">Deny list Stacks by resource</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-stack-resource">Deny Stack detail by resource</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-some-actions">Deny Some Action by some resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#allow-all">Allow All</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#allow-login">Allow UI Login</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-credentials">Deny Credentials</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-list-stack">Deny List Stacks</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-list-stack-resource">Deny List Stacks by Resource</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-example-roles#deny-delete-stack-resource">Deny Deleting Stacks by Resource</a></li>
         </ul>
     </li>
 

@@ -1,35 +1,53 @@
 
 
-### Deny Vendors {#deny-vendors}
+### Allow All {#allow-all}
 
-- ATTENTION: _describeVendors_ action has child action dependencies
 
 ```json
 {
-    "Version": "2017-05-05",
-    "Statement": [
+    "version": "2017-05-05",
+    "statement": [
         {
-            "Effect" : "Deny",
-            "Action" : ["vendor:describeVendors"],
-            "Resource" : ["mrn:vendor:alicloud"]
+            "effect": "allow",
+            "action": "*",
+            "resource": "*"
         }
     ]
 }
 ```
 
+### Allow UI Login {#allow-login}
 
-### Deny Credentials by Resource {#deny-credentials-resource}
-
- - ATTENTION: _describeCredentials_ action has child action dependencies
 
 ```json
 {
-    "Version": "2017-05-05",
-    "Statement": [
+    "version": "2017-05-05",
+    "statement": [
         {
-            "Effect" : "Deny",
-            "Action" : ["cred:describeCredentials::aws"],
-            "Resource" : ["mrn:vendor:aws:cred:XXXXXXXXXXXXXX"]
+            "effect": "allow",
+            "action": "view:user.login",
+            "resource": "*"
+        }
+    ]
+}
+```
+
+### Deny Credentials {#deny-credentials}
+
+
+```json
+{
+    "version": "2017-05-05",
+    "statement": [
+        {
+            "effect": "allow",
+            "action": "*",
+            "resource": "*"
+        },
+        {
+            "effect": "deny",
+            "action": "*:credentials",
+            "resource": ["AKIAJ7Z8PGXEZTIJOL6IQ"]
         }
     ]
 }
@@ -38,69 +56,69 @@
 
 ### Deny List Stacks {#deny-list-stack}
 
+
 ```json
 {
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : ["stack:describeStacks"],
-          "Resource" : ["*"]
-
-      }
-
+    "version": "2017-05-05",
+    "statement": [
+        {
+            "effect": "allow",
+            "action": "*",
+            "resource": "*"
+        },
+        {
+            "effect": "deny",
+            "action": "view:alm.stack",
+            "resource": "*"
+        }
     ]
 }
 ```
 
-### Deny List Stacks with Resource Filtering {#deny-list-stack-resource}
+
+### Deny List Stacks by Resource {#deny-list-stack-resource}
+
 
 ```json
 {
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : ["stack:describeStacks"],
-          "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXXXXX"]
-      }
+    "version": "2017-05-05",
+    "statement": [
+        {
+            "effect": "allow",
+            "action": "*",
+            "resource": "*"
+        },
+        {
+            "effect": "deny",
+            "action": "view:alm.stack",
+            "resource": ["mo-590fdb7bad55s-tJZpgRCBs-tk", "mo-590fdb7bad55s-ugMgQQ1TE-tk"]
+        }
     ]
 }
 ```
 
-### Deny Describe Stack by Resource {#deny-stack-resource}
+
+
+### Deny Deleting Stacks by Resource {#deny-delete-stack-resource}
+
 
 ```json
 {
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : ["stack:describeStack"],
-          "Resource" : ["mrn:alm:stack:mo-XXXXXXXXXXXXXX"]
-      }
+    "version": "2017-05-05",
+    "statement": [
+        {
+            "effect": "allow",
+            "action": "*",
+            "resource": "*"
+        },
+        {
+            "effect": "deny",
+            "action": "delete:alm.stack",
+            "resource": ["mo-590fdb7bad55s-tJZpgRCBs-tk"]
+        }
     ]
 }
 ```
 
-### Deny Some Actions {#deny-some-actions}
 
-```json
-{
-  "Version": "2017-05-05",
-  "Statement": [
-      {
-          "Effect" : "Deny",
-          "Action" : [
-              "stack:describeStacks",
-              "template:updateAlmTemplate",
-              "stack:deleteStack"
-          ],
-          "Resource" : [
-              "mrn:alm:stack:mo-XXXXXXXXXXXXXX",
-              "mrn:alm:template:mo-XXXXXXXXXXXXXX"
-          ]
-      }
-    ]
-}
-```
+

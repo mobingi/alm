@@ -18,19 +18,25 @@ This section defines what the effect will be when the user requests access. This
 
 This section defines what actions you will grant. Each Mobingi ALM service has its own set of actions. For example, you might allow a user to list all stacks or deny a user to perform delete stack.
 
- - RBAC actions:
+ - RBAC Actions List:
 
-    |Service|Action|Example|
-    |:--|:--|:--|:--|:--|
-    |vendor|describeVendors|vendor:describeVendors|
-    |cred|describeCredentials::aws|vendor:aws:cred:describeCredentials::aws|
-    |-|describeCredentials::alicloud|vendor:alicloud:cred:describeCredentials::alicloud|
-    |-|createCredential::{vendor}|cred:createCredential::aws|
-    |-|deleteCredential::{vendor}|cred:deleteCredential::aws|
-    |stack|describeStacks|stack:describeStacks|
-    |-|deleteStack|stack:deleteStack|
-    |template|createAlmTemplate|template:createAlmTemplate|
-    |-|updateAlmTemplate|template:updateAlmTemplate|
+    |Service|Actions|
+    |:--|:--|
+    |Credential|view:credentials|
+    | |create:credentials|
+    | |delete:credentials|
+    |Template|view:alm.template|
+    | |create:alm.template|
+    | |edit:alm.template|
+    |Stack|view:alm.stack|
+    | |create:alm.stack|
+    | |edit:alm.stack|
+    | |delete:alm.stack|
+    |Registry|view:alm.registry|
+    | |create:alm.registry|
+    | |edit:alm.registry|
+    | |delete:alm.registry|
+    |Login|view:user.login|
 
 ## Resource {#resource}
 
@@ -39,97 +45,46 @@ Which resources you allow the action on. For example, what specific stack will y
  - when `*` is given, all resources are applied
  - when explicit value is given, only that resource is applied
 
-### Example Mobingi Resource Names (MRN)
+### Example Resource Values
 
-- ### Stack
 
- - mrn:alm:stack:*
- - mrn:alm:stack:mo-xxxxxxxxxxxxxxxx
-
+ - Allow read only permissions on two specific stacks:
+ 
+ ```json
+ {
+     "version": "2017-05-05",
+     "statement": [
+         {
+             "effect": "allow",
+             "action": "view:alm.stack",
+             "resource": ["mo-590fdb7bad55s-tJZpgRCBs-tk", "mo-590fdb7bad55s-ugMgQQ1TE-tk"]
+         }
+     ]
+ }
+ ```
+ - Deny users from using specific cloud account credential:
+ 
+ ```json
+ {
+     "version": "2017-05-05",
+     "statement": [
+         {
+             "effect": "deny",
+             "action": "*",
+             "resource": ["AKIAJ7Z8PGXEZTIJOL6IQ"]
+         }
+     ]
+ }
+ ```
+ Explanation: 
+ 
+ _Suppose "AKIAJ7Z8PGXEZTIJOL6IQ" is the credential resource of an AWS account that you saved at ALM, the above policy will deny user from performing any actions against that AWS account._ 
 
 
 
 ## Default Roles {#default-roles}
 
-When your master account is first set up, a default admin role is automatically assigned to your master account. Similarly, when you create a user on Mobingi ALM, a default role is applied automatically to that user and allows certain scopes by default. Below are the default roles:
+When a user is first created by root account, this user has no privileges to perform any API actions. You need to first grant a role to the user.
 
 
- - ### Master Account
 
-    ```json
-    {
-        "version": "2017-05-05",
-        "Statement":[
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "template:createAlmTemplate"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "*"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-        ]
-    }
-    ```
-
- - ### User
-
-    ```json
-    {
-        "version": "2017-05-05"
-        "Statement":[
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "role:describeRoles"
-                    "role:createRole",
-                    "role:updateRole",
-                    "role:deleteRole",
-                    "user:describeMobingiUsers",
-                    "user:createMobingiUser",
-                    "user:deleteMobingiUser",
-                    "userrole:describeUserRoleByUserName",
-                    "userrole:createUserRole",
-                    "userrole:updateUserRole",
-                    "userrole:deleteUserRole"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-            {
-                "Effect": "Deny",
-                "Action": [
-                    "cred:createCredentials::aws",
-                    "cred:deleteCredentials::aws",
-                    "cred:createCredentials::alicloud",
-                    "cred:deleteCredentials::alicloud",
-                    "cred:createCredentials::k5",
-                    "cred:deleteCredentials::k5"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            },
-            {
-                "Effect": "Allow",
-                "Action": [
-                    "*"
-                ],
-                "Resource": [
-                    "*"
-                ]
-            }
-        ]
-    }
-    ```
