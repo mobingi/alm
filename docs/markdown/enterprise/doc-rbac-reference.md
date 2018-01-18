@@ -1,4 +1,6 @@
-Mobingi ALM RBAC role body is a json format body contains several sections. This page explains the reference on each section. For quick referencing with example roles please refer to [this](https://learn.mobingi.com/alm-rbac-example-rbac) guide.
+Mobingi ALM RBAC role body is a json format string contains several sections.
+This page explains the reference on each section. 
+For quick referencing with example roles please refer to [this](https://learn.mobingi.com/alm-rbac-example-rbac) guide.
 
 ## Version {#version}
 
@@ -39,26 +41,10 @@ Which resources you allow the action on. For example, what specific stack will y
 
 ### Example Mobingi Resource Names (MRN)
 
-- ### Vendor
- - mrn:vendor:aws
- - mrn:vendor:alicloud
- - mrn:vendor:k5
-
-- ### Credentials
-
- - mrn:vendor:aws:cred:AAAAAAAAAAAAAAAA
- - mrn:vendor:alicloud:cred:*
-
 - ### Stack
 
  - mrn:alm:stack:*
  - mrn:alm:stack:mo-xxxxxxxxxxxxxxxx
-
-- ### Template
-
-  - mrn:alm:template:*
-  - mrn:alm:template:mo-xxxxxxxxxxxxxxxx
-
 
 
 

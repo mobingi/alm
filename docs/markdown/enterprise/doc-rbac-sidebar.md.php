@@ -17,9 +17,6 @@
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>enterprise/rbac-best-practices">Best Practices</a>
-        <ul>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-best-practices#">sub_item</a></li>
-        </ul>
     </li>
     <li>
         <a href="<?php echo $siteUrl; ?>enterprise/working-with-rbac">Working with RBAC</a>
@@ -49,7 +46,7 @@
     <li>
         <a href="<?php echo $siteUrl; ?>enterprise/rbac-release-history">Release History</a>
         <ul>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-release-history#">sub_item</a></li>
+            <li><a href="<?php echo $siteUrl; ?>enterprise/rbac-release-history#">2017-05-05 release</a></li>
         </ul>
     </li>
     <li>
