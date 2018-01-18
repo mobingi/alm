@@ -7,7 +7,7 @@ RBAC is a policy document that formally states one or more permissions. To assig
 
 Before any requests goes in, the RBAC module will check for the current user's role settings first, then it passes or denies the request.
 
-![Image of RBAC Concept](https://learn.mobingi.com/template/assets/img/docs/rbac-concept.png)
+![Image of RBAC Concept](https://learn-cdn.mobingi.com/images/rbac-concept.png)
 
 
 For the requests being passed, there is no other actions need to perform. 
