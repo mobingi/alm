@@ -23,7 +23,6 @@
         <ul>
             <li><a href="<?php echo $siteUrl; ?>enterprise/working-with-rbac#permission-priority">Permission Priority</a></li>
             <li><a href="<?php echo $siteUrl; ?>enterprise/working-with-rbac#apply-order">Apply Order</a></li>
-            <li><a href="<?php echo $siteUrl; ?>enterprise/working-with-rbac#resource-dependency">Resource Dependency</a></li>
         </ul>
     </li>
     <li>
