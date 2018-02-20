@@ -32,7 +32,16 @@ if(!in_array($_SERVER['REMOTE_ADDR'], array(
 
 		<!-- Fonts -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Raleway:100,300,400,500%7CLato:300,400' rel='stylesheet' type='text/css'> -->
-
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-112761336-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', 'UA-112761336-1');
+		</script>
+		<!-- Google Search Console -->
+		<meta name=“google-site-verification” content=“18H6tsiKurxcGnrwld8uVdcxcUodcOydrBpe4-s2Eww” />
 		<!-- Favicons -->
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<link rel="icon" href="<?php echo $domain; ?>assets/img/favicon.ico?v1">
