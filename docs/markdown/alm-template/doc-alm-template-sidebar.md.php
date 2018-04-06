@@ -57,6 +57,7 @@
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#security_group">- security_group</a></li>
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#auto_scaling">- auto_scaling</a></li>
                     <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#load_balancer">- load_balancer</a></li>
+                    <li><a href="<?php echo $siteUrl; ?>alm-templates-reference#rds">- rds</a></li>
                 </ul>
             </li>
             <li>

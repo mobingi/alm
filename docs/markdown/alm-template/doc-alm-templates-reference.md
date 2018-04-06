@@ -1093,6 +1093,137 @@ The _load balancer_ section contains the following declarative:
     </div>
     </div>
 
+## rds {#rds}
+
+The Rds is a managed relational database service.
+
+| Type | Example Value | Required | Supported Platforms |
+|:-----------|:-----|:-----|:----------------|
+| object | See below | No | <span class="label label-default">AWS</span> <span class="label label-default">AliCloud</span> <span class="label label-default">K5</span> |
+
+The _rds_ section contains the following declarative:
+
+
+- `db_instance_type` (string)
+
+    If you don't specify this declarative, the default values will be applied for each cloud platform.
+
+    _Required:_ Yes
+
+- `engine` (string)
+
+    If you don't specify this declarative, the default values will be applied for each cloud platform.
+
+    _Required:_ Yes
+
+- `version` (string)
+
+    If you don't specify this declarative, the default values will be applied for each cloud platform.
+    
+    _Required:_ Yes
+
+- `storage` (int)
+    
+    Constraints: 5-3072 (managemet disk).
+
+    _Required:_ Yes
+
+- `multi_az` (boolean)
+
+    Create replica in an availability zone different from the DB instance.
+    Defines whether this nulti_az is AZ or No AZ. This value is either true or false.
+
+    _Required:_ Yes
+
+- `replica` (int)
+
+    Constraints: 1-5 (replica counts).
+
+    _Required:_ No
+
+- ### Valid Values
+
+
+    <div class="tabs tabs-text">
+    <ul class="nav nav-tabs text-right" role="tablist">
+    <li role="presentation" class="active">
+    <a href="#aws_rds" aria-controls="home" role="tab" data-toggle="tab">AWS</a>
+    </li>
+    <li role="presentation">
+    <a href="#alicloud_rds" aria-controls="profile" role="tab" data-toggle="tab">Alibaba Cloud</a>
+    </li>
+    <li role="presentation">
+    <a href="#k5_rds" aria-controls="messages" role="tab" data-toggle="tab">K5</a>
+    </li>
+    </ul>
+    <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active fade in" id="aws_rds">
+    Default: <i>db.t2.micro</i>
+    <pre><code class="language-json">
+    "rds": {
+        "db_instance_type": "db.t2.micro",
+        "engine": "mysql",
+        "version": "5.6"
+        "storage": 10,
+        "multi_az": true,
+        "replica": 1
+    }
+    </code></pre>
+    Below are the valid db instance types for AWS.
+    <pre style="height:150px;><code class="">
+    db.t2.micro [default]
+    db.t2.small
+    db.t2.medium
+    db.t2.large
+    db.t2.xlarge
+    db.t2.2xlarge
+    db.m4.large
+    db.m4.xlarge
+    db.m4.2xlarge
+    db.m4.4xlarge
+    db.m4.10xlarge
+    db.m4.16xlarge
+    db.m3.medium
+    db.m3.large
+    db.m3.xlarge
+    db.m3.2xlarge
+    db.r3.large
+    db.r3.xlarge
+    db.r3.2xlarge
+    db.r3.4xlarge
+    db.r3.8xlarge
+    db.r4.large
+    db.r4.xlarge
+    db.r4.2xlarge
+    db.r4.4xlarge
+    db.r4.8xlarge
+    db.r4.16xlarge
+    db.m2.xlarge
+    db.m2.2xlarge
+    db.m2.4xlarge
+    db.m1.small
+    db.m1.medium
+    db.m1.large
+    db.m1.xlarge
+    </code></pre>
+    Below are the valid engine and version for AWS.
+    <pre class="">
+    mysql
+        - 5.6
+        - 5.7
+    postgres
+        - 9.6
+        - 10
+    </code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="alicloud_rds">
+    This section hasn't been covered by documentation.
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="k5_rds">
+    This section hasn't been covered by documentation.
+    </div>
+    </div>
+    </div>   
 
 
 
