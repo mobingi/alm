@@ -39,7 +39,7 @@ Example Request:
 ```bash
 curl -X POST https://api.mobingi.com/v3/access_token \
 -H "Content-Type: application/json" \
--d '{"grant_type":"client_credentials","client_id":"lg-5447820c870e1-xBV0OpTEN-tm","client_secret":"sFVYDoe07fxPjNgYvauYGOYCeXbOTE","grant_type":"client_credentials"}'
+-d '{"grant_type":"client_credentials","client_id":"lg-5447820c870e1-xBV0OpTEN-tm","client_secret":"sFVYDoe07fxPjNgYvauYGOYCeXbOTE"}'
 ```
 
 Response Body:
